@@ -19,5 +19,8 @@
   "homepage": "https://github.com/FlorenceMalinao/Luxureem#readme",
   "devDependencies": {
     "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "flowbite": "^2.2.0"
   }
 }
