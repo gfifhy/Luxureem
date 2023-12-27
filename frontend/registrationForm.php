@@ -1,3 +1,6 @@
+<?php include('../backend/registrationForm.php') ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -105,7 +108,9 @@
       <div class="bg-white p-8 rounded shadow-md max-w-2xl w-full">
         <h1 class="text-2xl font-bold mb-6">Registration Form</h1>
 
-        <form action="#" method="POST" class="space-y-4">
+        <form action="registrationForm.php" method="POST"  class="space-y-4">
+        <?php include ('../backend/errors.php')?>
+
           <!-- Name, Age, Sex -->
           <div class="grid grid-cols-3 gap-4">
             <div>
@@ -230,13 +235,15 @@
           <button
             type="submit"
             class="w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            id="subSignup"
+            name="subSignup"
           >
             Create an account
           </button>
           <p class="text-sm font-light text-gray-500 dark:text-gray-400">
             Already have an account?
             <a
-              href="../frontend/loginForm.html"
+              href="../frontend/loginForm.php"
               class="font-medium text-primary-600 hover:underline dark:text-primary-500"
               >Login here</a
             >
