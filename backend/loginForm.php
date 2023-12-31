@@ -22,7 +22,7 @@ if (isset($_POST['subLogin'])) {
         if (password_verify($password, $hashedPasswordDB)) {
             // Password is correct, redirect to the landing page
             $_SESSION['email'] = $userLogin;
-            header("Location: ../frontEnd/userDashboard.html");
+            header("Location: ../frontEnd/userDashboard.php");
         } else {
             // Password is incorrect
             array_push($errors,"The Email/Password is incorrect");
