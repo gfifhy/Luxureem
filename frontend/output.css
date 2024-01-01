@@ -1121,15 +1121,14 @@ input:checked + .toggle-bg {
   margin-bottom: 1.5rem;
 }
 
-<<<<<<< HEAD
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-=======
+}
 .my-40 {
   margin-top: 10rem;
   margin-bottom: 10rem;
->>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
 }
 
 .-mr-1 {
@@ -1252,21 +1251,20 @@ input:checked + .toggle-bg {
   display: none;
 }
 
-<<<<<<< HEAD
 .h-24 {
   height: 6rem;
 }
 
 .h-28 {
   height: 7rem;
-=======
+}
 .h-2 {
   height: 0.5rem;
 }
 
 .h-2\.5 {
   height: 0.625rem;
->>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
+
 }
 
 .h-3 {
@@ -1313,7 +1311,6 @@ input:checked + .toggle-bg {
   height: 100%;
 }
 
-<<<<<<< HEAD
 .h-screen {
   height: 100vh;
 }
@@ -1326,8 +1323,6 @@ input:checked + .toggle-bg {
   height: 0.625rem;
 }
 
-=======
->>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2801,24 +2796,18 @@ input:checked + .toggle-bg {
     gap: 0px;
   }
 
-<<<<<<< HEAD
   .xl\:gap-10 {
     gap: 2.5rem;
   }
 
-=======
->>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
   .xl\:gap-16 {
     gap: 4rem;
   }
 
-<<<<<<< HEAD
   .xl\:p-8 {
     padding: 2rem;
   }
 
-=======
->>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
   .xl\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;

@@ -83,11 +83,60 @@
                 >
               </li>
               <li>
-                <a
-                  href="#"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                  >Services</a
+                <button
+                  id="dropdownNavbarLink"
+                  data-dropdown-toggle="dropdownNavbar"
+                  class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                 >
+                  Services
+                  <svg
+                    class="w-2.5 h-2.5 ms-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownNavbar"
+                  class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                    aria-labelledby="dropdownLargeButton"
+                  >
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Gluta</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >vitamin</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Barbie</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li>
                 <a
@@ -117,10 +166,8 @@
       </nav>
       <!--Hero Section-->
       <section class="bg-white dark:bg-gray-900">
-        <div
-          class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
-        >
-          <div class="mr-auto lg:mt-0 lg:col-span-5 lg:flex">
+        <div class="grid max-w-screen-xl lg:gap-8 xl:gap-0 lg:grid-cols-12">
+          <div class="lg:mt-0 lg:col-span-5 lg:flex">
             <img
               class="h-auto max-w-full"
               src="img/sec1.jpg"
@@ -131,35 +178,18 @@
             <h1
               class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
             >
-            Illuminate with Luxureem's Gluta Drips
+              Illuminate with Luxureem's Gluta Drips
             </h1>
             <p
               class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
             >
-            Experience the Luxureem glow. Transform with Gluta Drip sessions for a radiant new you. 
-            Book now and shine!
+              Experience the Luxureem glow. Transform with Gluta Drip sessions
+              for a radiant new you. Book now and shine!
             </p>
+
             <a
               href="#"
-              class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
-            >
-              Get started
-              <svg
-                class="w-5 h-5 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="#"
-              class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+              class="inline-flex px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
               Discover Products
             </a>
@@ -174,16 +204,17 @@
           <h2
             class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
           >
-              Discover Beauty
+            Discover Beauty
           </h2>
           <p
             class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400"
           >
-          Unveiling the Beauty of Precision – Explore Our Latest Services Preview
+            Unveiling the Beauty of Precision – Explore Our Latest Services
+            Preview
           </p>
         </div>
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-8"
         >
           <!-- Pricing Card -->
           <div
@@ -250,7 +281,7 @@
                   <h6
                     class="text-large font-light tracking-tight text-gray-900 dark:text-white"
                   >
-                  Swift immune boost with concentrated infusion
+                    Swift immune boost with concentrated infusion
                   </h6>
                 </a>
                 <div class="flex items-center mt-2.5 mb-5"></div>
@@ -289,10 +320,10 @@
                     Cindyrella Ultimate Gluta Collagen
                   </h5>
                   <h6
-                  class="text-large font-light tracking-tight text-gray-900 dark:text-white"
-                >
-                  10 Sachets
-                </h6>
+                    class="text-large font-light tracking-tight text-gray-900 dark:text-white"
+                  >
+                    10 Sachets
+                  </h6>
                 </a>
                 <div class="flex items-center mt-2.5 mb-5"></div>
                 <div class="flex items-center justify-between">
@@ -330,10 +361,10 @@
                     Vitamin B
                   </h5>
                   <h6
-                  class="text-large font-light tracking-tight text-gray-900 dark:text-white"
-                >
-                  Complex Push for immediate energy boost
-                </h6>
+                    class="text-large font-light tracking-tight text-gray-900 dark:text-white"
+                  >
+                    Complex Push for immediate energy boost
+                  </h6>
                 </a>
                 <div class="flex items-center mt-2.5 mb-5"></div>
                 <div class="flex items-center justify-between">
@@ -366,13 +397,11 @@
             Get 30% Off!
           </h5>
         </div>
-        <div
-        class="absolute inset-0 flex items-center my-40 justify-center"
-      >
-        <h5 class="text-white text-small tracking-tight">
-          Elevate Your #LuxureemExperience Today!
-        </h5>
-      </div>
+        <div class="absolute inset-0 flex items-center my-40 justify-center">
+          <h5 class="text-white text-small tracking-tight">
+            Elevate Your #LuxureemExperience Today!
+          </h5>
+        </div>
       </div>
       <div class="mt-16">
         <button
@@ -383,42 +412,80 @@
       </div>
     </section>
 
-<!-- gallery section -->
-<section class="bg-white dark:bg-gray-800">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
-     
-      <!-- pic1 -->
-      <div class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white">
-        <img class="w-full h-100 object-cover mb-4" src="img/photo3.png" alt="Gallery Image 1" />
-      </div>
+    <!-- gallery section -->
+    <section class="bg-white dark:bg-gray-800">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8"
+        >
+          <!-- pic1 -->
+          <div
+            class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white"
+          >
+            <img
+              class="w-full h-100 object-cover mb-4"
+              src="img/photo3.png"
+              alt="Gallery Image 1"
+            />
+          </div>
 
-      <!-- pic2 -->
-      <div class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white">
-        <img class="w-full h-64 object-cover mb-4" src="img/photo1.png" alt="Gallery Image 2" />
-        <div class="mt-2">
-          <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">Glow</p>
-          <p class="text-gray-700 dark:text-gray-300">Boost your health with Glutathione drips – powerful antioxidants straight to your system. They help your liver, make your skin glow, and keep your immune system strong. It's like a quick recharge for your body, personalized for what you need. Feel better, look better – try Glutathione drips for a healthier you!</p>
+          <!-- pic2 -->
+          <div
+            class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white"
+          >
+            <img
+              class="w-full h-64 object-cover mb-4"
+              src="img/photo1.png"
+              alt="Gallery Image 2"
+            />
+            <div class="mt-2">
+              <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
+                Glow
+              </p>
+              <p class="text-gray-700 dark:text-gray-300">
+                Boost your health with Glutathione drips – powerful antioxidants
+                straight to your system. They help your liver, make your skin
+                glow, and keep your immune system strong. It's like a quick
+                recharge for your body, personalized for what you need. Feel
+                better, look better – try Glutathione drips for a healthier you!
+              </p>
+            </div>
+          </div>
+
+          <!-- pic4  -->
+          <div
+            class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white"
+          >
+            <img
+              class="w-full h-64 object-cover mb-4 ml-auto"
+              src="img/photo2.png"
+              alt="Gallery Image 3"
+            />
+            <div class="mt-2">
+              <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
+                Medical Use
+              </p>
+              <p class="text-lg text-gray-700 dark:text-gray-300">
+                Glutathione is sometimes used in medical settings, including
+                intravenous administration, for conditions such as acetaminophen
+                overdose and certain liver diseases.
+              </p>
+            </div>
+          </div>
+
+          <!-- pic3  -->
+          <div
+            class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white"
+          >
+            <img
+              class="w-full h-100 object-cover mb-4"
+              src="img/photo4.png"
+              alt="Gallery Image 4"
+            />
+          </div>
         </div>
       </div>
-
-      <!-- pic4  -->
-      <div class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white">
-        <img class="w-full h-64 object-cover mb-4 ml-auto" src="img/photo2.png" alt="Gallery Image 3" />
-        <div class="mt-2">
-          <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">Medical Use</p>
-          <p class="text-lg text-gray-700 dark:text-gray-300">Glutathione is sometimes used in medical settings, including intravenous administration, for conditions such as acetaminophen overdose and certain liver diseases.</p>
-        </div>
-      </div>
-
-      <!-- pic3  -->
-      <div class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white">
-        <img class="w-full h-100 object-cover mb-4" src="img/photo4.png" alt="Gallery Image 4" />
-
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!--faq section-->
     <div
@@ -503,9 +570,10 @@
             >
               <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  When administered by qualified healthcare professionals, Glutathione Drips are generally 
-                  considered safe. However, individual responses may vary, and it's essential to consult with a 
-                  healthcare provider to determine suitability.
+                  When administered by qualified healthcare professionals,
+                  Glutathione Drips are generally considered safe. However,
+                  individual responses may vary, and it's essential to consult
+                  with a healthcare provider to determine suitability.
                 </p>
               </div>
             </div>
@@ -545,8 +613,10 @@
             >
               <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  The duration of a Glutathione Drip session can vary but typically ranges from 30 minutes to an hour. 
-                  The actual time may depend on factors such as the dosage and specific protocol used.
+                  The duration of a Glutathione Drip session can vary but
+                  typically ranges from 30 minutes to an hour. The actual time
+                  may depend on factors such as the dosage and specific protocol
+                  used.
                 </p>
               </div>
             </div>
@@ -558,9 +628,7 @@
                 aria-expanded="false"
                 aria-controls="accordion-flush-body-3"
               >
-                <span
-                  >Are the effects of Glutathione Drips permanent?</span
-                >
+                <span>Are the effects of Glutathione Drips permanent?</span>
                 <svg
                   data-accordion-icon
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -586,11 +654,12 @@
             >
               <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  The effects of Glutathione Drips are often temporary, and maintenance sessions 
-                  may be recommended to sustain the desired benefits. Individual responses 
-                  can vary, and long-term results depend on factors such as lifestyle and overall health.
+                  The effects of Glutathione Drips are often temporary, and
+                  maintenance sessions may be recommended to sustain the desired
+                  benefits. Individual responses can vary, and long-term results
+                  depend on factors such as lifestyle and overall health.
                 </p>
-              <!--  <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
+                <!--  <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
                   <li>
                     <a
                       href="https://flowbite.com/pro/"
