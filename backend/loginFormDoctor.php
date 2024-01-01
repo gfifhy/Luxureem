@@ -5,12 +5,12 @@ $errors=array();
 include 'connection.php';
 
 //Login
-if (isset($_POST['subLogin'])) {
-    $userLogin = $connection->real_escape_string($_POST['email']);
-    $password = $_POST['password'];
+if (isset($_POST['subLoginDoctor'])) {
+    $userLogin = $connection->real_escape_string($_POST['emailDoctor']);
+    $password = $_POST['passwordDoctor'];
 
     // Retrieve the hashed password from the database based on the email
-    $checkUserQuery = "SELECT `email`, `password` FROM `patients` WHERE `email` = '$userLogin'";
+    $checkUserQuery = "SELECT * FROM `doctors` WHERE `email` = '$userLogin'";
     $result = $connection->query($checkUserQuery);
 
     if ($result->num_rows === 1) {
@@ -22,7 +22,12 @@ if (isset($_POST['subLogin'])) {
         if (password_verify($password, $hashedPasswordDB)) {
             // Password is correct, redirect to the landing page
             $_SESSION['email'] = $userLogin;
-            header("Location: ../frontEnd/productUserDashboard.html");
+            $_SESSION['userData'] = array();
+            $_SESSION['userData']['email'] = $userLogin;
+            $_SESSION['userData']['name'] = $row['name'];
+            $_SESSION['userData']['id'] = $row['id'];
+            $_SESSION['userData']['pp'] = $row['picture'];
+            header("Location: ../frontEnd/doctorDashboardProfile.php");
         } else {
             // Password is incorrect
             array_push($errors,"The Email/Password is incorrect");
@@ -35,4 +40,6 @@ if (isset($_POST['subLogin'])) {
 
 // Close the database connection
 $connection->close();
-?>
+
+
+?>  

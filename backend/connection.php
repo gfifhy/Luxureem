@@ -1,16 +1,17 @@
 <?php
 
-$server = "localhost";    
-$user = "root";                        
-$pass = ""; 
-$databse="luxureemdb";             
+// Your database connection details
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "luxureemdb";
 
-$connection=mysqli_connect($server,$user,$pass,$databse);
+// Create a new connection
+$connection = new mysqli($servername, $username, $password, $dbname);
 
-if($connection){
-	
-}else{
-	echo "Not Connected";
+// Check the connection
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
 }
 
 
