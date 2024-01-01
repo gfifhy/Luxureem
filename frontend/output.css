@@ -1121,9 +1121,15 @@ input:checked + .toggle-bg {
   margin-bottom: 1.5rem;
 }
 
+<<<<<<< HEAD
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+=======
+.my-40 {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+>>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
 }
 
 .-mr-1 {
@@ -1166,6 +1172,10 @@ input:checked + .toggle-bg {
   margin-left: 0.5rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -1178,8 +1188,20 @@ input:checked + .toggle-bg {
   margin-right: auto;
 }
 
+.ms-2 {
+  margin-inline-start: 0.5rem;
+}
+
+.ms-2\.5 {
+  margin-inline-start: 0.625rem;
+}
+
 .ms-3 {
   margin-inline-start: 0.75rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .mt-16 {
@@ -1196,22 +1218,6 @@ input:checked + .toggle-bg {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-.ms-2 {
-  margin-inline-start: 0.5rem;
-}
-
-.ms-2\.5 {
-  margin-inline-start: 0.625rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .block {
@@ -1246,12 +1252,21 @@ input:checked + .toggle-bg {
   display: none;
 }
 
+<<<<<<< HEAD
 .h-24 {
   height: 6rem;
 }
 
 .h-28 {
   height: 7rem;
+=======
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-2\.5 {
+  height: 0.625rem;
+>>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
 }
 
 .h-3 {
@@ -1298,6 +1313,7 @@ input:checked + .toggle-bg {
   height: 100%;
 }
 
+<<<<<<< HEAD
 .h-screen {
   height: 100vh;
 }
@@ -1310,6 +1326,8 @@ input:checked + .toggle-bg {
   height: 0.625rem;
 }
 
+=======
+>>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1320,6 +1338,14 @@ input:checked + .toggle-bg {
 
 .w-11\/12 {
   width: 91.666667%;
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-2\.5 {
+  width: 0.625rem;
 }
 
 .w-3 {
@@ -1356,14 +1382,6 @@ input:checked + .toggle-bg {
 
 .w-full {
   width: 100%;
-}
-
-.w-2 {
-  width: 0.5rem;
-}
-
-.w-2\.5 {
-  width: 0.625rem;
 }
 
 .max-w-2xl {
@@ -1735,6 +1753,11 @@ input:checked + .toggle-bg {
   background-color: rgb(225 239 254 / var(--tw-bg-opacity));
 }
 
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(63 131 248 / var(--tw-bg-opacity));
+}
+
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(26 86 219 / var(--tw-bg-opacity));
@@ -1771,11 +1794,6 @@ input:checked + .toggle-bg {
 
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
-}
-
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(63 131 248 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -1891,11 +1909,6 @@ input:checked + .toggle-bg {
   padding-bottom: 2rem;
 }
 
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .pb-5 {
   padding-bottom: 1.25rem;
 }
@@ -1993,12 +2006,12 @@ input:checked + .toggle-bg {
   font-weight: 500;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-normal {
   font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {
@@ -2158,6 +2171,11 @@ input:checked + .toggle-bg {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 100 242 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
@@ -2176,11 +2194,6 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-blue-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(28 100 242 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-600:hover {
@@ -2269,10 +2282,6 @@ input:checked + .toggle-bg {
 
 :is([dir="rtl"] .rtl\:text-right) {
   text-align: right;
-}
-
-:is(.dark .dark\:block) {
-  display: block;
 }
 
 :is(.dark .dark\:hidden) {
@@ -2792,18 +2801,24 @@ input:checked + .toggle-bg {
     gap: 0px;
   }
 
+<<<<<<< HEAD
   .xl\:gap-10 {
     gap: 2.5rem;
   }
 
+=======
+>>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
   .xl\:gap-16 {
     gap: 4rem;
   }
 
+<<<<<<< HEAD
   .xl\:p-8 {
     padding: 2rem;
   }
 
+=======
+>>>>>>> c1b658657ceb537b72d64ca1a75f914361830150
   .xl\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
