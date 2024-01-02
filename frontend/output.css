@@ -1651,6 +1651,11 @@ input:checked + .toggle-bg {
   background-color: rgb(255 204 204 / var(--tw-bg-opacity));
 }
 
+.bg-custom-darkbrown {
+  --tw-bg-opacity: 1;
+  background-color: rgb(162 114 78 / var(--tw-bg-opacity));
+}
+
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -1673,6 +1678,10 @@ input:checked + .toggle-bg {
 
 .bg-gray-900\/50 {
   background-color: rgb(17 24 39 / 0.5);
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .bg-white {
@@ -1808,6 +1817,10 @@ input:checked + .toggle-bg {
 
 .text-center {
   text-align: center;
+}
+
+.font-serif {
+  font-family: Zilla Slab, serif;
 }
 
 .text-2xl {
