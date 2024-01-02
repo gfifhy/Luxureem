@@ -160,11 +160,7 @@ array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
           <div
             class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
           >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              Name:
-              <?php echo $_SESSION['userData']['name']; ?>
-            class="items-center justify-left h-24 rounded bg-gray-50 dark:bg-gray-800"
-            style="padding-left:2%; margin-top:10%; width: 33%">
+
             <p class="text-2xl text-black-400 dark:text-gray-500">
               Name: <?php echo $_SESSION['userData']['name']; ?>
             </p>
