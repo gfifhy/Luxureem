@@ -1,6 +1,3 @@
-<?php include 'adminSystem.php'; ?>
-<?php include ('../backend/errors.php')?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,7 +51,7 @@
         <ul class="space-y-2 font-medium">
           <li>
             <a
-              href="#"
+              href="adminDashboardDoctor.php"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -74,7 +71,7 @@
 
           <li>
             <a
-              href="adminDashboardProduct.php"
+              href="#"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -144,76 +141,14 @@
       <div class="p-4 border-2 border-black-1000 border-dashed rounded-lg dark:border-gray-700">
 
 
-      <div class="flex items-center justify-center h-48 my-4 rounded bg-gray-50 dark:bg-gray-800">
-          <?php
-                  $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
-                  if ($connection->connect_error) {
-                  echo "Connection error: " . $connection->connect_error;
-                  }
-                  // SQL query to select data
-                  $sql = "SELECT `id`, `name`, `phonenumber`, `email` FROM doctors"; 
-                  $result = $connection->query($sql);
 
-                  // Check if the query returns any rows
-                  if ($result->num_rows > 0) {
-                    // Output data of each row
-                    echo "<table class='w-full border-collapse mb-8'>";
-                    echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Phone Number</th><th class='p-4 text-left'>Email</th></tr>";
-                    echo "</thead>";
-                    echo "<tbody class='text-gray-700'>";
-                    while($row = $result->fetch_assoc()) {
-                          echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
-                          echo "<td class='p-4'>" . $row["id"]. "</td>";
-                          echo "<td class='p-4'>" . $row["name"]. "</td>";
-                          echo "<td class='p-4'>" . $row["phonenumber"]. "</td>";
-                          echo "<td class='p-4'>" . $row["email"]. "</td>";
-                          echo "</tr>";
-                    }
-                    echo "</tbody>";
-                    echo "</table>";
-                  } else {
-                    echo "<p class='text-red-600'>0 results</p>";
-                  }
-                  ?>
+        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+          
         </div>
-
-
-
-        <div class="grid grid-cols-1 gap-4 mb-4">
-          <form action="" method="post" enctype="multipart/form-data">
-              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                  <h2 class="text-2xl font-semibold mb-4">Adding Doctors</h2>
-                  <label for="name" class="col-start-1">Name:</label>
-                  <input type="text" id="name" name="name" class="col-start-2" required="">
-                  
-                  <label for="pic" class="col-start-1">Picture:</label>
-                  <input type="file" id="pic" name="pp" class="col-start-2" required="">
-                  
-                  <label for="phone" class="col-start-1">Phone Number:</label>
-                  <input type="text" id="phone" name="phone" class="col-start-2" required="">
-
-                  <label for="email" class="col-start-1">Email:</label>
-                  <input type="text" id="email" name="email" class="col-start-2" required="">
-
-                  <label for="password" class="col-start-1">Password:</label>
-                  <input type="password" id="password" name="password" class="col-start-2" required="">
-              </div>
-              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                  <input name="adminSub" type="submit" value="Submit" class="col-start-3">
-              </div>
-          </form>
-        </div>
-
 
 
         <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          <h2 class="text-2xl font-semibold mb-4">Deleting Doctors</h2><br>
-            <form action="" method="post">
-            <label for="userid">Enter User ID to Delete:</label>
-            <input type="text" id="userid" name="userid">
-            <input type="submit" value="Delete">
-            </form>    
+             
         </div>
 
 
@@ -308,6 +243,9 @@
 
       </div>
     </div>
+
+
+    
     <script>
       function myFunction() {
       var x = document.getElementById("mySelect").value;
