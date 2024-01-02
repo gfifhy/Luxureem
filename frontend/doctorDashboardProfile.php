@@ -3,10 +3,7 @@
 
 $dataPoints = array( 
 	array("label"=>"Male", "symbol" => "M","y"=>$male_count),
-	array("label"=>"Female", "symbol" => "F","y"=>$female_count),
- 
-)
-?>
+array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +12,10 @@ $dataPoints = array(
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Luxureem</title>
     <link rel="stylesheet" href="output.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <button
@@ -151,21 +151,23 @@ $dataPoints = array(
         class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700"
       >
         <div class="grid grid-cols-3 gap-4 mb-4">
-          
-          <div class="img-fluid rounded-circle">      
-            <img src="../upload/<?= $_SESSION['userData']['pp']?>" class="img-fluid rounded-circle">
+          <div class="img-fluid rounded-circle">
+            <img
+              src="../upload/<?= $_SESSION['userData']['pp']?>"
+              class="img-fluid rounded-circle"
+            />
           </div>
-          
+
           <div
             class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
           >
             <p class="text-2xl text-gray-400 dark:text-gray-500">
-              Name: <?php echo $_SESSION['userData']['name']; ?>
+              Name:
+              <?php echo $_SESSION['userData']['name']; ?>
             </p>
           </div>
 
-          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-          
+          <div id="chartContainer" style="height: 370px; width: 100%"></div>
         </div>
         <div
           class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800"
@@ -383,11 +385,10 @@ $dataPoints = array(
         </div>
       </div>
     </div>
-    
 
     <script>
       window.onload = function() {
-      
+
       var chart = new CanvasJS.Chart("chartContainer", {
         theme: "light2",
         animationEnabled: true,
@@ -404,7 +405,7 @@ $dataPoints = array(
         }]
       });
       chart.render();
-      
+
       }
     </script>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
