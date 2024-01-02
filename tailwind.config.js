@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'custom-brown': '#ffcccc',
+      'custom-brown': '#e2bb9c',
       'custom-darkbrown': '#a2724e'
     },
     fontFamily: {
