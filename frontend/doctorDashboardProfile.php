@@ -3,10 +3,7 @@
 
 $dataPoints = array( 
 	array("label"=>"Male", "symbol" => "M","y"=>$male_count),
-	array("label"=>"Female", "symbol" => "F","y"=>$female_count),
- 
-)
-?>
+array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +12,10 @@ $dataPoints = array(
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Luxureem</title>
     <link rel="stylesheet" href="output.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <button
@@ -156,8 +156,13 @@ $dataPoints = array(
           <div class="img-fluid rounded-circle" style="height: 370px; width: 33%;">      
             <img src="../upload/<?= $_SESSION['userData']['pp']?>" class="img-fluid rounded-circle" style="height: 100%; width:100%">
           </div>
-          
+
           <div
+            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
+          >
+            <p class="text-2xl text-gray-400 dark:text-gray-500">
+              Name:
+              <?php echo $_SESSION['userData']['name']; ?>
             class="items-center justify-left h-24 rounded bg-gray-50 dark:bg-gray-800"
             style="padding-left:2%; margin-top:10%; width: 33%">
             <p class="text-2xl text-black-400 dark:text-gray-500">
@@ -171,11 +176,10 @@ $dataPoints = array(
       
       </div>
     </div>
-    
 
     <script>
       window.onload = function() {
-      
+
       var chart = new CanvasJS.Chart("chartContainer", {
         theme: "light2",
         animationEnabled: true,
@@ -192,7 +196,7 @@ $dataPoints = array(
         }]
       });
       chart.render();
-      
+
       }
     </script>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
