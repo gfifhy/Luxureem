@@ -4,7 +4,7 @@ $errors=array();
 
 include '../backend/connection.php';
 
-// Registration
+// Add
 if (isset($_POST['adminSub'])) {
     $name = $connection->real_escape_string($_POST['name']);
     $phone = $connection->real_escape_string($_POST['phone']);

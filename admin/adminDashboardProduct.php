@@ -1,3 +1,5 @@
+<?php include 'adminSystemProducts.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -140,10 +142,86 @@
     <div class="p-4 sm:ml-64">
       <div class="p-4 border-2 border-black-1000 border-dashed rounded-lg dark:border-gray-700">
 
+        <div class="flex items-center justify-center my-4 rounded bg-gray-50 dark:bg-gray-800">
+          <?php
+                  $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
+                  if ($connection->connect_error) {
+                  echo "Connection error: " . $connection->connect_error;
+                  }
+                  // SQL query to select data
+                  $sql = "SELECT * FROM barbie"; 
+                  $result = $connection->query($sql);
+
+                  // Check if the query returns any rows
+                  if ($result->num_rows > 0) {
+                    // Output data of each row
+                    echo "<table class='w-full border-collapse mb-8'>";
+                    echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
+                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Picture</th><th class='p-4 text-left'>Price</th></tr>";
+                    echo "</thead>";
+                    echo "<tbody class='text-gray-700'>";
+                    while($row = $result->fetch_assoc()) {
+                          echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
+                          echo "<td class='p-4'>" . $row["barbieid"]. "</td>";
+                          echo "<td class='p-4'>" . $row["barbiename"]. "</td>";
+                          echo "<td class='p-4'>" . $row["barbiedesc"]. "</td>";
+                          echo "<td class='p-4'>" . $row["barbiepic"]. "</td>";
+                          echo "<td class='p-4'>" . $row["barbieprice"]. "</td>";
+                          echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                  } else {
+                    echo "<p class='text-red-600'>0 results</p>";
+                  }
+                  ?>
+        </div>
 
 
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          
+        <div class="grid grid-cols-1 gap-4 mb-4">
+          <form action="" method="post" enctype="multipart/form-data">
+              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
+                  <h2 class="text-2xl font-semibold mb-4">Adding Products</h2>
+                  <label for="name" class="col-start-1">Name:</label>
+                  <input type="text" id="prodname" name="prodname" class="col-start-2" required="">
+                                    
+                  <label for="phone" class="col-start-1">Description:</label>
+                  <input type="text" id="desc" name="desc" class="col-start-2" required="">
+                  
+                  <label for="pic" class="col-start-1">Picture:</label>
+                  <input type="file" id="barbiepic" name="barbiepic" class="col-start-2" required="">
+
+                  <label for="email" class="col-start-1">Price:</label>
+                  <input type="text" id="price" name="price" class="col-start-2" required="">
+
+              </div>
+              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
+                  <input name="adminSub" type="submit" value="Submit" class="col-start-3">
+              </div>
+          </form>
+        </div>
+
+
+        <div class="flex justify-center h-60 p-5 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+          <form action="adminDashboardProduct.php" method="post" enctype="multipart/form-data" class="flex items-center justify-between w-full md:w-1/2">
+            <div class="w-full md:w-1/2">
+              <label for="barbieid">Barbie ID:</label><br>
+              <input type="text" id="barbieid" name="barbieid"><br>
+              <label for="barbiename">Barbie Name:</label><br>
+              <input type="text" id="barbiename" name="barbiename"><br>
+              <label for="barbiedesc">Barbie Description:</label><br>
+              <input type="text" id="barbiedesc" name="barbiedesc"><br>
+            </div>
+            <div class="w-full md:w-1/2">
+
+              <label for="barbiepic">Barbie Picture URL:</label><br>
+              <input type="file" id="barbiepic" name="barbiepic"><br>
+
+              <label for="barbieprice">Barbie Price:</label><br>
+              <input type="text" id="barbieprice" name="barbieprice"><br><br>
+              <input type="submit" name="update" value="Update">
+            </div>
+          </form> 
         </div>
 
 
@@ -152,7 +230,6 @@
         </div>
 
 
-        
         <div class="grid grid-cols-2 gap-4">
           <div
             class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"

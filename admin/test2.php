@@ -1,70 +1,62 @@
 <?php
-// Check if form is submitted
-if (isset($_POST['submit'])) {
-    // Check if user input is not empty
-    if (!empty($_POST['user'])) {
-        // Database configuration
-        $dbHost = 'localhost';
-        $dbUsername = 'root';
-        $dbPassword = '';
-        $dbName = 'luxureemdb';
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "luxureemdb";
 
-        // Create connection
-        $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // User input
-        $user = $_POST['user'];
-
-        // Prepare statement
-        $stmt = $conn->prepare("SELECT * FROM doctors WHERE name=?");
-
-        // Bind user input
-        $stmt->bind_param("s", $user);
-
-        // Execute statement
-        $stmt->execute();
-
-        // Get results
-        $result = $stmt->get_result();
-
-        // Fetch associated array
-        $row = $result->fetch_assoc();
-
-        // Check if user exists
-        if ($row) {
-            // Update user information
-            // You can update any column according to your requirements
-            // Here I am updating name, picture, phonenumber, email, and password
-            // Update these lines according to your database connection and table structure
-            $name = $_POST['name'];
-            $picture = $_POST['picture'];
-            $phonenumber = $_POST['phonenumber'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $update = "UPDATE doctors SET name='$name', picture='$picture', phonenumber='$phonenumber', email='$email', password='$password' WHERE name='$user'";
-
-            if ($conn->query($update) === TRUE) {
-                echo "Record updated successfully";
-            } else {
-                echo "Error updating record: " . $conn->error;
-            }
-        } else {
-            echo "User does not exist";
-        }
-
-        // Close statement and connection
-        $stmt->close();
-        $conn->close();
-    } else {
-        echo "Please enter a user name";
-    }
-} else {
-    echo "Access denied";
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+$barbieid = $_POST['barbieid'];
+
+if(isset($_POST['barbiename']) && !empty($_POST['barbiename'])) {
+    $barbiename = $_POST['barbiename'];
+    $sql = "UPDATE barbie SET barbiename='$barbiename' WHERE barbieid='$barbieid'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Barbie Name updated successfully";
+    } else {
+        echo "Error updating Barbie Name: " . $conn->error;
+    }
+}
+
+if(isset($_POST['barbiedesc']) && !empty($_POST['barbiedesc'])) {
+    $barbiedesc = $_POST['barbiedesc'];
+    $sql = "UPDATE barbie SET barbiedesc='$barbiedesc' WHERE barbieid='$barbieid'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Barbie Description updated successfully";
+    } else {
+        echo "Error updating Barbie Description: " . $conn->error;
+    }
+}
+
+if(isset($_POST['barbiepic']) && !empty($_POST['barbiepic'])) {
+    $barbiepic = $_POST['barbiepic'];
+    $sql = "UPDATE barbie SET barbiepic='$barbiepic' WHERE barbieid='$barbieid'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Barbie Picture URL updated successfully";
+    } else {
+        echo "Error updating Barbie Picture URL: " . $conn->error;
+    }
+}
+
+if(isset($_POST['barbieprice']) && !empty($_POST['barbieprice'])) {
+    $barbieprice = $_POST['barbieprice'];
+    $sql = "UPDATE barbie SET barbieprice='$barbieprice' WHERE barbieid='$barbieid'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Barbie Price updated successfully";
+    } else {
+        echo "Error updating Barbie Price: " . $conn->error;
+    }
+}
+
+$conn->close();
 ?>
