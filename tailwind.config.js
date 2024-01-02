@@ -7,7 +7,9 @@ module.exports = {
   theme: {
     colors: {
       'custom-brown': '#e2bb9c',
-      'custom-darkbrown': '#a2724e'
+      'custom-darkbrown': '#a2724e',
+      'custom-lightbrown': '#c9a489',
+      'custom-brownz': '#f9f5ea'
     },
     fontFamily: {
       serif: ['Zilla Slab', 'serif']
