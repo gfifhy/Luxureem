@@ -35,6 +35,7 @@ if ($conn->connect_error) {
             >Luxureem</span
           >
         </a>
+        
         <div class="flex items-center lg:order-2">
           <button
             id="dropdownUserAvatarButton"

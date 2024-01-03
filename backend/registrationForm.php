@@ -24,20 +24,49 @@ if (isset($_POST['subSignup'])) {
         array_push($errors,"Password must contain at least one capital letter, one special character, and be at least 8 characters long.");
     } elseif ($resultEmail->num_rows > 0) {
         array_push($errors,"Email already exists. Please use a different email.");
-    } else {
+    } else{
 
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert the record into the database
-        $insertQuery = "INSERT INTO `patients` (`name`,`age`,`sex`,`phonenumber`,`address`, `email`, `password`) VALUES ('$name','$age','$sex','$cellphone','$address','$email','$hashedPassword')";
-        $resultInsert = $connection->query($insertQuery);
 
-        if ($resultInsert) {
-            // Redirect to index.html after successful registration
-            header("Location: ../frontend/loginForm.php");
-        } else {
-            array_push($errors,"Registration failed, please try again");
+        if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
+         
+            $img_name = $_FILES['pp']['name'];
+            $tmp_name = $_FILES['pp']['tmp_name'];
+            $error = $_FILES['pp']['error'];
+            
+            if($error === 0){
+               $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+               $img_ex_to_lc = strtolower($img_ex);
+   
+               $allowed_exs = array('jpg', 'jpeg', 'png');
+               if(in_array($img_ex_to_lc, $allowed_exs)){
+                 $new_img_name = uniqid($name, true).'.'.$img_ex_to_lc;
+                 $img_upload_path = '../userupload/'.$new_img_name;
+                 move_uploaded_file($tmp_name, $img_upload_path);
+   
+                // Insert the record into the database
+                $insertQuery = "INSERT INTO `patients` (`name`,`picture`,`age`,`sex`,`phonenumber`,`address`, `email`, `password`) VALUES ('$name','$new_img_name','$age','$sex','$cellphone','$address','$email','$hashedPassword')";
+                $resultInsert = $connection->query($insertQuery);
+                if ($resultInsert) {
+                    // Redirect to index.html after successful registration
+                    header("Location: ../frontend/loginForm.php");
+                } else {
+                    array_push($errors,"Registration failed, please try again");
+                }
+                
+                 header("Location: ../frontend/loginForm.php");
+                   exit;
+               }else {
+                array_push($errors,"Cannot upload this type of file");
+               }
+            }else {
+                array_push($errors,"Registration failed, please try again");
+            }
+        }
+        else{
+            echo "No image selected.";
         }
     }
 }

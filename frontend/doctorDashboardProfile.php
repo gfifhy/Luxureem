@@ -154,7 +154,9 @@ array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
         <div class="flex">
           
           <div class="img-fluid rounded-circle" style="height: 370px; width: 33%;">      
-            <img src="../upload/<?= $_SESSION['userData']['pp']?>" class="img-fluid rounded-circle" style="height: 100%; width:100%">
+            <img src="../upload/<?= $_SESSION['userData']['pp']?>" 
+            class="img-fluid rounded-circle" 
+            style="height: 100%; width:100%">
           </div>
 
           <div

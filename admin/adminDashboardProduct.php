@@ -157,16 +157,17 @@
                     // Output data of each row
                     echo "<table class='w-full border-collapse mb-8'>";
                     echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Picture</th><th class='p-4 text-left'>Price</th></tr>";
+                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Category</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Picture</th><th class='p-4 text-left'>Price</th></tr>";
                     echo "</thead>";
                     echo "<tbody class='text-gray-700'>";
                     while($row = $result->fetch_assoc()) {
                           echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
                           echo "<td class='p-4'>" . $row["barbieid"]. "</td>";
+                          echo "<td class='p-4'>" . $row["barbiecat"]. "</td>";
                           echo "<td class='p-4'>" . $row["barbiename"]. "</td>";
                           echo "<td class='p-4'>" . $row["barbiedesc"]. "</td>";
                           echo "<td class='p-4'>" . $row["barbiepic"]. "</td>";
-                          echo "<td class='p-4'>" . $row["barbieprice"]. "</td>";
+                          echo "<td class='p-4'>". "₱" . $row["barbieprice"]. "</td>";
                           echo "</tr>";
                     }
                     echo "</tbody>";
@@ -182,6 +183,14 @@
           <form action="" method="post" enctype="multipart/form-data">
               <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
                   <h2 class="text-2xl font-semibold mb-4">Adding Products</h2>
+
+                  <label for="barbiecat" class="col-start-1">Barbie Category:</label>
+                    <select id="barbiecat"  class="col-start-2" name="barbiecat">
+                    <option value="gluta">gluta</option>
+                    <option value="vitamin">vitamin</option>
+                    <option value="barbie">barbie</option>
+                  </select>
+
                   <label for="name" class="col-start-1">Name:</label>
                   <input type="text" id="prodname" name="prodname" class="col-start-2" required="">
                                     
@@ -207,20 +216,26 @@
             <div class="w-full md:w-1/2">
               <label for="barbieid">Barbie ID:</label><br>
               <input type="text" id="barbieid" name="barbieid"><br>
+
+              <label for="barbiecat">Barbie Category:</label><br>
+              <select id="barbiecat" name="barbiecat">
+                <option value="gluta">gluta</option>
+                <option value="vitamin">vitamin</option>
+                <option value="barbie">barbie</option>
+              </select><br>
+
               <label for="barbiename">Barbie Name:</label><br>
               <input type="text" id="barbiename" name="barbiename"><br>
-              <label for="barbiedesc">Barbie Description:</label><br>
-              <input type="text" id="barbiedesc" name="barbiedesc"><br>
             </div>
             <div class="w-full md:w-1/2">
-
+              <label for="barbiedesc">Barbie Description:</label><br>
+              <input type="text" id="barbiedesc" name="barbiedesc"><br>
               <label for="barbiepic">Barbie Picture URL:</label><br>
               <input type="file" id="barbiepic" name="barbiepic"><br>
-
               <label for="barbieprice">Barbie Price:</label><br>
-              <input type="text" id="barbieprice" name="barbieprice"><br><br>
-              <input type="submit" name="update" value="Update">
+              <input type="text" id="barbieprice" name="barbieprice"><br>
             </div>
+            <input type="submit" name="update" value="Update">
           </form> 
         </div>
 

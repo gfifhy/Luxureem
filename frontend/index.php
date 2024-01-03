@@ -1,3 +1,5 @@
+<?php include '../backend/loginForm.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,12 +27,74 @@
               >Luxureem</span
             >
           </a>
+          
           <div class="flex items-center lg:order-2">
-            <a
-              href="../frontend/loginForm.php"
-              class="hidden md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-              >Get started</a
-            >
+          <?php
+              if(isset($_SESSION['id'])){
+                 ?>
+                 
+                 <button
+                    id="dropdownUserAvatarButton"
+                    data-dropdown-toggle="dropdownAvatar"
+                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    type="button"
+                  >
+                    <span class="sr-only">Open user menu</span>
+                    <img
+                      class="w-8 h-8 rounded-full"
+                      src="../userupload/<?=$_SESSION['picture']?>"
+                    >
+                  </button>
+
+                  <!-- Dropdown menu -->
+                  <div
+                    id="dropdownAvatar"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                  >
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                      <div><?php echo $_SESSION['name']; ?></div>
+                      <div class="font-medium truncate"><?php echo $_SESSION['email']; ?></div>
+                    </div>
+                    <ul
+                      class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownUserAvatarButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="../frontend/productUserDashboard.html"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Book an appointment
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="py-2">
+                      <a
+                        href="../backend/logout.php"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >Sign out</a
+                      >
+                      
+                    </div>
+                  </div>
+
+                 <?php
+              } else {
+                 ?>            
+                 <a
+                 href="../frontend/loginForm.php"
+                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                 >Get started</a>
+                 <?php
+              }
+            ?>
+            
             <button
               data-collapse-toggle="mobile-menu-2"
               type="button"
@@ -74,7 +138,7 @@
             >
               <li>
                 <a
-                  href="../frontend/index.html"
+                  href="../frontend/index.php"
                   class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
                   aria-current="page"
                   >Home</a
@@ -114,21 +178,21 @@
                   >
                     <li>
                       <a
-                        href="../frontend/productGluta.html"
+                        href="../frontend/productGluta.php"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >Glutathione Services</a
                       >
                     </li>
                     <li>
                       <a
-                        href="../frontend/productVItamin.html"
+                        href="../frontend/productVItamin.php"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >Vitamin Services</a
                       >
                     </li>
                     <li>
                       <a
-                        href="../frontend/productBarbie.html"
+                        href="../frontend/productBarbie.php"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >Aesthetic Services</a
                       >

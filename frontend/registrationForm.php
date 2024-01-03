@@ -108,7 +108,7 @@
       <div class="bg-white p-8 rounded shadow-md max-w-2xl w-full">
         <h1 class="text-2xl font-bold mb-6">Registration Form</h1>
 
-        <form action="registrationForm.php" method="POST"  class="space-y-4">
+        <form action="registrationForm.php" method="post" enctype="multipart/form-data">
         <?php include ('../backend/errors.php')?>
 
           <!-- Name, Age, Sex -->
@@ -205,6 +205,20 @@
                 id="password"
                 name="password"
                 class="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <div>
+              <label for="pp" class="block text-sm font-medium text-gray-600"
+                >Profile Picture</label
+              >
+              <input
+                type="file"
+                id="pp"
+                name="pp"
+                class="flex items-start"
               />
             </div>
           </div>

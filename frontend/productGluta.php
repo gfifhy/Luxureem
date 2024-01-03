@@ -1,10 +1,23 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "luxureemdb";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Luxureem</title>
-    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="../frontend/output.css" />
   </head>
   <body>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -235,249 +248,75 @@
             and capital can unlock long-term value and drive economic growth.
           </p>
         </div>
-        <div
-          class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0"
-        >
-          <div
-            class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="../frontend/payment.html">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Collagen drip
-              </h5>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                $999
-              </h3>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Architecto, fuga?
-            </p>
-            <a
-              href="../frontend/payment.html"
-              class="inline-flex items-center px-3 py-2 mt-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div>
+      <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+          
+      <?php
+        $category = "gluta";
+        $sql = "SELECT barbiecat, barbiename, barbiedesc, barbiepic, barbieprice FROM barbie WHERE barbiecat = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $category);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-          <div
-            class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="../frontend/payment.html">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Vitamin c drip
-              </h5>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                $999
-              </h3>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex,
-              ipsam!
-            </p>
-            <a
-              href="../frontend/payment.html"
-              class="inline-flex items-center px-3 py-2 mt-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div>
-
-          <div
-            class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="../frontend/payment.html">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                Multivitamin drip
-              </h5>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                $999
-              </h3>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
-              fuga?
-            </p>
-            <a
-              href="../frontend/payment.html"
-              class="inline-flex items-center px-3 py-2 mt-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div>
-
-          <div
-            class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="../frontend/payment.html">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Myers cocktail drip
-              </h5>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                $999
-              </h3>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque,
-              sapiente.
-            </p>
-            <a
-              href="../frontend/payment.html"
-              class="inline-flex items-center px-3 py-2 mt-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div>
-
-          <div
-            class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="../frontend/payment.html">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Vitamin c push
-              </h5>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                $999
-              </h3>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Molestias, quas?
-            </p>
-            <a
-              href="../frontend/payment.html"
-              class="inline-flex items-center px-3 py-2 mt-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div>
-
-          <div
-            class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="../frontend/payment.html">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Vitamin b complex push
-              </h5>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                $999
-              </h3>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
-              eaque.
-            </p>
-            <a
-              href="../frontend/payment.html"
-              class="inline-flex items-center px-3 py-2 mt-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="../frontend/payment.html">
+                        <img
+                            class="rounded-t-lg"
+                            src="../productupload/<?= $row['barbiepic']?>"
+                            alt=""
+                        />
+                    </a>
+                    <div class="p-5">
+                        <a href="../frontend/payment.html">
+                            <h5
+                                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                            >
+                                <?php echo $row['barbiename']; ?>
+                            </h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            <?php echo $row['barbiedesc']; ?>
+                        </p>
+                        <a
+                            href="../frontend/payment.html"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                        <?php echo "₱" . $row['barbieprice']; ?>
+                            <svg
+                                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 14 10"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+        <?php
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?>
+            
       </div>
     </section>
+
+    
+
     <!--footer section-->
     <footer class="p-4 bg-gray-800 sm:p-6">
       <div class="mx-auto max-w-screen-xl">

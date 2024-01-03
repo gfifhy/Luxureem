@@ -10,7 +10,7 @@ if (isset($_POST['subLogin'])) {
     $password = $_POST['password'];
 
     // Retrieve the hashed password from the database based on the email
-    $checkUserQuery = "SELECT `email`, `password` FROM `patients` WHERE `email` = '$userLogin'";
+    $checkUserQuery = "SELECT * FROM `patients` WHERE `email` = '$userLogin'";
     $result = $connection->query($checkUserQuery);
 
     if ($result->num_rows === 1) {
@@ -22,7 +22,10 @@ if (isset($_POST['subLogin'])) {
         if (password_verify($password, $hashedPasswordDB)) {
             // Password is correct, redirect to the landing page
             $_SESSION['email'] = $userLogin;
-            header("Location: ../frontEnd/productUserDashboard.html");
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['picture'] = $row['picture'];
+            $_SESSION['name'] = $row['name'];
+            header("Location: ../frontEnd/index.php?id=" . $_SESSION['name']);
         } else {
             // Password is incorrect
             array_push($errors,"The Email/Password is incorrect");
@@ -32,7 +35,6 @@ if (isset($_POST['subLogin'])) {
         array_push($errors,"Email is not registered");
     }
 }
-
 // Close the database connection
 $connection->close();
 ?>

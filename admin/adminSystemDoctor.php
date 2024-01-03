@@ -55,7 +55,6 @@ if (isset($_POST['adminSub'])) {
                 array_push($errors,"Registration failed, please try again");
             }
    
-           
          }else {
             // Insert the record into the database
             $insertQuery = "INSERT INTO `doctors` (`name`,`phonenumber`, `email`, `password`) VALUES ('$name','$phone','$email','$hashedPassword')";

@@ -14,9 +14,11 @@ if ($conn->connect_error) {
 
 // Add Products
 if (isset($_POST['adminSub'])) {
+    $barbiecat = $conn->real_escape_string($_POST['barbiecat']);
     $barbiename = $conn->real_escape_string($_POST['prodname']);
     $barbiedesc = $conn->real_escape_string($_POST['desc']);
     $barbieprice = $conn->real_escape_string($_POST['price']);
+
 
     if (isset($_FILES['barbiepic']['name']) AND !empty($_FILES['barbiepic']['name'])) {
         $barbiepic = basename($_FILES['barbiepic']['name']);
@@ -32,7 +34,7 @@ if (isset($_POST['adminSub'])) {
            if(in_array($img_ex_to_lc, $allowed_exs)){
              $img_upload_path = '../productupload/'.$barbiepic;
              move_uploaded_file($tmp_name, $img_upload_path);
-             $sql = "INSERT INTO `barbie` (`barbiename`,`barbiedesc`,`barbiepic`, `barbieprice`) VALUES ('$barbiename','$barbiedesc','$barbiepic','$barbieprice')";
+             $sql = "INSERT INTO `barbie` (`barbiecat`,`barbiename`,`barbiedesc`,`barbiepic`, `barbieprice`) VALUES ('$barbiecat','$barbiename','$barbiedesc','$barbiepic','$barbieprice')";
         
     
              if ($conn->query($sql) === TRUE) {
@@ -108,6 +110,18 @@ if(isset($_POST['barbieprice']) && !empty($_POST['barbieprice'])) {
         echo "Error updating Barbie Price: " . $conn->error;
     }
 }
+
+if(isset($_POST['barbiecat']) && !empty($_POST['barbiecat'])) {
+    $barbiecat = $_POST['barbiecat'];
+    $sql = "UPDATE barbie SET barbiecat='$barbiecat' WHERE barbieid='$barbieid'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "";
+    } else {
+        echo "Error updating Barbie Price: " . $conn->error;
+    }
+}
+
 }
 $conn->close();
 ?>
