@@ -15,7 +15,14 @@
         return $result->fetch_assoc();
     }
 ?>
-<?php include '../backend/loginForm.php'?>
+<?php include '../backend/loginForm.php';
+// check if user is logged in by checking the session variable 'id'
+if (!isset($_SESSION['id'])) {
+  // if not logged in, redirect to login page
+  header("Location: loginForm.php");
+  exit();
+}
+?>
 
 
 <!DOCTYPE html>
@@ -43,7 +50,11 @@
           >
         </a>
         <div class="flex items-center lg:order-2">
-        <button
+        <?php
+              if(isset($_SESSION['id'])){
+                 ?>
+                 
+                 <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
                     class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -93,6 +104,17 @@
                       
                     </div>
                   </div>
+
+                 <?php
+              } else {
+                 ?>            
+                 <a
+                 href="../frontend/loginForm.php"
+                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                 >Get started</a>
+                 <?php
+              }
+            ?>
 
           <button
             data-collapse-toggle="mobile-menu-2"
@@ -256,13 +278,15 @@
         </div>
         <?php
         if (isset($_GET['barbieid'])) {
-            $barbie = getBarbie($connection, $_GET['barbieid']);
+            $barbiedesc = getBarbie($connection, $_GET['barbieid']);
+            $barbieprice = getBarbie($connection, $_GET['barbieid']);
         }
          ?>
         <div class="mt-4 md:mt-0">
           <div class="mb-4">
             <h2>Product Description:</h2>
-            <p><?php echo $barbie['barbiedesc']; ?></p>
+            <p><?php echo "₱" . $barbieprice['barbieprice']; ?></p>
+            <p><?php echo $barbiedesc['barbiedesc']; ?></p>
           </div>
 
           <form action="../backend/payment.php" method="post" enctype="multipart/form-data">
@@ -480,3 +504,4 @@
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   </body>
 </html>
+    

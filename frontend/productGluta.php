@@ -25,7 +25,11 @@
           >
         </a>
         <div class="flex items-center lg:order-2">
-          <button
+        <?php
+              if(isset($_SESSION['id'])){
+                 ?>
+                 
+                 <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
                     class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -76,6 +80,16 @@
                     </div>
                   </div>
 
+                 <?php
+              } else {
+                 ?>            
+                 <a
+                 href="../frontend/loginForm.php"
+                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                 >Get started</a>
+                 <?php
+              }
+            ?>
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"

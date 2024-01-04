@@ -1,3 +1,5 @@
+<?php include '../backend/loginForm.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,64 +24,71 @@
             >Luxureem</span
           >
         </a>
-        <div class="flex items-center lg:order-2">
-          <button
-            id="dropdownUserAvatarButton"
-            data-dropdown-toggle="dropdownAvatar"
-            class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            type="button"
-          >
-            <span class="sr-only">Open user menu</span>
-            <img
-              class="w-8 h-8 rounded-full"
-              src="/docs/images/people/profile-picture-3.jpg"
-              alt="user photo"
-            />
-          </button>
+        <?php
+              if(isset($_SESSION['id'])){
+                 ?>
+                 
+                 <button
+                    id="dropdownUserAvatarButton"
+                    data-dropdown-toggle="dropdownAvatar"
+                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    type="button"
+                  >
+                    <span class="sr-only">Open user menu</span>
+                    <img
+                      class="w-8 h-8 rounded-full"
+                      src="../userupload/<?=$_SESSION['picture']?>"
+                    >
+                  </button>
 
-          <!-- Dropdown menu -->
-          <div
-            id="dropdownAvatar"
-            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-          >
-            <div class="px-4 py-3 text-sm text-gray-900 text-white">
-              <div>Bonnie Green</div>
-              <div class="font-medium truncate">name@flowbite.com</div>
-            </div>
-            <ul
-              class="py-2 text-sm text-white-700 dark:text-gray-200"
-              aria-labelledby="dropdownUserAvatarButton"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-white"
-                  >Dashboard</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Settings</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Earnings</a
-                >
-              </li>
-            </ul>
-            <div class="py-2">
-              <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Sign out</a
-              >
-            </div>
-          </div>
+                  <!-- Dropdown menu -->
+                  <div
+                    id="dropdownAvatar"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                  >
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                      <div><?php echo $_SESSION['name']; ?></div>
+                      <div class="font-medium truncate"><?php echo $_SESSION['email']; ?></div>
+                    </div>
+                    <ul
+                      class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownUserAvatarButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="../frontend/productUserDashboard.html"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Book an appointment
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="py-2">
+                      <a
+                        href="../backend/logout.php"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >Sign out</a
+                      >
+                      
+                    </div>
+                  </div>
+
+                 <?php
+              } else {
+                 ?>            
+                 <a
+                 href="../frontend/loginForm.php"
+                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                 >Get started</a>
+                 <?php
+              }
+            ?>
 
           <button
             data-collapse-toggle="mobile-menu-2"

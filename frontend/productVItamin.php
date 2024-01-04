@@ -25,7 +25,11 @@
           >
         </a>
         <div class="flex items-center lg:order-2">
-        <button
+        <?php
+              if(isset($_SESSION['id'])){
+                 ?>
+                 
+                 <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
                     class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -76,6 +80,16 @@
                     </div>
                   </div>
 
+                 <?php
+              } else {
+                 ?>            
+                 <a
+                 href="../frontend/loginForm.php"
+                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                 >Get started</a>
+                 <?php
+              }
+            ?>
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"
@@ -238,7 +252,7 @@
           </p>
         </div>
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-          
+      
       <?php
         $category = "vitamin";
         $sql = "SELECT barbieid, barbiecat, barbiename, barbiedesc, barbiepic, barbieprice FROM barbie WHERE barbiecat = ?";
@@ -246,13 +260,13 @@
         $stmt->bind_param("s", $category);
         $stmt->execute();
         $result = $stmt->get_result();
-
+              
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
         ?>
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <a href="../frontend/payment.php">
+                    <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
                         <img
                             class="rounded-t-lg"
                             src="../productupload/<?= $row['barbiepic']?>"
@@ -260,7 +274,7 @@
                         />
                     </a>
                     <div class="p-5">
-                        <a href="../frontend/payment.php">
+                        <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
                             <h5
                                 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                             >
@@ -268,13 +282,14 @@
                             </h5>
                         </a>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            <?php echo "₱ " . $row['barbieprice']; ?><br>
                             <?php echo $row['barbiedesc']; ?>
                         </p>
                         <a
-                            href="../frontend/payment.php"
+                            href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
-                        <?php echo "₱" . $row['barbieprice']; ?>
+                        Buy now
                             <svg
                                 class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                                 aria-hidden="true"

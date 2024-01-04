@@ -25,7 +25,11 @@
           >
         </a>
         <div class="flex items-center lg:order-2">
-          <button
+        <?php
+              if(isset($_SESSION['id'])){
+                 ?>
+                 
+                 <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
                     class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -75,6 +79,17 @@
                       
                     </div>
                   </div>
+
+                 <?php
+              } else {
+                 ?>            
+                 <a
+                 href="../frontend/loginForm.php"
+                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                 >Get started</a>
+                 <?php
+              }
+            ?>
 
           <button
             data-collapse-toggle="mobile-menu-2"
@@ -159,21 +174,21 @@
                 >
                   <li>
                     <a
-                      href="../frontend/productGluta.html"
+                      href="../frontend/productGluta.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Glutathione Services</a
                     >
                   </li>
                   <li>
                     <a
-                      href="../frontend/productVItamin.html"
+                      href="../frontend/productVItamin.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Vitamin Services</a
                     >
                   </li>
                   <li>
                     <a
-                      href="../frontend/productBarbie.html"
+                      href="../frontend/productBarbie.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Aesthetic Services</a
                     >
@@ -183,14 +198,14 @@
             </li>
             <li>
               <a
-                href="../frontend/aboutUs.html"
+                href="../frontend/aboutUs.php"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >About</a
               >
             </li>
             <li>
               <a
-                href="../frontend/blogs.html"
+                href="../frontend/blogs.php"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >Blogs</a
               >
@@ -202,7 +217,7 @@
 
     <div class="">
       <a
-        href="../frontend/productUserDashboard.html"
+        href="../frontend/productUserDashboard.php"
         class="inline-flex md:ml-10 md:mt-7 items-center px-3 py-2 text-sm font-medium text-center text-black rounded-lg hover:border focus:ring-4 focus:outline-none"
       >
         <svg
@@ -252,16 +267,15 @@
             while($row = $result->fetch_assoc()) {
         ?>
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <a href="../frontend/payment.php">
-                        <img
+                  <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">                        
+                  <img
                             class="rounded-t-lg"
                             src="../productupload/<?= $row['barbiepic']?>"
                             alt=""
                         />
                     </a>
                     <div class="p-5">
-                        <a href="../frontend/payment.php">
-                            <h5
+                        <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">                            <h5
                                 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                             >
                                 <?php echo $row['barbiename']; ?>
@@ -271,7 +285,7 @@
                             <?php echo $row['barbiedesc']; ?>
                         </p>
                         <a
-                            href="../frontend/payment.php"
+                            href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                         <?php echo "₱" . $row['barbieprice']; ?>

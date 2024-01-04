@@ -148,7 +148,7 @@
                   echo "Connection error: " . $connection->connect_error;
                   }
                   // SQL query to select data
-                  $sql = "SELECT `id`, `name`, `sex`, `phonenumber`, `address`, `email` FROM patients"; 
+                  $sql = "SELECT * FROM patients"; 
                   $result = $connection->query($sql);
 
                   // Check if the query returns any rows
@@ -156,7 +156,7 @@
                     // Output data of each row
                     echo "<table class='w-full border-collapse mb-8'>";
                     echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Sex</th><th class='p-4 text-left'>Phone Number</th><th class='p-4 text-left'>Address</th><th class='p-4 text-left'>Email</th></tr>";
+                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Sex</th><th class='p-4 text-left'>Phone Number</th><th class='p-4 text-left'>Address</th><th class='p-4 text-left'>Email</th><th class='p-4 text-left'>Appointment Date</th><th class='p-4 text-left'>Receipt</th></tr>";
                     echo "</thead>";
                     echo "<tbody class='text-gray-700'>";
                     while($row = $result->fetch_assoc()) {
@@ -167,6 +167,8 @@
                           echo "<td class='p-4'>" . $row["phonenumber"]. "</td>";
                           echo "<td class='p-4'>" . $row["address"]. "</td>";
                           echo "<td class='p-4'>" . $row["email"]. "</td>";
+                          echo "<td class='p-4'>" . $row["date"]. "</td>";
+                          echo "<td class='p-4'><img src='../userreceipts/" . $row["receipt"] . "' alt='Profile Picture'></td>";
                           echo "</tr>";
                     }
                     echo "</tbody>";
