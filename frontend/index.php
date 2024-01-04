@@ -1,4 +1,5 @@
-<?php include '../backend/loginForm.php'?>
+<?php include '../backend/loginForm.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">

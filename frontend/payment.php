@@ -1,3 +1,23 @@
+<?php
+    // Connection
+    $connection = new mysqli("localhost", "root", "", "luxureemdb");
+
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+    function getBarbie($connection, $id) {
+        $query = "SELECT * FROM barbie WHERE barbieid = ?";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+?>
+<?php include '../backend/loginForm.php'?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,56 +43,56 @@
           >
         </a>
         <div class="flex items-center lg:order-2">
-          <button
-            id="dropdownUserAvatarButton"
-            data-dropdown-toggle="dropdownAvatar"
-            class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            type="button"
-          >
-            <span class="sr-only">Open user menu</span>
-            <img
-              class="w-8 h-8 rounded-full"
-              src="/docs/images/people/profile-picture-3.jpg"
-              alt="user photo"
-            />
-          </button>
+        <button
+                    id="dropdownUserAvatarButton"
+                    data-dropdown-toggle="dropdownAvatar"
+                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    type="button"
+                  >
+                    <span class="sr-only">Open user menu</span>
+                    <img
+                      class="w-8 h-8 rounded-full"
+                      src="../userupload/<?=$_SESSION['picture']?>"
+                    >
+                  </button>
 
-          <!-- Dropdown menu -->
-          <div
-            id="dropdownAvatar"
-            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-          >
-            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-              <div>Bonnie Green</div>
-              <div class="font-medium truncate">name@flowbite.com</div>
-            </div>
-            <ul
-              class="py-2 text-sm text-gray-700 dark:text-gray-200"
-              aria-labelledby="dropdownUserAvatarButton"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Profile</a
-                >
-              </li>
-              <li>
-                <a
-                  href="../frontend/productUserDashboard.html"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Book an appointment
-                </a>
-              </li>
-            </ul>
-            <div class="py-2">
-              <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Sign out</a
-              >
-            </div>
-          </div>
+                  <!-- Dropdown menu -->
+                  <div
+                    id="dropdownAvatar"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                  >
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                      <div><?php echo $_SESSION['name']; ?></div>
+                      <div class="font-medium truncate"><?php echo $_SESSION['email']; ?></div>
+                    </div>
+                    <ul
+                      class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownUserAvatarButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="../frontend/productUserDashboard.html"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Book an appointment
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="py-2">
+                      <a
+                        href="../backend/logout.php"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >Sign out</a
+                      >
+                      
+                    </div>
+                  </div>
 
           <button
             data-collapse-toggle="mobile-menu-2"
@@ -234,16 +254,18 @@
             alt="dashboard image"
           />
         </div>
-
+        <?php
+        if (isset($_GET['barbieid'])) {
+            $barbie = getBarbie($connection, $_GET['barbieid']);
+        }
+         ?>
         <div class="mt-4 md:mt-0">
           <div class="mb-4">
             <h2>Product Description:</h2>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto,
-              assumenda? Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit. Impedit, maiores?
-            </p>
+            <p><?php echo $barbie['barbiedesc']; ?></p>
           </div>
+
+          <form action="../backend/payment.php" method="post" enctype="multipart/form-data">
           <div class="mb-4">
             <label for="date" class="block text-sm font-medium text-gray-600"
               >Date</label
@@ -279,6 +301,9 @@
           >
             Submit
           </button>
+          </form>
+
+
         </div>
       </div>
     </section>

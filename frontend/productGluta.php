@@ -1,15 +1,4 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "luxureemdb";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
+<?php include '../backend/loginForm.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,55 +26,55 @@ if ($conn->connect_error) {
         </a>
         <div class="flex items-center lg:order-2">
           <button
-            id="dropdownUserAvatarButton"
-            data-dropdown-toggle="dropdownAvatar"
-            class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            type="button"
-          >
-            <span class="sr-only">Open user menu</span>
-            <img
-              class="w-8 h-8 rounded-full"
-              src="/docs/images/people/profile-picture-3.jpg"
-              alt="user photo"
-            />
-          </button>
+                    id="dropdownUserAvatarButton"
+                    data-dropdown-toggle="dropdownAvatar"
+                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    type="button"
+                  >
+                    <span class="sr-only">Open user menu</span>
+                    <img
+                      class="w-8 h-8 rounded-full"
+                      src="../userupload/<?=$_SESSION['picture']?>"
+                    >
+                  </button>
 
-          <!-- Dropdown menu -->
-          <div
-            id="dropdownAvatar"
-            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-          >
-            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-              <div>Bonnie Green</div>
-              <div class="font-medium truncate">name@flowbite.com</div>
-            </div>
-            <ul
-              class="py-2 text-sm text-gray-700 dark:text-gray-200"
-              aria-labelledby="dropdownUserAvatarButton"
-            >
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Profile</a
-                >
-              </li>
-              <li>
-                <a
-                  href="../frontend/productUserDashboard.html"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Book an appointment
-                </a>
-              </li>
-            </ul>
-            <div class="py-2">
-              <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Sign out</a
-              >
-            </div>
-          </div>
+                  <!-- Dropdown menu -->
+                  <div
+                    id="dropdownAvatar"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                  >
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                      <div><?php echo $_SESSION['name']; ?></div>
+                      <div class="font-medium truncate"><?php echo $_SESSION['email']; ?></div>
+                    </div>
+                    <ul
+                      class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownUserAvatarButton"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Profile</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="../frontend/productUserDashboard.html"
+                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >Book an appointment
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="py-2">
+                      <a
+                        href="../backend/logout.php"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >Sign out</a
+                      >
+                      
+                    </div>
+                  </div>
 
           <button
             data-collapse-toggle="mobile-menu-2"
@@ -130,7 +119,7 @@ if ($conn->connect_error) {
           >
             <li>
               <a
-                href="../frontend/index.html"
+                href="../frontend/index.php"
                 class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
                 aria-current="page"
                 >Home</a
@@ -252,8 +241,8 @@ if ($conn->connect_error) {
           
       <?php
         $category = "gluta";
-        $sql = "SELECT barbiecat, barbiename, barbiedesc, barbiepic, barbieprice FROM barbie WHERE barbiecat = ?";
-        $stmt = $conn->prepare($sql);
+        $sql = "SELECT barbieid, barbiecat, barbiename, barbiedesc, barbiepic, barbieprice FROM barbie WHERE barbiecat = ?";
+        $stmt = $connection->prepare($sql);
         $stmt->bind_param("s", $category);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -263,7 +252,7 @@ if ($conn->connect_error) {
             while($row = $result->fetch_assoc()) {
         ?>
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <a href="../frontend/payment.html">
+                    <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
                         <img
                             class="rounded-t-lg"
                             src="../productupload/<?= $row['barbiepic']?>"
@@ -271,7 +260,7 @@ if ($conn->connect_error) {
                         />
                     </a>
                     <div class="p-5">
-                        <a href="../frontend/payment.html">
+                        <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>" >
                             <h5
                                 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                             >
@@ -282,7 +271,7 @@ if ($conn->connect_error) {
                             <?php echo $row['barbiedesc']; ?>
                         </p>
                         <a
-                            href="../frontend/payment.html"
+                            href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                         <?php echo "₱" . $row['barbieprice']; ?>
@@ -309,7 +298,7 @@ if ($conn->connect_error) {
         } else {
             echo "0 results";
         }
-        $conn->close();
+        $connection->close();
         ?>
             
       </div>

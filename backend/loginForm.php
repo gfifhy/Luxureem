@@ -35,6 +35,5 @@ if (isset($_POST['subLogin'])) {
         array_push($errors,"Email is not registered");
     }
 }
-// Close the database connection
-$connection->close();
+
 ?>
