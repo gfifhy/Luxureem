@@ -64,7 +64,7 @@
                       </li>
                       <li>
                         <a
-                          href="../frontend/productUserDashboard.html"
+                          href="../frontend/productUserDashboard.php"
                           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >Book an appointment
                         </a>
@@ -173,21 +173,21 @@
                 >
                   <li>
                     <a
-                      href="../frontend/productGluta.html"
+                      href="../frontend/productGluta.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Glutathione Services</a
                     >
                   </li>
                   <li>
                     <a
-                      href="../frontend/productVItamin.html"
+                      href="../frontend/productVItamin.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Vitamin Services</a
                     >
                   </li>
                   <li>
                     <a
-                      href="../frontend/productBarbie.html"
+                      href="../frontend/productBarbie.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Aesthetic Services</a
                     >
@@ -197,14 +197,14 @@
             </li>
             <li>
               <a
-                href="../frontend/aboutUs.html"
+                href="../frontend/aboutUs.php"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >About</a
               >
             </li>
             <li>
               <a
-                href="../frontend/blogs.html"
+                href="../frontend/blogs.php"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                 >Blogs</a
               >
@@ -216,7 +216,7 @@
 
     <div class="">
       <a
-        href="../frontend/productUserDashboard.html"
+        href="../frontend/productUserDashboard.php"
         class="inline-flex md:ml-10 md:mt-7 items-center px-3 py-2 text-sm font-medium text-center text-black rounded-lg hover:border focus:ring-4 focus:outline-none"
       >
         <svg

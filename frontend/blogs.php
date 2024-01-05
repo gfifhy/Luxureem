@@ -64,7 +64,7 @@
                       </li>
                       <li>
                         <a
-                          href="../frontend/productUserDashboard.html"
+                          href="../frontend/productUserDashboard.php"
                           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >Book an appointment
                         </a>
@@ -134,7 +134,7 @@
           >
             <li>
               <a
-                href="../frontend/index.html"
+                href="../frontend/index.php"
                 class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
                 aria-current="page"
                 >Home</a
