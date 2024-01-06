@@ -812,6 +812,37 @@
         </div>
       </div>
     </footer>
+  
+
+    <div id="myModal" class="fixed inset-0 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white p-6 rounded-lg">
+                <h2 class="text-lg font-semibold mb-4">Modal Content</h2>
+                <p>Successful Booking!</p>
+                <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Okay!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+// JavaScript to show the modal
+document.addEventListener('DOMContentLoaded', function () {
+    var showModal = <?php echo json_encode(isset($_SESSION['showModal']) && $_SESSION['showModal']); ?>;
+    var modal = document.getElementById('myModal');
+
+    if (showModal) {
+        modal.classList.remove('hidden');
+    }
+
+    var closeModalBtn = document.getElementById('closeModal');
+    closeModalBtn.addEventListener('click', function () {
+        modal.classList.add('hidden');
+    });
+});
+    </script>
+
+
+
 
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   </body>

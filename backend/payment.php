@@ -32,6 +32,7 @@ $sql = "UPDATE patients SET `date`='$dob', receipt='$barbiepic' WHERE id='$pid'"
 if ($conn->query($sql) === TRUE) {
 
     header("Location: ../frontend/index.php");
+    $_SESSION['showModal'] = true;
 } else {
  echo "Error: " . $sql . "<br>" . $conn->error;
 }
