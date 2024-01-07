@@ -1,32 +1,26 @@
 <?php
-// database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "luxureemdb";
 
-// create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Database credentials
+$db_host = 'localhost';
+$db_database = 'luxureemdb';
+$db_username = 'root';
+$db_password = '';
 
-// check connection
-if ($conn->connect_error) {
- die("Connection failed: " . $conn->connect_error);
+try {
+    // Create a new PDO instance
+    $dbh = new PDO("mysql:host=$db_host;dbname=$db_database", $db_username, $db_password);
+
+    // Set the PDO error mode to exception
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Update the sales column with the submitted value
+    $stmt = $dbh->prepare("UPDATE barbie SET sales = :sales");
+    $stmt->bindParam(':sales', $_POST['sales']);
+    $stmt->execute();
+
+    echo "Sales updated successfully!";
+} catch(PDOException $error) {
+    die("ERROR: Could not connect. " . $error->getMessage());
 }
 
-// retrieve form data
-$pid = $_POST['pid'];
-$dob = $_POST['dob'];
-
-// create query
-$sql = "UPDATE patients SET `date`='$dob' WHERE id='$pid'";
-
-// execute query
-if ($conn->query($sql) === TRUE) {
- echo "Record updated successfully";
-} else {
- echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-// close connection
-$conn->close();
 ?>

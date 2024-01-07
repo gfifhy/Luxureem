@@ -1,4 +1,6 @@
-<?php include('../backend/registrationForm.php') ?>
+<?php include('../backend/registrationForm.php'); 
+include '../admin/webcontent.php';
+?>
 
 
 <!DOCTYPE html>
@@ -6,7 +8,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration | Luxureem</title>
+    <title>Registration | <?php echo $_SESSION['webname'] ?></title>
     <link rel="stylesheet" href="output.css" />
   </head>
 
@@ -16,15 +18,15 @@
       <div
         class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
       >
-        <a href="https://flowbite.com" class="flex items-center">
+        <a href="#" class="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="img/<?=$_SESSION['weblogo']?>"
             class="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
           <span
             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Luxureem</span
+            ><?php echo $_SESSION['webname'] ?></span
           >
         </a>
         <div class="flex items-center lg:order-2">

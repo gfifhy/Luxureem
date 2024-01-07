@@ -1,4 +1,6 @@
-<?php include '../backend/loginForm.php';
+<?php 
+include '../backend/loginForm.php';
+include '../admin/webcontent.php';
 ?>
 
 <!DOCTYPE html>
@@ -6,7 +8,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luxureem | home</title>
+    <title><?php echo $_SESSION['webname'] ?> | home</title>
     <link rel="stylesheet" href="output.css" />
   </head>
   <body>
@@ -17,15 +19,15 @@
         <div
           class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
         >
-          <a href="https://flowbite.com" class="flex items-center">
+          <a href="#" class="flex items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
+              src="img/<?=$_SESSION['weblogo']?>"
               class="mr-3 h-6 sm:h-9"
               alt="Flowbite Logo"
             />
             <span
               class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-              >Luxureem</span
+              ><?php echo $_SESSION['webname'] ?></span
             >
           </a>
           
@@ -33,7 +35,6 @@
           <?php
               if(isset($_SESSION['id'])){
                  ?>
-                 
                  <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
@@ -233,7 +234,7 @@
           <div class="lg:mt-0 lg:col-span-5 lg:flex">
             <img
               class="h-auto max-w-full"
-              src="img/sec1.jpg"
+              src="img/<?=$_SESSION['webheaderpic']?>"
               alt="image description"
             />
           </div>
@@ -241,20 +242,19 @@
             <h1
               class="font-serif max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl"
             >
-              Illuminate with Luxureem's Gluta Drips
+              <?php echo $_SESSION['heroh'] ?>
             </h1>
             <p
               class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
             >
-              Experience the Luxureem glow. Transform with Gluta Drip sessions
-              for a radiant new you. Book now and shine!
+              <?php echo $_SESSION['herop'] ?>
             </p>
 
             <a
               href="#"
               class="inline-flex px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
-              Discover Products
+              <?php echo $_SESSION['herob'] ?>
             </a>
           </div>
         </div>
@@ -267,11 +267,10 @@
           <h2
             class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
           >
-            top products Lorem, ipsum.
+            <?php echo $_SESSION['toph'] ?>
           </h2>
           <p class="text-gray-500 sm:text-xl dark:text-gray-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-            rem sapiente? Ducimus corrupti et labore omnis!
+            <?php echo $_SESSION['topp'] ?>
           </p>
         </div>
         <div
@@ -346,35 +345,6 @@
       </div>
     </section>
 
-    <section class="flex flex-col items-center justify-center min-h-screen">
-      <div class="relative w-11/12 h-64 shadow-md rounded-lg overflow-hidden">
-        <img
-          class="w-full h-full object-cover"
-          src="img/discount.png"
-          alt="Card image"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent flex items-center justify-center"
-        >
-          <h5 class="text-white text-2xl font-bold tracking-tight">
-            Get 30% Off!
-          </h5>
-        </div>
-        <div class="absolute inset-0 flex items-center my-40 justify-center">
-          <h5 class="text-white text-small tracking-tight">
-            Elevate Your #LuxureemExperience Today!
-          </h5>
-        </div>
-      </div>
-      <div class="mt-16">
-        <button
-          class="text-black border border-slate-950 py-4 px-8 rounded-3xl"
-        >
-          Show more
-        </button>
-      </div>
-    </section>
-
     <!-- gallery section -->
     <section class="bg-white dark:bg-gray-800">
       <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -387,7 +357,7 @@
           >
             <img
               class="w-full h-100 object-cover mb-4"
-              src="img/photo3.png"
+              src="img/<?=$_SESSION['gallerypic1']?>"
               alt="Gallery Image 1"
             />
           </div>
@@ -398,51 +368,45 @@
           >
             <img
               class="w-full h-64 object-cover mb-4"
-              src="img/photo1.png"
+              src="img/<?=$_SESSION['gallerypic2']?>"
               alt="Gallery Image 2"
             />
             <div class="mt-2">
               <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
-                Glow
+                <?php echo $_SESSION['gallerylabel1'] ?>
               </p>
               <p class="text-gray-700 dark:text-gray-300">
-                Boost your health with Glutathione drips – powerful antioxidants
-                straight to your system. They help your liver, make your skin
-                glow, and keep your immune system strong. It's like a quick
-                recharge for your body, personalized for what you need. Feel
-                better, look better – try Glutathione drips for a healthier you!
-              </p>
-            </div>
-          </div>
-
-          <!-- pic4  -->
-          <div
-            class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white"
-          >
-            <img
-              class="w-full h-64 object-cover mb-4 ml-auto"
-              src="img/photo2.png"
-              alt="Gallery Image 3"
-            />
-            <div class="mt-2">
-              <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
-                Medical Use
-              </p>
-              <p class="text-lg text-gray-700 dark:text-gray-300">
-                Glutathione is sometimes used in medical settings, including
-                intravenous administration, for conditions such as acetaminophen
-                overdose and certain liver diseases.
+                <?php echo $_SESSION['galleryldesc1'] ?>
               </p>
             </div>
           </div>
 
           <!-- pic3  -->
           <div
+            class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white"
+          >
+            <img
+              class="w-full h-64 object-cover mb-4 ml-auto"
+              src="img/<?=$_SESSION['gallerypic3']?>"
+              alt="Gallery Image 3"
+            />
+            <div class="mt-2">
+              <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
+                <?php echo $_SESSION['gallerylabel2'] ?>
+              </p>
+              <p class="text-lg text-gray-700 dark:text-gray-300">
+                <?php echo $_SESSION['galleryldesc2'] ?>
+              </p>
+            </div>
+          </div>
+
+          <!-- pic4  -->
+          <div
             class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white"
           >
             <img
               class="w-full h-100 object-cover mb-4"
-              src="img/photo4.png"
+              src="img/<?=$_SESSION['gallerypic4']?>"
               alt="Gallery Image 4"
             />
           </div>
@@ -505,7 +469,7 @@
                 aria-expanded="true"
                 aria-controls="accordion-flush-body-1"
               >
-                <span>Are Glutathione Drips safe?</span>
+                <span><?php echo $_SESSION['faq1'] ?></span>
                 <svg
                   data-accordion-icon
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -531,10 +495,7 @@
             >
               <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  When administered by qualified healthcare professionals,
-                  Glutathione Drips are generally considered safe. However,
-                  individual responses may vary, and it's essential to consult
-                  with a healthcare provider to determine suitability.
+                  <?php echo $_SESSION['faqa1'] ?>
                 </p>
               </div>
             </div>
@@ -547,7 +508,7 @@
                 aria-controls="accordion-flush-body-2"
               >
                 <span
-                  >How long does a typical Glutathione session drip lasts?</span
+                  ><?php echo $_SESSION['faq2'] ?></span
                 >
                 <svg
                   data-accordion-icon
@@ -574,10 +535,7 @@
             >
               <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  The duration of a Glutathione Drip session can vary but
-                  typically ranges from 30 minutes to an hour. The actual time
-                  may depend on factors such as the dosage and specific protocol
-                  used.
+                  <?php echo $_SESSION['faqa2'] ?>
                 </p>
               </div>
             </div>
@@ -589,7 +547,7 @@
                 aria-expanded="false"
                 aria-controls="accordion-flush-body-3"
               >
-                <span>Are the effects of Glutathione Drips permanent?</span>
+                <span><?php echo $_SESSION['faq3'] ?></span>
                 <svg
                   data-accordion-icon
                   class="w-3 h-3 rotate-180 shrink-0"
@@ -615,10 +573,7 @@
             >
               <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                 <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  The effects of Glutathione Drips are often temporary, and
-                  maintenance sessions may be recommended to sustain the desired
-                  benefits. Individual responses can vary, and long-term results
-                  depend on factors such as lifestyle and overall health.
+                <?php echo $_SESSION['faqa3'] ?>
                 </p>
                 <!--  <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
                   <li>
@@ -649,15 +604,15 @@
       <div class="mx-auto max-w-screen-xl">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com" class="flex items-center">
+            <a href="#" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="img/<?=$_SESSION['weblogo']?>"
                 class="mr-3 h-8"
                 alt="FlowBite Logo"
               />
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-                >Luxureem</span
+                ><?php echo $_SESSION['webname'] ?></span
               >
             </a>
           </div>
@@ -825,9 +780,10 @@
     </div>
 
     <script>
-// JavaScript to show the modal
 document.addEventListener('DOMContentLoaded', function () {
-    var showModal = <?php echo json_encode(isset($_SESSION['showModal']) && $_SESSION['showModal']); ?>;
+    var urlParams = new URLSearchParams(window.location.search);
+    var showModal = urlParams.get('showModal') === 'true';
+
     var modal = document.getElementById('myModal');
 
     if (showModal) {
@@ -839,8 +795,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.classList.add('hidden');
     });
 });
-    </script>
-
+</script>
 
 
 
