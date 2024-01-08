@@ -301,6 +301,27 @@ include 'webcontent.php';
         </div>
       </form>
 
+    <!-- 5TH Div Set -->
+    <form action="adminWebsite.php" method="post" enctype="multipart/form-data">
+        <div class="mt-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Top Products</h2>
+        
+        <div class="mb-4">
+        <label for="toph" class="block text-gray-700">Top Products Label:</label>
+        <input type="text" id="toph" name="toph" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="topp" class="block text-gray-700">Top Products Description:</label>
+        <input type="text" id="topp" name="topp" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="update5" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form>
+
       </div>
     </div>
   </body>

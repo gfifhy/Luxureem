@@ -281,6 +281,30 @@ if (isset($_POST['update1'])) {
            
         }
 
+        if (isset($_POST['update5'])) {
+       
+            // Update the webheader FAQ 1
+            if ($_POST['toph'] != "") {
+                $query = "UPDATE webcontent SET toph='" . mysqli_real_escape_string($conn, $_POST['toph']) . "' WHERE webid=1";       $result = mysqli_query($conn, $query);
+                   if ($result) {
+                    
+                   } else {
+                       
+                   }
+                }
         
+            // Update the webheader FAQA 1
+            if ($_POST['topp'] != "") {
+                $query = "UPDATE webcontent SET topp='" . mysqli_real_escape_string($conn, $_POST['topp']) . "' WHERE webid=1";       $result = mysqli_query($conn, $query);
+                   if ($result) {
+                    
+                   } else {
+                       
+                   }
+                }
+        
+            }
+
+
 
 ?>
