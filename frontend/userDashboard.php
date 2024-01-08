@@ -1,9 +1,15 @@
+<?php 
+include ('../admin/webcontent.php');
+include ('../backend/loginForm.php');
+include ('../backend/userDashboard.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Luxureem</title>
+    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
     <link rel="stylesheet" href="output.css" />
   </head>
   <body>
@@ -39,19 +45,19 @@
       >
         <a href="#" class="flex items-center ps-2.5 mb-5">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="../userupload/<?=$_SESSION['picture']?>"
             class="h-6 me-3 sm:h-7"
             alt="Flowbite Logo"
           />
           <span
             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Luxureem</span
+            ><?php echo $_SESSION['name']; ?></span
           >
         </a>
         <ul class="space-y-2 font-medium">
           <li>
             <a
-              href="../frontend/userDashboard.html"
+              href="../frontend/userDashboard.php"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -71,7 +77,7 @@
 
           <li>
             <a
-              href="../frontend/productUserDashboard.html"
+              href="../frontend/productUserDashboard.php"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -91,27 +97,7 @@
 
           <li>
             <a
-              href="#"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-            >
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"
-                />
-              </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="#"
+              href="../backend/logout.php"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -137,288 +123,52 @@
     </aside>
 
     <div class="p-4 sm:ml-64">
-      <div
-        class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700"
-      >
-        <div class="grid grid-cols-3 gap-4 mb-4">
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
+      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
+      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
+        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">User Profile</h2>
+        
+        <div class="mb-4">
+        <label for="fullname" class="mb-4 block text-gray-700">Change Name:</label>
+        <input type="text" id="fullname" name="fullname" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
-        <div
-          class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg
-              class="w-3.5 h-3.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 1v16M1 9h16"
-              />
-            </svg>
-          </p>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="updatename" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </div>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
         </div>
-        <div
-          class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800"
-        >
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-            <svg
-              class="w-3.5 h-3.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 1v16M1 9h16"
-              />
-            </svg>
-          </p>
+      </form>  
+
+      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
+        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        
+        <div class="mb-4">
+        <label for="profilepic" class="mb-4 block text-gray-700">Change Profile Picture:</label>
+        <input type="file" id="profilepic" name="profilepic" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="updateprofile" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </div>
+        </div>
+      </form>  
+
+      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
+        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        
+        <div class="mb-4">
+        <label for="phone" class="mb-4 block text-gray-700">Change Mobile Number:</label>
+        <input type="text" id="phone" name="phone" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="updatephone" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form>  
+
+
       </div>
     </div>
     
