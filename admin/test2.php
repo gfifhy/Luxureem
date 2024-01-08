@@ -1,51 +1,56 @@
+<?php
+$connection = new mysqli('localhost', 'root', '', 'luxureemdb');
+if ($connection->connect_error) {
+    echo "Connection error: " . $connection->connect_error;
+}
+
+// SQL query to select data
+$sql = "SELECT `barbiename`,`sales` FROM barbie"; 
+$result = $connection->query($sql);
+?>
+
 <!DOCTYPE HTML>
 <html>
-<head>  
+<head>
 <script>
 window.onload = function () {
-	
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	
-	title:{
-		text:"Fortune 500 Companies by Country"
-	},
-	axisX:{
-		interval: 1
-	},
-	axisY2:{
-		interlacedColor: "rgba(1,77,101,.2)",
-		gridColor: "rgba(1,77,101,.1)",
-		title: "Number of Companies"
-	},
-	data: [{
-		type: "bar",
-		name: "companies",
-		axisYType: "secondary",
-		color: "#014D65",
-		dataPoints: [
-			{ y: 3, label: "January" },
-			{ y: 7, label: "February" },
-			{ y: 5, label: "March" },
-			{ y: 9, label: "April" },
-			{ y: 7, label: "May" },
-			{ y: 7, label: "June" },
-			{ y: 9, label: "July" },
-			{ y: 8, label: "August" },
-			{ y: 11, label: "September" },
-			{ y: 15, label: "October" },
-			{ y: 12, label: "November" },
-			{ y: 12, label: "December" },
-		]
-	}]
+
+var productsale = new CanvasJS.Chart("productsale", {
+    animationEnabled: true,
+    exportEnabled: true,
+    theme: "light1",
+    title: {
+        text: "Simple Column Chart with Index Labels"
+    },
+    axisY: {
+        includeZero: true
+    },
+    data: [{
+        type: "column",
+        indexLabelFontColor: "#5A5757",
+        indexLabelFontSize: 16,
+        indexLabelPlacement: "outside",
+        dataPoints: [
+            <?php 
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    ?>
+                    { y: <?php echo $row["sales"] ?>, label: "<?php echo $row["barbiename"] ?>" },
+                    <?php
+                }
+            }
+            ?>
+        ]
+    }]
 });
-chart.render();
+
+productsale.render();
 
 }
 </script>
 </head>
 <body>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <div id="productsale" style="height: 370px; width: 100%;"></div>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </body>
 </html>

@@ -1,12 +1,7 @@
 <?php include('../backend/loginFormDoctor.php');
 include '../admin/webcontent.php';
 ?>
-<?php include('../backend/sexCounter.php');
-
-
-$dataPoints = array( 
-array("label"=>"Male", "symbol" => "M","y"=>$male_count),
-array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
+<?php include('../backend/graphFunctions.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -146,8 +141,15 @@ array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
       
       </div>
 
+
         <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-          <div id="chartContainer" style="height: 370px; width: 33%;"></div>
+        <div id="reguser" style="height: 370px; width: 100%;"></div>
+        </div>
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <div id="genderchart" style="height: 370px; width: 100%;"></div>
+        </div>
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <div id="productsale" style="height: 370px; width: 100%;"></div>
         </div>
 
         <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
@@ -192,27 +194,97 @@ array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
 
 
 
-    <script>
-      window.onload = function() {
+        <script>
+        window.onload = function () {
+            var reguserChart = new CanvasJS.Chart("reguser", {
+                animationEnabled: true,
+                title: {
+                    text: "Fortune 500 Companies by Month"
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY2: {
+                    interlacedColor: "rgba(1,77,101,.2)",
+                    gridColor: "rgba(1,77,101,.1)",
+                    title: "Number of Companies"
+                },
+                data: [{
+                    type: "bar",
+                    name: "companies",
+                    axisYType: "secondary",
+                    color: "#014D65",
+                    dataPoints: [
+                        { y: <?php echo $january ?>, label: "January" },
+                        { y: <?php echo $february ?>, label: "February" },
+                        { y: <?php echo $march ?>, label: "March" },
+                        { y: <?php echo $april ?>, label: "April" },
+                        { y: <?php echo $may ?>, label: "May" },
+                        { y: <?php echo $june ?>, label: "June" },
+                        { y: <?php echo $july ?>, label: "July" },
+                        { y: <?php echo $august ?>, label: "August" },
+                        { y: <?php echo $september ?>, label: "September" },
+                        { y: <?php echo $october ?>, label: "October" },
+                        { y: <?php echo $november ?>, label: "November" },
+                        { y: <?php echo $december ?>, label: "December" },
+                    ]
+                }]
+            });
 
-      var chart = new CanvasJS.Chart("chartContainer", {
-        theme: "light2",
-        animationEnabled: true,
-        title: {
-          text: "Average Composition of Magma"
-        },
-        data: [{
-          type: "doughnut",
-          indexLabel: "{symbol} - {y}",
-          yValueFormatString: "#,##0.0\"%\"",
-          showInLegend: true,
-          legendText: "{label} : {y}",
-          dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-        }]
-      });
-      chart.render();
+            var genderChart = new CanvasJS.Chart("genderchart", {
+                theme: "light2",
+                animationEnabled: true,
+                title: {
+                    text: "Gender Distribution"
+                },
+                data: [{
+                    type: "doughnut",
+                    indexLabel: "{symbol} - {y}",
+                    yValueFormatString: "#,##0.0\"%\"",
+                    showInLegend: true,
+                    legendText: "{label} : {y}",
+                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            
 
-      }
+            var productsale = new CanvasJS.Chart("productsale", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1",
+                title: {
+                    text: "Simple Column Chart with Index Labels"
+                },
+                axisY: {
+                    includeZero: true
+                },
+                data: [{
+                    type: "column",
+                    indexLabelFontColor: "#5A5757",
+                    indexLabelFontSize: 16,
+                    indexLabelPlacement: "outside",
+                    dataPoints: [
+                        <?php 
+                        
+                        // SQL query to select data
+                        $sql = "SELECT `barbiename`,`sales` FROM barbie"; 
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                ?>
+                                { y: <?php echo $row["sales"] ?>, label: "<?php echo $row["barbiename"] ?>" },
+                                <?php
+                            }
+                        }
+                        ?>
+                    ]
+                }]
+            });
+
+            reguserChart.render();
+            genderChart.render();
+            productsale.render();
+        }
     </script>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 
