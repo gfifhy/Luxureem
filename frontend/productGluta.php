@@ -246,11 +246,10 @@ include '../admin/webcontent.php';
           <h2
             class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
           >
-            Designed for business teams like yours
+            Glutathione Infusions for Timeless Beauty
           </h2>
           <p class="text-gray-500 sm:text-xl dark:text-gray-400">
-            Here at Flowbite we focus on markets where technology, innovation,
-            and capital can unlock long-term value and drive economic growth.
+          Enhance your glow with our high-quality Glutathione offerings.
           </p>
         </div>
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
@@ -289,7 +288,7 @@ include '../admin/webcontent.php';
                             </p>
                             <a
                                 href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-black-300 dark:bg-black-600 dark:hover:bg-black-700 dark:focus:ring-black-800" style="color:black"
                             >
                             Buy now
                                 <svg

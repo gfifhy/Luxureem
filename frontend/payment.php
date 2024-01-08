@@ -272,8 +272,8 @@ if (!isset($_SESSION['id'])) {
         <div>
           <h1 class="text-4xl font-bold mb-4">Scan qr code to pay</h1>
           <img
-            class="w-full dark:hidden"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg"
+            class="dark:hidden"
+            src="../frontend/img/qr.png"
             alt="dashboard image"
           />
         </div>
@@ -329,7 +329,7 @@ if (!isset($_SESSION['id'])) {
           <!-- Submit Button -->
           <button
             type="submit"
-            class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+            class="bg-black text-black py-2 px-4 rounded-md hover:bg-black"
           >
             Submit
           </button>

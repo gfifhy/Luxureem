@@ -229,7 +229,7 @@ include '../admin/webcontent.php';
         </div>
       </nav>
       <!--Hero Section-->
-      <section class="bg-custom-brown">
+      <section>
         <div class="grid max-w-screen-xl lg:gap-8 xl:gap-0 lg:grid-cols-12">
           <div class="lg:mt-0 lg:col-span-5 lg:flex">
             <img
@@ -308,7 +308,7 @@ include '../admin/webcontent.php';
                         </p>
                         <a
                             href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-black rounded-lg hover:bg-black focus:ring-4 focus:outline-none focus:ring-black dark:bg-black dark:hover:bg-black dark:focus:ring-black"
                         >
                         Buy now
                             <svg
