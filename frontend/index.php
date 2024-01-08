@@ -613,38 +613,36 @@ include '../admin/webcontent.php';
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-                Resources
+                Links
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-white">
                 <li class="mb-4">
-                  <a href="https://flowbite.com" class="hover:underline"
-                    >Flowbite</a
+                  <a href="../frontend/index.php" class="hover:underline"
+                    >Home</a
                   >
                 </li>
                 <li>
-                  <a href="https://tailwindcss.com/" class="hover:underline"
-                    >Tailwind CSS</a
+                  <a href="../frontend/productUserDashboard.php" class="hover:underline"
+                    >Services</a
                   >
                 </li>
+             
+         
               </ul>
             </div>
             <div>
               <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-                Follow us
+                Links
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-white">
                 <li class="mb-4">
-                  <a
-                    href="https://github.com/themesberg/flowbite"
-                    class="hover:underline"
-                    >Github</a
+                <a href="../frontend/aboutUs.php" class="hover:underline"
+                    >About</a
                   >
                 </li>
-                <li>
-                  <a
-                    href="https://discord.gg/4eeurUVvTy"
-                    class="hover:underline"
-                    >Discord</a
+                  <li>
+                  <a href="../frontend/blogs.php" class="hover:underline"
+                    >Blogs</a
                   >
                 </li>
               </ul>
@@ -653,7 +651,7 @@ include '../admin/webcontent.php';
               <h2 class="mb-6 text-sm font-semibold uppercase text-white">
                 Legal
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-white">
                 <li class="mb-4">
                   <a href="#" class="hover:underline">Privacy Policy</a>
                 </li>
@@ -670,7 +668,7 @@ include '../admin/webcontent.php';
         <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
             >© 2022
-            <a href="https://flowbite.com" class="hover:underline">Flowbite™</a
+            <a href="https://flowbite.com" class="hover:underline">Luxureem™</a
             >. All Rights Reserved.
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">

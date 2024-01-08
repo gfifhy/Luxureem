@@ -344,53 +344,51 @@ if (!isset($_SESSION['id'])) {
       <div class="mx-auto max-w-screen-xl">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com" class="flex items-center">
+            <a href="#" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="img/<?=$_SESSION['weblogo']?>"
                 class="mr-3 h-8"
                 alt="FlowBite Logo"
               />
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-                >Luxureem</span
+                ><?php echo $_SESSION['webname'] ?></span
               >
             </a>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-                Resources
+                Links
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-white">
                 <li class="mb-4">
-                  <a href="https://flowbite.com" class="hover:underline"
-                    >Flowbite</a
+                  <a href="../frontend/index.php" class="hover:underline"
+                    >Home</a
                   >
                 </li>
                 <li>
-                  <a href="https://tailwindcss.com/" class="hover:underline"
-                    >Tailwind CSS</a
+                  <a href="../frontend/productUserDashboard.php" class="hover:underline"
+                    >Services</a
                   >
                 </li>
+             
+         
               </ul>
             </div>
             <div>
               <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-                Follow us
+                Links
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-white">
                 <li class="mb-4">
-                  <a
-                    href="https://github.com/themesberg/flowbite"
-                    class="hover:underline"
-                    >Github</a
+                <a href="../frontend/aboutUs.php" class="hover:underline"
+                    >About</a
                   >
                 </li>
-                <li>
-                  <a
-                    href="https://discord.gg/4eeurUVvTy"
-                    class="hover:underline"
-                    >Discord</a
+                  <li>
+                  <a href="../frontend/blogs.php" class="hover:underline"
+                    >Blogs</a
                   >
                 </li>
               </ul>
@@ -399,7 +397,7 @@ if (!isset($_SESSION['id'])) {
               <h2 class="mb-6 text-sm font-semibold uppercase text-white">
                 Legal
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-white">
                 <li class="mb-4">
                   <a href="#" class="hover:underline">Privacy Policy</a>
                 </li>
@@ -416,7 +414,7 @@ if (!isset($_SESSION['id'])) {
         <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
             >© 2022
-            <a href="https://flowbite.com" class="hover:underline">Flowbite™</a
+            <a href="https://flowbite.com" class="hover:underline">Luxureem™</a
             >. All Rights Reserved.
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
