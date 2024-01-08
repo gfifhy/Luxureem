@@ -1,12 +1,14 @@
-<?php include 'adminSystemDoctor.php'; ?>
-<?php include 'webcontent.php'; ?>
+<?php include 'adminSystemAboutus.php'; 
+include 'webcontentAboutus.php';
+include 'webcontent.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
+    <title>Dashboard | Luxureem</title>
     <link rel="stylesheet" href="../frontend/output.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
@@ -159,172 +161,124 @@
     
     <div class="p-4 sm:ml-64">
       <div class="p-4 border-2 border-black-1000 border-dashed rounded-lg dark:border-gray-700">
-
-
-      <div class="flex items-center justify-center h-48 my-4 rounded bg-gray-50 dark:bg-gray-800">
-          <?php
-                  $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
-                  if ($connection->connect_error) {
-                  echo "Connection error: " . $connection->connect_error;
-                  }
-                  // SQL query to select data
-                  $sql = "SELECT `id`, `name`, `phonenumber`, `email` FROM doctors"; 
-                  $result = $connection->query($sql);
-
-                  // Check if the query returns any rows
-                  if ($result->num_rows > 0) {
-                    // Output data of each row
-                    echo "<table class='w-full border-collapse mb-8'>";
-                    echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Phone Number</th><th class='p-4 text-left'>Email</th></tr>";
-                    echo "</thead>";
-                    echo "<tbody class='text-gray-700'>";
-                    while($row = $result->fetch_assoc()) {
-                          echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
-                          echo "<td class='p-4'>" . $row["id"]. "</td>";
-                          echo "<td class='p-4'>" . $row["name"]. "</td>";
-                          echo "<td class='p-4'>" . $row["phonenumber"]. "</td>";
-                          echo "<td class='p-4'>" . $row["email"]. "</td>";
-                          echo "</tr>";
-                    }
-                    echo "</tbody>";
-                    echo "</table>";
-                  } else {
-                    echo "<p class='text-red-600'>0 results</p>";
-                  }
-                  ?>
-        </div>
-
-
-
-        <div class="grid grid-cols-1 gap-4 mb-4">
-          <form action="" method="post" enctype="multipart/form-data">
-              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                  <h2 class="text-2xl font-semibold mb-4">Adding Doctors</h2>
-                  <label for="name" class="col-start-1">Name:</label>
-                  <input type="text" id="name" name="name" class="col-start-2" required="">
-                  
-                  <label for="pic" class="col-start-1">Picture:</label>
-                  <input type="file" id="pic" name="pp" class="col-start-2" required="">
-                  
-                  <label for="phone" class="col-start-1">Phone Number:</label>
-                  <input type="text" id="phone" name="phone" class="col-start-2" required="">
-
-                  <label for="email" class="col-start-1">Email:</label>
-                  <input type="text" id="email" name="email" class="col-start-2" required="">
-
-                  <label for="password" class="col-start-1">Password:</label>
-                  <input type="password" id="password" name="password" class="col-start-2" required="">
-              </div>
-              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                  <input name="adminSub" type="submit" value="Submit" class="col-start-3">
-              </div>
-          </form>
-        </div>
-
-
-
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          <h2 class="text-2xl font-semibold mb-4">Deleting Doctors</h2><br>
-            <form action="" method="post">
-            <label for="userid">Enter User ID to Delete:</label>
-            <input type="text" id="userid" name="userid">
-            <input name="delete" type="submit" value="Delete">
-            </form>    
-        </div>
-
-
+    <!-- 1st Div Set -->
+      <form action="adminWebsiteAboutus.php" method="post" enctype="multipart/form-data">
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Header</h2>
         
-        <div class="grid grid-cols-2 gap-4">
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
+        <div class="mb-4">
+        <label for="sec1label" class="block text-gray-700">Header Title:</label>
+        <input type="text" id="sec1label" name="sec1label" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
+        <div class="mb-4">
+        <label for="sec1desc" class="block text-gray-700">Header Description:</label>
+        <input type="text" id="sec1desc" name="sec1desc" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec1pic1" class="block text-gray-700">Header Pic 1:</label>
+        <input type="file" id="sec1pic1" name="sec1pic1" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec1pic2" class="block text-gray-700">Header Pic 2:</label>
+        <input type="file" id="sec1pic2" name="sec1pic2" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="update1" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form> 
+        <!-- 2nd Div Set -->
+      <form action="adminWebsiteAboutus.php" method="post" enctype="multipart/form-data">
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Section Services</h2>
+        
+        <div class="mb-4">
+        <label for="sec2label1" class="block text-gray-700">Main label 1:</label>
+        <input type="text" id="sec2label1" name="sec2label1" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2sublabel1" class="block text-gray-700">Sub label 1:</label>
+        <input type="text" id="sec2sublabel1" name="sec2sublabel1" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2desc1" class="block text-gray-700">Description 1:</label>
+        <input type="text" id="sec2desc1" name="sec2desc1" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2sublabel2" class="block text-gray-700">Sub label 2:</label>
+        <input type="text" id="sec2sublabel2" name="sec2sublabel2" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2desc2" class="block text-gray-700">Description 2:</label>
+        <input type="text" id="sec2desc2" name="sec2desc2" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2sublabel3" class="block text-gray-700">Sub label 3:</label>
+        <input type="text" id="sec2sublabel3" name="sec2sublabel3" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2desc3" class="block text-gray-700">Description 3:</label>
+        <input type="text" id="sec2desc3" name="sec2desc3" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2sublabel4" class="block text-gray-700">Sub label 4:</label>
+        <input type="text" id="sec2sublabel4" name="sec2sublabel4" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2desc4" class="block text-gray-700">Description 4:</label>
+        <input type="text" id="sec2desc4" name="sec2desc4" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2pic1" class="block text-gray-700">Section 2 Picture 1:</label>
+        <input type="file" id="sec2pic1" name="sec2pic1" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="update2" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form>
+
+      <!-- 3rd Div Set -->
+      <form action="adminWebsiteAboutus.php" method="post" enctype="multipart/form-data">
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Section Services 2:</h2>
+        
+        <div class="mb-4">
+        <label for="sec2label2" class="block text-gray-700">Main label 1:</label>
+        <input type="text" id="sec2label2" name="sec2label2" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2desc5" class="block text-gray-700">Description 2:</label>
+        <input type="text" id="sec2desc5" name="sec2desc5" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4">
+        <label for="sec2pic2" class="block text-gray-700">Section 2 Picture 2:</label>
+        <input type="file" id="sec2pic2" name="sec2pic2" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="update3" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form> 
 
       </div>
     </div>
-    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
   </body>
 </html>

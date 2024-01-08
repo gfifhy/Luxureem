@@ -282,6 +282,7 @@
                             </h5>
                         </a>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            <?php echo "₱ " . $row['barbieprice']; ?><br>
                             <?php echo $row['barbiedesc']; ?>
                         </p>
                         <a

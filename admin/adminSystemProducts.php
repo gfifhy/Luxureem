@@ -47,6 +47,7 @@ if (isset($_POST['adminSub'])) {
      }
     }
 ?>
+
 <?php
 // Edit Products
 if (isset($_POST['update'])){
@@ -123,5 +124,28 @@ if(isset($_POST['barbiecat']) && !empty($_POST['barbiecat'])) {
 }
 
 }
-$conn->close();
+?>
+
+<?php
+// Edit Products
+// if delete button is clicked
+if (isset($_POST['delete'])) {
+    $barbieid = $_POST['barbieid'];
+
+    // check if barbie id is not empty
+    if (!empty($barbieid)) {
+        // sql query to delete a product with the given barbie id
+        $sql = "DELETE FROM barbie WHERE barbieid='$barbieid'";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "";
+        } else {
+            echo "Error updating Barbie Price: " . $conn->error;
+        }
+
+    } else {
+        echo "Barbie ID is empty.";
+    }
+}
+
 ?>

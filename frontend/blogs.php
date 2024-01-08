@@ -1,34 +1,38 @@
-<?php include '../backend/loginForm.php'?>
+<?php 
+include '../backend/loginForm.php';
+include '../admin/webcontent.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Luxureem</title>
+    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
     <link rel="stylesheet" href="output.css" />
   </head>
   <body>
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-      <div
-        class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
-      >
-        <a href="https://flowbite.com" class="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Luxureem</span
-          >
-        </a>
-        <div class="flex items-center lg:order-2">
-        <?php
+<!--navbar-->
+<nav class="bg-transparent border-gray-200 px-4 lg:px-6 py-2.5">
+        <div
+          class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
+        >
+          <a href="#" class="flex items-center">
+            <img
+              src="img/<?=$_SESSION['weblogo']?>"
+              class="mr-3 h-6 sm:h-9"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+              ><?php echo $_SESSION['webname'] ?></span
+            >
+          </a>
+          
+          <div class="flex items-center lg:order-2">
+          <?php
               if(isset($_SESSION['id'])){
                  ?>
-                 
                  <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
@@ -90,138 +94,157 @@
                  <?php
               }
             ?>
-
-          <button
-            data-collapse-toggle="mobile-menu-2"
-            type="button"
-            class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="mobile-menu-2"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+            
+            <button
+              data-collapse-toggle="mobile-menu-2"
+              type="button"
+              class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              aria-controls="mobile-menu-2"
+              aria-expanded="false"
             >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <svg
-              class="hidden w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <div
-          class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-          id="mobile-menu-2"
-        >
-          <ul
-            class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                class="hidden w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div
+            class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            id="mobile-menu-2"
           >
-            <li>
-              <a
-                href="../frontend/index.php"
-                class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
-                aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li>
-              <button
-                id="dropdownNavbarLink"
-                data-dropdown-toggle="dropdownNavbar"
-                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-              >
-                Services
-                <svg
-                  class="w-2.5 h-2.5 ms-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
+            <ul
+              class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+            >
+              <li>
+                <a
+                  href="../frontend/index.php"
+                  class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
+                  aria-current="page"
+                  >Home</a
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-              <!-- Dropdown menu -->
-              <div
-                id="dropdownNavbar"
-                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-              >
-                <ul
-                  class="py-2 text-sm text-gray-700 dark:text-gray-400"
-                  aria-labelledby="dropdownLargeButton"
+              </li>
+              <li>
+                <button
+                  id="dropdownNavbarLink"
+                  data-dropdown-toggle="dropdownNavbar"
+                  class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                 >
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Gluta</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >vitamin</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Barbie</a
-                    >
-                  </li>
-                </ul>
+                  Services
+                  <svg
+                    class="w-2.5 h-2.5 ms-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownNavbar"
+                  class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                    aria-labelledby="dropdownLargeButton"
+                  >
+                    <li>
+                      <a
+                        href="../frontend/productGluta.php"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Glutathione Services</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="../frontend/productVItamin.php"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Vitamin Services</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="../frontend/productBarbie.php"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Aesthetic Services</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a
+                  href="../frontend/aboutUs.php"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../frontend/blogs.php"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >Blogs</a
+                >
+              </li>
+              <div class="md:hidden w-full md:w-auto" id="navbar-default">
+                <!-- ... existing links ... -->
+                <a
+                  href="../frontend/loginForm.php"
+                  class="block py-2 px-3 text-black rounded md:p-0"
+                  >Get Started</a
+                >
               </div>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                >Blog</a
-              >
-            </li>
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
     <section class="bg-white dark:bg-gray-900">
+    <?php
+        $category = "main";
+        $sql = "SELECT * FROM blogs WHERE blogcat = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("s", $category);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+        ?>
       <div
         class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
       >
         <img
           class="w-full dark:hidden"
-          src="img/blog1 (1).png"
+          src="../profileauthor/<?= $row['blogpic']?>"
           alt="dashboard image"
         />
         <div>
@@ -229,32 +252,30 @@
             <h2
               class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white font-serif"
             >
-              Controversies and Risks
+            <?php echo $row['blogtitle']; ?>
             </h2>
             <p
               class="mb-6 font-medium text-gray-500 md:text-lg dark:text-gray-400"
             >
-            The gluta drip game is causing a stir! 🌪️💉 Some studies hype up the 
-            perks for your looks, but not everyone's convinced. 🤔 Critics say there's 
-            not enough proof and throw shade on possible side effects. 
-            It's a beauty debate, babes! 💅✨ #GlutaDrama #BeautyTalks
+            <?php echo $row['blogdesc']; ?>
             </p>
           </div>
 
           <div class="flex items-center gap-4">
             <img
               class="w-10 h-10 rounded-full"
-              src="../frontend/img/mich.jpg"
+              src="../profileauthor/<?= $row['blogauthorpic']?>"
             />
             <div class="font-medium dark:text-white">
-              <div>Michelle Joveres</div>
+              <div><?php echo $row['blogauthor']; ?></div>
               <div class="text-sm text-gray-500 dark:text-gray-400">
-                Joined in October 2020
+              <?php echo "Joined in " . $row['blogdate']; ?>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>   
+      <?php } }?>
     </section>
 
     <section class="bg-white dark:bg-gray-900">
@@ -269,31 +290,43 @@
         <div
           class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0"
         >
+
+        <?php
+        $category = "other";
+        $sql = "SELECT * FROM blogs WHERE blogcat = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("s", $category);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+        ?>
           <div
             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           >
             <a href="#">
-              <img class="rounded-t-lg" src="../frontend/img/blog2.png" alt="" />
+              <img class="rounded-t-lg" src="../profileauthor/<?= $row['blogpic']?>" alt="" />
             </a>
             <div class="p-5">
               <a href="#">
                 <h5
                   class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                 >
-                What's the Deal with Gluta Drip?
+                  <?php echo $row['blogtitle']; ?>
                 </h5>
               </a>
 
               <div class="flex items-center gap-4">
                 <img
                   class="w-10 h-10 rounded-full"
-                  src="../frontend/img/chae.jpg"
+                  src="../profileauthor/<?= $row['blogauthorpic']?>"
                   alt=""
                 />
                 <div class="font-medium dark:text-white my-4">
-                  <div>Denise Julia</div>
+                  <div><?php echo $row['blogauthor']; ?></div>
                   <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Joined in August 2022
+                  <?php echo "Joined in " . $row['blogdate']; ?>
                   </div>
                 </div>
               </div>
@@ -321,271 +354,9 @@
               </a>
             </div>
           </div>
+          <?php }} ?>
 
-          <div
-            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="#">
-              <img class="rounded-t-lg" src="../frontend/img/blog3.png" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                Understanding the Buzz and Backlash of Gluta Infusions
-                </h5>
-              </a>
 
-              <div class="flex items-center gap-4">
-                <img
-                  class="w-10 h-10 rounded-full"
-                  src="../frontend/img/ange.jpg"
-                  alt=""
-                />
-                <div class="font-medium dark:text-white my-4">
-                  <div>Angelica Gumanid</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Joined in January 2022
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div
-            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="#">
-              <img class="rounded-t-lg" src="../frontend/img/blog4.png" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                Exploring Gluta's Aesthetic Appeal
-                </h5>
-              </a>
-
-              <div class="flex items-center gap-4">
-                <img
-                  class="w-10 h-10 rounded-full"
-                  src="../frontend/img/pia.jpg"
-                  alt=""
-                />
-                <div class="font-medium dark:text-white my-4">
-                  <div>Pia Silvano</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Joined in May 2021
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div
-            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="#">
-              <img class="rounded-t-lg" src="../frontend/img/blog5.png" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                Gluta Secrets for a Flawless Glow
-                </h5>
-              </a>
-
-              <div class="flex items-center gap-4">
-                <img
-                  class="w-10 h-10 rounded-full"
-                  src="../frontend/img/pat.jpg"
-                  alt=""
-                />
-                <div class="font-medium dark:text-white my-4">
-                  <div>Patricia Biag</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Joined in December 2023
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div
-            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="#">
-              <img class="rounded-t-lg" src="../frontend/img/blog6.png" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                  Is Glutathione Drip really effective?
-                </h5>
-              </a>
-
-              <div class="flex items-center gap-4">
-                <img
-                  class="w-10 h-10 rounded-full"
-                  src="../frontend/img/mich.jpg"
-                  alt=""
-                />
-                <div class="font-medium dark:text-white my-4">
-                  <div>Michelle Joveres</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Joined in October 2020
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div
-            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <a href="#">
-              <img class="rounded-t-lg" src="../frontend/img/blog7.png" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="#">
-                <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                >
-                Infusion Confessions: The Gluta Glow Revolution
-                </h5>
-              </a>
-
-              <div class="flex items-center gap-4">
-                <img
-                  class="w-10 h-10 rounded-full"
-                  src="../frontend/img/yani.jpg"
-                  alt=""
-                />
-                <div class="font-medium dark:text-white my-4">
-                  <div>Yani Garcia</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Joined in March 2021
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -595,15 +366,15 @@
       <div class="mx-auto max-w-screen-xl">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://flowbite.com" class="flex items-center">
+            <a href="index.php" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="img/<?=$_SESSION['weblogo']?>"
                 class="mr-3 h-8"
                 alt="FlowBite Logo"
               />
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-                >Luxureem</span
+                ><?php echo $_SESSION['webname'] ?></span
               >
             </a>
           </div>

@@ -29,6 +29,8 @@ if (isset($_POST['subSignup'])) {
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        // Get the current date and time
+        $currentDateTime = date('Y-m-d H:i:s');
 
         if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
          
@@ -47,7 +49,7 @@ if (isset($_POST['subSignup'])) {
                  move_uploaded_file($tmp_name, $img_upload_path);
    
                 // Insert the record into the database
-                $insertQuery = "INSERT INTO `patients` (`name`,`picture`,`age`,`sex`,`phonenumber`,`address`, `email`, `password`) VALUES ('$name','$new_img_name','$age','$sex','$cellphone','$address','$email','$hashedPassword')";
+                $insertQuery = "INSERT INTO `patients` (`name`,`picture`,`age`,`sex`,`phonenumber`,`address`, `email`, `password`, `regdate`) VALUES ('$name','$new_img_name','$age','$sex','$cellphone','$address','$email','$hashedPassword', '$currentDateTime')";
                 $resultInsert = $connection->query($insertQuery);
                 if ($resultInsert) {
                     // Redirect to index.html after successful registration

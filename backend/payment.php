@@ -1,5 +1,5 @@
 <?php
-include 'loginForm.php';
+include '../backend/loginForm.php';
 // database configuration
 $servername = "localhost";
 $username = "root";
@@ -24,20 +24,22 @@ if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
 // retrieve form data
 $pid = $_SESSION['id'];
 $dob = $_POST['date'];
+$barbiename = $_POST['barbiename'];
+$barbieid = $_POST['barbieid'];
 
 // create query
-$sql = "UPDATE patients SET `date`='$dob', receipt='$barbiepic' WHERE id='$pid'";
+$sql = "UPDATE patients SET `date`='$dob', `service`='$barbiename', receipt='$barbiepic' WHERE id='$pid'";
+$sql2 = "UPDATE barbie SET  `sales` = `sales` + 1  WHERE barbieid='$barbieid'";
 
-// execute query
-if ($conn->query($sql) === TRUE) {
+// Execute both queries
+if ($conn->multi_query($sql) === TRUE && $conn->multi_query($sql2) === TRUE) {
     header("Location: ../frontend/index.php?showModal=true");
 } else {
- echo "Error: " . $sql . "<br>" . $conn->error;
+    // One or both queries failed
+    echo "Multi query failed: (" . $conn->errno . ") " . $conn->error;
 }
-
 
     }
 }
-// close connection
-$conn->close();
+
 ?>

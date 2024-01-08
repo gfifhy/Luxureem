@@ -1,4 +1,4 @@
-<?php include 'adminSystemProducts.php';
+<?php include 'adminSystemBlogs.php'; 
 include 'webcontent.php';
 ?>
 
@@ -7,7 +7,7 @@ include 'webcontent.php';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
+    <title>Dashboard | Luxureem</title>
     <link rel="stylesheet" href="../frontend/output.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
@@ -112,7 +112,7 @@ include 'webcontent.php';
               <span class="flex-1 ms-3 whitespace-nowrap">Website</span>
             </a>
           </li>
-          
+
           <li>
             <a
               href="adminBlogs.php"
@@ -151,25 +151,25 @@ include 'webcontent.php';
               </svg>
               <span class="flex-1 ms-3 whitespace-nowrap">About Us</span>
             </a>
-          </li>
-
+          </li>          
 
         </ul>
       </div>
     </aside>
 
-    
+    <!-- 1st Div Set -->
     <div class="p-4 sm:ml-64">
       <div class="p-4 border-2 border-black-1000 border-dashed rounded-lg dark:border-gray-700">
 
-        <div class="flex items-center justify-center my-4 rounded bg-gray-50 dark:bg-gray-800">
-          <?php
+      
+        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <?php
                   $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
                   if ($connection->connect_error) {
                   echo "Connection error: " . $connection->connect_error;
                   }
                   // SQL query to select data
-                  $sql = "SELECT * FROM barbie"; 
+                  $sql = "SELECT * FROM blogs"; 
                   $result = $connection->query($sql);
 
                   // Check if the query returns any rows
@@ -177,18 +177,19 @@ include 'webcontent.php';
                     // Output data of each row
                     echo "<table class='w-full border-collapse mb-8'>";
                     echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Category</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Picture</th><th class='p-4 text-left'>Price</th><th class='p-4 text-left'>Sales</th></tr>";
+                    echo "<tr><th class='p-4 text-left'>Blog ID</th><th class='p-4 text-left'>Title</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Blog Picture</th><th class='p-4 text-left'>Author</th><th class='p-4 text-left'>Author Picture</th><th class='p-4 text-left'>Blog date</th><th class='p-4 text-left'>Blog Category</th></tr>";
                     echo "</thead>";
                     echo "<tbody class='text-gray-700'>";
                     while($row = $result->fetch_assoc()) {
                           echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
-                          echo "<td class='p-4'>" . $row["barbieid"]. "</td>";
-                          echo "<td class='p-4'>" . $row["barbiecat"]. "</td>";
-                          echo "<td class='p-4'>" . $row["barbiename"]. "</td>";
-                          echo "<td class='p-4'>" . $row["barbiedesc"]. "</td>";
-                          echo "<td class='p-4'>" . $row["barbiepic"]. "</td>";
-                          echo "<td class='p-4'>" . "₱" . $row["barbieprice"]. "</td>";
-                          echo "<td class='p-4'>" . $row["sales"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogid"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogtitle"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogdesc"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogpic"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogauthor"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogauthorpic"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogdate"]. "</td>";
+                          echo "<td class='p-4'>" . $row["blogcat"]. "</td>";
                           echo "</tr>";
                     }
                     echo "</tbody>";
@@ -198,169 +199,83 @@ include 'webcontent.php';
                   }
                   ?>
         </div>
-
-
-        <div class="grid grid-cols-1 gap-4 mb-4">
-          <form action="" method="post" enctype="multipart/form-data">
-              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                  <h2 class="text-2xl font-semibold mb-4">Adding Products</h2>
-
-                  <label for="barbiecat" class="col-start-1">Barbie Category:</label>
-                    <select id="barbiecat"  class="col-start-2" name="barbiecat">
-                    <option value="gluta">gluta</option>
-                    <option value="vitamin">vitamin</option>
-                    <option value="barbie">barbie</option>
-                  </select>
-
-                  <label for="name" class="col-start-1">Name:</label>
-                  <input type="text" id="prodname" name="prodname" class="col-start-2" required="">
-                                    
-                  <label for="phone" class="col-start-1">Description:</label>
-                  <input type="text" id="desc" name="desc" class="col-start-2" required="">
-                  
-                  <label for="pic" class="col-start-1">Picture:</label>
-                  <input type="file" id="barbiepic" name="barbiepic" class="col-start-2" required="">
-
-                  <label for="email" class="col-start-1">Price:</label>
-                  <input type="text" id="price" name="price" class="col-start-2" required="">
-
-              </div>
-              <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
-                  <input name="adminSub" type="submit" value="Submit" class="col-start-3">
-              </div>
-          </form>
+      
+    <!-- 2nd Div Set -->
+      <form action="adminBlogs.php" method="post" enctype="multipart/form-data">
+        <div class="mt-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Blogs</h2>
+      
+        <div class="mb-4">
+        <label for="blogtitle" class="block text-gray-700">Blog Title:</label>
+        <input type="text" id="blogtitle" name="blogtitle" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
-
-        <div class="flex justify-center h-60 p-5 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          <form action="adminDashboardProduct.php" method="post" enctype="multipart/form-data" class="flex items-center justify-between w-full md:w-1/2">
-            <div class="w-full md:w-1/2">
-              <label for="barbieid">Barbie ID:</label><br>
-              <input type="text" id="barbieid" name="barbieid"><br>
-
-              <label for="barbiecat">Barbie Category:</label><br>
-              <select id="barbiecat" name="barbiecat">
-                <option value="gluta">gluta</option>
-                <option value="vitamin">vitamin</option>
-                <option value="barbie">barbie</option>
-              </select><br>
-
-              <label for="barbiename">Barbie Name:</label><br>
-              <input type="text" id="barbiename" name="barbiename"><br>
-            </div>
-            <div class="w-full md:w-1/2">
-              <label for="barbiedesc">Barbie Description:</label><br>
-              <input type="text" id="barbiedesc" name="barbiedesc"><br>
-              <label for="barbiepic">Barbie Picture URL:</label><br>
-              <input type="file" id="barbiepic" name="barbiepic"><br>
-              <label for="barbieprice">Barbie Price:</label><br>
-              <input type="text" id="barbieprice" name="barbieprice"><br>
-            </div>
-            <input type="submit" name="update" value="Update">
-          </form> 
+        <div class="mb-4">
+        <label for="blogdesc" class="block text-gray-700">Blog Description:</label>
+        <input type="text" id="blogdesc" name="blogdesc" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
-
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-        <form action="adminDashboardProduct.php" method="post" enctype="multipart/form-data">
-            <label for="barbieid">Barbie ID:</label><br>
-            <input type="text" id="barbieid" name="barbieid"><br>
-            <input type="submit" name="delete" value="Delete">
-        </form>
+        <div class="mb-4">
+        <label for="blogpic" class="block text-gray-700">Blog Picture:</label>
+        <input type="file" id="blogpic" name="blogpic" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
+        <div class="mb-4">
+        <label for="blogauthor" class="block text-gray-700">Blog Author:</label>
+        <input type="text" id="blogauthor" name="blogauthor" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div> 
 
-        <div class="grid grid-cols-2 gap-4">
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
-          <div
-            class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800"
-          >
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-              <svg
-                class="w-3.5 h-3.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 18 18"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 1v16M1 9h16"
-                />
-              </svg>
-            </p>
-          </div>
+        <div class="mb-4">
+        <label for="blogauthorpic" class="block text-gray-700">Author Picture:</label>
+        <input type="file" id="blogauthorpic" name="blogauthorpic" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
+        <div class="mb-4">
+        <label for="blogdate">Month and Year:</label><br>
+        <input type="month" id="blogdate" name="blogdate" onchange="displayMonthNameAndYear()"><br>
+        </div>
+        <input type="hidden" id="monthname" name="monthname" readonly><br>
+
+        <div class="mb-4">
+        <label for="blogcat">Select an Option:</label><br>
+          <select id="blogcat" name="blogcat">
+              <option value="main">Main</option>
+              <option value="other">Other</option>
+          </select><br>
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="update1" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form>
+
+          <!-- 2nd Div Set -->
+          <form action="adminBlogs.php" method="post" enctype="multipart/form-data">
+        <div class="mt-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Delete</h2>
+      
+        <div class="mb-4">
+        <label for="blogid" class="block text-gray-700">ID:</label>
+        <input type="text" id="blogid" name="blogid" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit" name="delete" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+      </form>
 
       </div>
     </div>
+    <script>
+    function displayMonthNameAndYear() {
+        var monthAndYear = document.getElementById('blogdate').value;
+        var monthName = monthAndYear.substr(5,7);
+        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var year = monthAndYear.substr(0,4);
 
-    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+        document.getElementById('monthname').value = monthNames[monthName-1] + ' ' + year;
+    }
+    </script>
   </body>
 </html>

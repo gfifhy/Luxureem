@@ -1,11 +1,13 @@
-<?php include('../backend/loginFormDoctor.php') ?>
+<?php include('../backend/loginFormDoctor.php'); 
+include '../admin/webcontent.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luxureem | login</title>
+    <title><?php echo $_SESSION['webname'] ?> | login</title>
     <link rel="stylesheet" href="output.css" />
   </head>
 
@@ -20,10 +22,10 @@
         >
           <img
             class="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+            src="img/<?=$_SESSION['weblogo']?>"
             alt="logo"
           />
-          Luxureem
+          <?php echo $_SESSION['webname'] ?>
         </a>
         <div
           class="w-10/12 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"

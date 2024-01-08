@@ -260,6 +260,7 @@ include '../admin/webcontent.php';
         </div>
       </section>
     </header>
+    
     <!--pricing section-->
     <section class="bg-white dark:bg-gray-900">
       <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
@@ -276,72 +277,65 @@ include '../admin/webcontent.php';
         <div
           class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0"
         >
-          <div>
-            <div
-              class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
-            ></div>
-            <h3 class="mb-2 text-xl font-bold dark:text-white">Marketing</h3>
-            <p class="text-gray-500 dark:text-gray-400">
-              Plan it, create it, launch it. Collaborate seamlessly with all the
-              organization and hit your marketing goals every month with our
-              marketing plan.
-            </p>
-          </div>
-          <div>
-            <div
-              class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
-            ></div>
-            <h3 class="mb-2 text-xl font-bold dark:text-white">Legal</h3>
-            <p class="text-gray-500 dark:text-gray-400">
-              Protect your organization, devices and stay compliant with our
-              structured workflows and custom permissions made for you.
-            </p>
-          </div>
-          <div>
-            <div
-              class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
-            ></div>
-            <h3 class="mb-2 text-xl font-bold dark:text-white">
-              Business Automation
-            </h3>
-            <p class="text-gray-500 dark:text-gray-400">
-              Auto-assign tasks, send Slack messages, and much more. Now power
-              up with hundreds of new templates to help you get started.
-            </p>
-          </div>
-          <div>
-            <div
-              class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
-            ></div>
-            <h3 class="mb-2 text-xl font-bold dark:text-white">Finance</h3>
-            <p class="text-gray-500 dark:text-gray-400">
-              Audit-proof software built for critical financial operations like
-              month-end close and quarterly budgeting.
-            </p>
-          </div>
-          <div>
-            <div
-              class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
-            ></div>
-            <h3 class="mb-2 text-xl font-bold dark:text-white">
-              Enterprise Design
-            </h3>
-            <p class="text-gray-500 dark:text-gray-400">
-              Craft beautiful, delightful experiences for both marketing and
-              product with real cross-company collaboration.
-            </p>
-          </div>
-          <div>
-            <div
-              class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
-            ></div>
-            <h3 class="mb-2 text-xl font-bold dark:text-white">Operations</h3>
-            <p class="text-gray-500 dark:text-gray-400">
-              Keep your company’s lights on with customizable, iterative, and
-              structured workflows built for all efficient teams and individual.
-            </p>
-          </div>
-        </div>
+        <?php
+        $sql = "SELECT * FROM barbie ORDER BY sales DESC LIMIT 3";       
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
+                        <img
+                            class="rounded-t-lg"
+                            src="../productupload/<?= $row['barbiepic']?>"
+                            alt=""
+                        />
+                    </a>
+                    <div class="p-5">
+                        <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>" >
+                            <h5
+                                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                            >
+                                <?php echo $row['barbiename']; ?>
+                            </h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            <?php echo $row['barbiedesc']; ?>
+                        </p>
+                        <a
+                            href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                        Buy now
+                            <svg
+                                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 14 10"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+        <?php
+            }
+        } else {
+            echo "0 results";
+        }
+        $connection->close();
+        ?>
       </div>
     </section>
 

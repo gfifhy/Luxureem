@@ -280,10 +280,14 @@ if (!isset($_SESSION['id'])) {
         if (isset($_GET['barbieid'])) {
             $barbiedesc = getBarbie($connection, $_GET['barbieid']);
             $barbieprice = getBarbie($connection, $_GET['barbieid']);
+            $barbiename = getBarbie($connection, $_GET['barbieid']);
+            $sales = getBarbie($connection, $_GET['barbieid']);
+            $barbieid = getBarbie($connection, $_GET['barbieid']);
         }
          ?>
         <div class="mt-4 md:mt-0">
           <div class="mb-4">
+            <p><?php echo $barbiename['barbiename']; ?></p>
             <h2>Product Description:</h2>
             <p><?php echo "₱" . $barbieprice['barbieprice']; ?></p>
             <p><?php echo $barbiedesc['barbiedesc']; ?></p>
@@ -291,6 +295,9 @@ if (!isset($_SESSION['id'])) {
 
           <form action="../backend/payment.php" method="post" enctype="multipart/form-data">
           <div class="mb-4">
+            <input type="hidden" name="barbieid" value="<?php echo $sales['barbieid']; ?>">
+            <input type="hidden" name="sales" value="<?php echo $sales['sales']; ?>">
+            <input type="hidden" name="barbiename" value="<?php echo $barbiename['barbiename']; ?>">
             <label for="date" class="block text-sm font-medium text-gray-600"
               >Date</label
             >

@@ -71,5 +71,18 @@ if (isset($_POST['adminSub'])) {
     }
 }
 
+if (isset($_POST['delete'])) {
+    $userid = $_POST['userid'];
+
+    // Delete the user from the database
+    $sql = "DELETE FROM doctors WHERE id='$userid'";
+
+    if ($connection->query($sql) === TRUE) {
+        echo "User deleted successfully";
+    } else {
+        echo "Error deleting user: " . $connection->error;
+    }
+}
+
 // Close the database connection
 $connection->close();

@@ -1,33 +1,39 @@
-<?php include '../backend/loginForm.php'?>
+<?php 
+include '../backend/loginForm.php';
+include '../admin/webcontent.php';
+include '../admin/webcontentAboutus.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Luxureem</title>
+    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
     <link rel="stylesheet" href="output.css" />
   </head>
   <body style="background-color: #c9a489;">
-    <nav class="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-      <div
-        class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
-      >
-        <a href="https://flowbite.com" class="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span
-            class="self-center text-xl font-semibold whitespace-nowrap text-white"
-            >Luxureem</span
-          >
-        </a>
-        <?php
+<!--navbar-->
+<nav class="bg-transparent border-gray-200 px-4 lg:px-6 py-2.5">
+        <div
+          class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
+        >
+          <a href="#" class="flex items-center">
+            <img
+              src="img/<?=$_SESSION['weblogo']?>"
+              class="mr-3 h-6 sm:h-9"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+              ><?php echo $_SESSION['webname'] ?></span
+            >
+          </a>
+          
+          <div class="flex items-center lg:order-2">
+          <?php
               if(isset($_SESSION['id'])){
                  ?>
-                 
                  <button
                     id="dropdownUserAvatarButton"
                     data-dropdown-toggle="dropdownAvatar"
@@ -89,130 +95,138 @@
                  <?php
               }
             ?>
-
-          <button
-            data-collapse-toggle="mobile-menu-2"
-            type="button"
-            class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="mobile-menu-2"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+            
+            <button
+              data-collapse-toggle="mobile-menu-2"
+              type="button"
+              class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              aria-controls="mobile-menu-2"
+              aria-expanded="false"
             >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <svg
-              class="hidden w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <div
-          class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-          id="mobile-menu-2"
-        >
-          <ul
-            class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                class="hidden w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div
+            class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            id="mobile-menu-2"
           >
-            <li>
-              <a
-                href="../frontend/index.php"
-                class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
-                aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li>
-              <button
-                id="dropdownNavbarLink"
-                data-dropdown-toggle="dropdownNavbar"
-                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-              >
-                Services
-                <svg
-                  class="w-2.5 h-2.5 ms-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
+            <ul
+              class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+            >
+              <li>
+                <a
+                  href="../frontend/index.php"
+                  class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
+                  aria-current="page"
+                  >Home</a
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-              <!-- Dropdown menu -->
-              <div
-                id="dropdownNavbar"
-                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-              >
-                <ul
-                  class="py-2 text-sm text-gray-700 dark:text-gray-400"
-                  aria-labelledby="dropdownLargeButton"
+              </li>
+              <li>
+                <button
+                  id="dropdownNavbarLink"
+                  data-dropdown-toggle="dropdownNavbar"
+                  class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                 >
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Gluta</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >vitamin</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Barbie</a
-                    >
-                  </li>
-                </ul>
+                  Services
+                  <svg
+                    class="w-2.5 h-2.5 ms-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  id="dropdownNavbar"
+                  class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                >
+                  <ul
+                    class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                    aria-labelledby="dropdownLargeButton"
+                  >
+                    <li>
+                      <a
+                        href="../frontend/productGluta.php"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Glutathione Services</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="../frontend/productVItamin.php"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Vitamin Services</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="../frontend/productBarbie.php"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >Aesthetic Services</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a
+                  href="../frontend/aboutUs.php"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../frontend/blogs.php"
+                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >Blogs</a
+                >
+              </li>
+              <div class="md:hidden w-full md:w-auto" id="navbar-default">
+                <!-- ... existing links ... -->
+                <a
+                  href="../frontend/loginForm.php"
+                  class="block py-2 px-3 text-black rounded md:p-0"
+                  >Get Started</a
+                >
               </div>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                >Blog</a
-              >
-            </li>
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
     <section class="background-color: #c9a489; dark:bg-gray-900">
       <div
@@ -222,29 +236,21 @@
           <h2
             class="mb-4 text-5xl tracking-tight font-extrabold text-white font-serif"
           >
-          Patience in Beauty, Luxureem Unveiled
+            <?php echo $_SESSION['sec1label'] ?>
           </h2>
           <p class="mb-4">
-            At Luxureem, we embrace the beauty of patience as the cornerstone of our philosophy. 
-            Our approach is simple yet profound – to gradually unveil and enhance your natural glow. 
-            With a commitment to the artistry of beauty, we believe in taking the time to nurture and unfold 
-            the radiance within. Luxureem is not just a brand; it's a journey, an experience where the grace 
-            of patience intertwines with the timeless pursuit of beauty. 
-          </p>
-          <p>
-            We invite you to explore the subtle transformation, 
-            discovering the enchanting allure that comes to life when beauty meets time with Luxureem.
+            <?php echo $_SESSION['sec1desc'] ?> 
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4 mt-8">
           <img
             class="w-64 rounded-lg"
-            src="img/aboutus1.png"
+            src="../imgaboutus/<?=$_SESSION['sec1pic1']?>"
             alt="office content 1"
           />
           <img
             class="mt-4 w-64 lg:mt-10 rounded-lg"
-            src="img/aboutus2.png"
+            src="../imgaboutus/<?=$_SESSION['sec1pic2']?>"
             alt="office content 2"
           />
         </div>
@@ -257,7 +263,7 @@
           <h2
             class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white font-serif"
           >
-            Our Services
+            <?php echo $_SESSION['sec2label1'] ?>
           </h2>
         </div>
 
@@ -267,26 +273,24 @@
               <div
                 class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
               ></div>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif">Patience</h3>
+              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif"><?php echo $_SESSION['sec2sublabel1'] ?></h3>
               <p class="text-gray-500 dark:text-gray-400 text-lg font-serif">
-                Luxureem believes in the beauty of patience as the core principle of its philosophy. 
-                We take the time to nurture and unveil your natural glow gradually.
+                <?php echo $_SESSION['sec2desc1'] ?>
               </p>
             </div>
             <div>
               <div
                 class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
               ></div>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif">Artistry</h3>
+              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif"><?php echo $_SESSION['sec2sublabel2'] ?></h3>
               <p class="text-gray-500 dark:text-gray-400 text-lg font-serif">
-                Committed to the artistry of beauty, Luxureem combines skill and creativity 
-                to enhance your unique features, creating an enchanting allure.
+                <?php echo $_SESSION['sec2desc2'] ?>
               </p>
             </div>
           </div>
 
           <div class="col-span-1">
-            <img src="../frontend/img/serum1.png" alt="" class="w-full h-fit" />
+            <img src="../imgaboutus/<?=$_SESSION['sec2pic1']?>" alt="" class="w-full h-fit" />
           </div>
 
           <div class="col-span-1">
@@ -294,20 +298,18 @@
               <div
                 class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
               ></div>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif">Transformation</h3>
+              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif"><?php echo $_SESSION['sec2sublabel2'] ?></h3>
               <p class="text-gray-500 dark:text-gray-400 text-lg font-serif">
-                Luxureem offers a journey of subtle transformation, where the grace of patience meets 
-                the timeless pursuit of beauty, unveiling a captivating you.
+                <?php echo $_SESSION['sec2desc3'] ?>
               </p>
             </div>
             <div>
               <div
                 class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900"
               ></div>
-              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif">Elegance</h3>
+              <h3 class="mb-2 text-2xl font-bold dark:text-white font-serif"><?php echo $_SESSION['sec2sublabel4'] ?></h3>
               <p class="text-gray-500 dark:text-gray-400 text-lg font-serif">
-                Embracing elegance in every aspect, Luxureem provides an experience where 
-                beauty and time converge, resulting in a sophisticated allure.
+                <?php echo $_SESSION['sec2desc4'] ?>
               </p>
             </div>
           </div>
@@ -321,7 +323,7 @@
       >
         <img
           class="w-full dark:hidden"
-          src="img/aboutusdulo.png"
+          src="../imgaboutus/<?=$_SESSION['sec2pic2']?>"
           alt="dashboard image"
         />
         <div>
@@ -329,37 +331,14 @@
             <h2
               class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white font-serif"
             >
-              Antioxidant Properties
+            <?php echo $_SESSION['sec2label2'] ?>
             </h2>
             <p
               class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400 font-serif"
             >
-            Glutathione is a powerful antioxidant that helps neutralize free radicals in the body. 
-            Free radicals are molecules that can damage cells and contribute to aging and various health issues
+            <?php echo $_SESSION['sec2desc5'] ?>
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="flex flex-col items-center justify-center min-h-screen">
-      <div class="relative w-11/12 h-64 shadow-md rounded-lg overflow-hidden">
-        <img
-          class="w-full h-full object-cover"
-          src="img/discount.png"
-          alt="Card image"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent flex items-center justify-center"
-        >
-          <h5 class="text-white text-2xl font-bold tracking-tight">
-            Get 30% Off!
-          </h5>
-        </div>
-        <div class="absolute inset-0 flex items-center my-40 justify-center">
-          <h5 class="text-white text-small tracking-tight">
-            Elevate Your #LuxureemExperience Today!
-          </h5>
         </div>
       </div>
     </section>
@@ -371,13 +350,13 @@
           <div class="mb-6 md:mb-0">
             <a href="https://flowbite.com" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="img/<?=$_SESSION['weblogo']?>"
                 class="mr-3 h-8"
                 alt="FlowBite Logo"
               />
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-                >Luxureem</span
+                ><?php echo $_SESSION['webname'] ?></span
               >
             </a>
           </div>
