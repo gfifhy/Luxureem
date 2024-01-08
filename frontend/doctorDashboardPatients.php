@@ -151,7 +151,7 @@
                           echo "<td class='p-4'>" . $row["email"]. "</td>";
                           echo "<td class='p-4'>" . $row["date"]. "</td>";
                           echo "<td class='p-4'>" . $row["service"]. "</td>";
-                          echo "<td class='p-4'><img src='../userreceipts/" . $row["receipt"] . "' alt='Profile Picture'></td>";
+                          echo "<td class='p-4'><img src='../userreceipts/" . $row["receipt"] . "' alt='No Receipt Yet'></td>";
                           echo "</tr>";
                     }
                     echo "</tbody>";

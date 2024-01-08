@@ -18,12 +18,25 @@ if (isset($_POST['subSignup'])) {
     $checkEmailQuery = "SELECT `email` FROM `patients` WHERE `email` = '$email'";
     $resultEmail = $connection->query($checkEmailQuery);
 
+    // Check if the age is between 17 and 100
+    if ($age < 17 || $age > 100) {
+    array_push($errors,"Age must be between 17 and 100.");
+    }
+
+    if (strlen($cellphone) != 11 || !ctype_digit($cellphone)) {
+        array_push($errors,"Phone number must be exactly 11 digits.");
+    }
+
     // Password complexity validation
     if (!preg_match('/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/', $password)) {
         // Password does not meet complexity requirements
         array_push($errors,"Password must contain at least one capital letter, one special character, and be at least 8 characters long.");
     } elseif ($resultEmail->num_rows > 0) {
         array_push($errors,"Email already exists. Please use a different email.");
+    } elseif (strlen($cellphone) != 11 || !ctype_digit($cellphone)){
+        array_push($errors,"Phone number must be exactly 11 digits.");
+    } elseif ($age < 17 || $age > 100) {
+        array_push($errors,"Age must be between 17 and 100.");
     } else{
 
         // Hash the password
