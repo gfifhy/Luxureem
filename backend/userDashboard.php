@@ -55,4 +55,12 @@ if (isset($_POST['updatephone'])) {
     $result = mysqli_query($connection, $query);
 
     }
+
+if (isset($_POST['updateadd'])) {
+    $id = $_SESSION['id'];
+    
+    $query = "UPDATE patients SET `address`='" . mysqli_real_escape_string($connection, $_POST['address']) . "' WHERE id = $id";       
+    $result = mysqli_query($connection, $query);
+
+    }
 ?>
