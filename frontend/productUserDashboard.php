@@ -159,24 +159,30 @@ include '../admin/webcontent.php';
     <div class="py-8 px-4 mx-auto max-w-fit lg:py-16 lg:px-6">
       <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-          Designed for business teams like yours
+        Harmony of Radiance: Glutathione, Vitamins, and Aesthetics
         </h2>
         <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-          Here at Flowbite we focus on markets where technology, innovation,
-          and capital can unlock long-term value and drive economic growth.
+        Discover the symphony of well-being with our trio - Glutathione for skin luminosity, Vitamins for vitality, and Aesthetics for personalized beauty.
         </p>
       </div>
       <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
         <!-- Pricing Card -->
         <div
           class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-          <h3 class="mb-4 text-2xl font-semibold">Gluta drip</h3>
+          <h3 class="mb-4 text-2xl font-semibold">Glutathione drip</h3>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            Best option for personal use & for your next project.
+          Unveil radiant well-being with our Glutathione services, meticulously crafted to 
+          brighten and rejuvenate your skin. Beyond aesthetics, 
+          these services detoxify and enhance cellular health, fortifying 
+          your immune system and promoting overall vitality.
           </p>
           <div class="flex justify-center items-baseline my-8">
-            <span class="mr-2 text-5xl font-extrabold">$29</span>
-            <span class="text-gray-500 dark:text-gray-400">/month</span>
+            <span class="mr-2 text-5xl font-extrabold">
+              
+
+
+            </span>
+        
           </div>
           <!-- List -->
           <ul role="list" class="mb-8 space-y-4 text-left">
@@ -188,7 +194,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Individual configuration</span>
+              <span>Brightens and rejuvenates the skin</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -198,7 +204,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>No setup, or hidden fees</span>
+              <span>Detoxifies and enhances cellular health</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -208,8 +214,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Team size:
-                <span class="font-semibold">1 developer</span></span>
+              <span>Boosts the immune system</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -219,19 +224,10 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Premium support:
-                <span class="font-semibold">6 months</span></span>
+              <span>Fights oxidative stress for overall well-being</span>
             </li>
             <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
-                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"></path>
               </svg>
-              <span>Free updates:
-                <span class="font-semibold">6 months</span></span>
             </li>
           </ul>
           <a href="../frontend/productGluta.php"
@@ -241,13 +237,21 @@ include '../admin/webcontent.php';
         <!-- Pricing Card -->
         <div
           class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-          <h3 class="mb-4 text-2xl font-semibold">vitamin drip</h3>
+          <h3 class="mb-4 text-2xl font-semibold">Vitamin Drip</h3>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            Relevant for multiple users, extended & premium support.
+          Revitalize your energy and elevate your vitality through our 
+          Vitamin infusions. Designed to support your immune system and provide 
+          essential nutrients directly into your bloodstream, 
+          these infusions promote overall health and wellness, 
+          leaving you feeling invigorated.
           </p>
           <div class="flex justify-center items-baseline my-8">
-            <span class="mr-2 text-5xl font-extrabold">$99</span>
-            <span class="text-gray-500 dark:text-gray-400">/month</span>
+            <span class="mr-2 text-5xl font-extrabold">
+              
+
+
+            </span>
+        
           </div>
           <!-- List -->
           <ul role="list" class="mb-8 space-y-4 text-left">
@@ -259,7 +263,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Individual configuration</span>
+              <span>Enhances energy levels and vitality</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -269,7 +273,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>No setup, or hidden fees</span>
+              <span>Supports immune system function</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -279,8 +283,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Team size:
-                <span class="font-semibold">10 developers</span></span>
+              <span>Promotes overall health and wellness</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -290,19 +293,9 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Premium support:
-                <span class="font-semibold">24 months</span></span>
+              <span>Delivers essential nutrients directly into the bloodstream</span>
             </li>
             <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
-                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <span>Free updates:
-                <span class="font-semibold">24 months</span></span>
             </li>
           </ul>
           <a href="../frontend/productVItamin.php"
@@ -312,13 +305,21 @@ include '../admin/webcontent.php';
         <!-- Pricing Card -->
         <div
           class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-          <h3 class="mb-4 text-2xl font-semibold">Barbie service</h3>
+          <h3 class="mb-4 text-2xl font-semibold">Aesthetic Services</h3>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            Best for large scale uses and extended redistribution rights.
+          Step into a world of personalized care with our Aesthetic treatments. 
+          Tailored solutions for facial and body aesthetics, these advanced treatments 
+          sculpt and tone, rejuvenating your natural features. 
+          Our goal is to provide you with confidence and a refreshed look that 
+          aligns with your unique beauty.
           </p>
           <div class="flex justify-center items-baseline my-8">
-            <span class="mr-2 text-5xl font-extrabold">$499</span>
-            <span class="text-gray-500 dark:text-gray-400">/month</span>
+            <span class="mr-2 text-5xl font-extrabold">
+              
+
+
+            </span>
+        
           </div>
           <!-- List -->
           <ul role="list" class="mb-8 space-y-4 text-left">
@@ -330,7 +331,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Individual configuration</span>
+              <span>Tailored solutions for facial and body aesthetics</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -340,7 +341,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>No setup, or hidden fees</span>
+              <span>Advanced treatments for sculpting and toning</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -350,8 +351,7 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Team size:
-                <span class="font-semibold">100+ developers</span></span>
+              <span>Rejuvenates and enhances natural features</span>
             </li>
             <li class="flex items-center space-x-3">
               <!-- Icon -->
@@ -361,19 +361,9 @@ include '../admin/webcontent.php';
                   d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span>Premium support:
-                <span class="font-semibold">36 months</span></span>
+              <span>Personalized care for a confident and refreshed look</span>
             </li>
             <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
-                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <span>Free updates:
-                <span class="font-semibold">36 months</span></span>
             </li>
           </ul>
           <a href="../frontend/productBarbie.php"
