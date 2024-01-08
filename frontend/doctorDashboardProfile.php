@@ -251,13 +251,13 @@ include '../admin/webcontent.php';
                 exportEnabled: true,
                 theme: "light1",
                 title: {
-                    text: "Simple Column Chart with Index Labels"
+                    text: "Top products"
                 },
                 axisY: {
                     includeZero: true
                 },
                 data: [{
-                    type: "column",
+                  type: "column",
                     indexLabelFontColor: "#5A5757",
                     indexLabelFontSize: 16,
                     indexLabelPlacement: "outside",
