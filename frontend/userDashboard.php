@@ -131,7 +131,7 @@ include ('../backend/userDashboard.php');
         
         <div class="mb-4">
         <label for="fullname" class="mb-4 block text-gray-700">Change Name:</label>
-        <input type="text" id="fullname" name="fullname" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        <input type="text" placeholder="<?php echo $_SESSION['name']; ?>" id="fullname" name="fullname" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
         <div class="mb-4 flex items-center justify-between">
@@ -159,11 +159,25 @@ include ('../backend/userDashboard.php');
         
         <div class="mb-4">
         <label for="phone" class="mb-4 block text-gray-700">Change Mobile Number:</label>
-        <input type="text" id="phone" name="phone" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        <input type="text" placeholder="<?php echo $_SESSION['phonenumber']; ?>" id="phone" name="phone" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
         <div class="mb-4 flex items-center justify-between">
-        <input type="submit" name="updatephone" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <input type="submit"  name="updatephone" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+        </div>
+      </form>  
+
+      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
+        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        
+        <div class="mb-4">
+        <label for="address" class="mb-4 block text-gray-700">Change Mobile Number:</label>
+        <input type="text" placeholder="<?php echo $_SESSION['address']; ?>" id="address" name="address" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+        </div>
+
+        <div class="mb-4 flex items-center justify-between">
+        <input type="submit"  name="updateadd" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </div>
         </div>
       </form>  
