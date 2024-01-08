@@ -5,7 +5,7 @@ include '../admin/webcontent.php';
 
 
 $dataPoints = array( 
-	array("label"=>"Male", "symbol" => "M","y"=>$male_count),
+array("label"=>"Male", "symbol" => "M","y"=>$male_count),
 array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
 
 <!DOCTYPE html>
@@ -130,33 +130,67 @@ array("label"=>"Female", "symbol" => "F","y"=>$female_count), ) ?>
     </aside>
 
     <div class="p-4 sm:ml-64">
-      <div
-        class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700"
-      >
-      
-        <div class="flex">
-          
-          <div class="img-fluid rounded-circle" style="height: 370px; width: 33%;">      
-            <img src="../upload/<?= $_SESSION['userData']['pp']?>" 
-            class="img-fluid rounded-circle" 
-            style="height: 100%; width:100%">
-          </div>
+      <div class="p-4 border-2 border-black-1000 border-dashed rounded-lg dark:border-gray-700">
+        
+      <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6 flex">
+        
+            <div class="w-24 h-24 image-container">
+                <img src="../upload/<?= $_SESSION['userData']['pp']?>" 
+                class="img-fluid rounded-circle" 
+                style="height:100%; width:100%">
+            </div>
 
-          <div
-            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800"
-          >
-
-            <p class="text-2xl text-black-400 dark:text-gray-500">
+            <p class="text-2xl text-black-400 dark:text-gray-500 ml-4">
               Name: <?php echo $_SESSION['userData']['name']; ?>
             </p>
-          </div>
-
-          <div id="chartContainer" style="height: 370px; width: 33%;"></div>
-          
-        </div>
       
       </div>
-    </div>
+
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+          <div id="chartContainer" style="height: 370px; width: 33%;"></div>
+        </div>
+
+        <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+        <?php
+                  $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
+                  if ($connection->connect_error) {
+                  echo "Connection error: " . $connection->connect_error;
+                  }
+                  // SQL query to select data
+                  $sql = "SELECT * FROM barbie"; 
+                  $result = $connection->query($sql);
+                  $totaltotal = 0;
+                  // Check if the query returns any rows
+                  if ($result->num_rows > 0) {
+                    // Output data of each row
+                    echo "<table class='w-full border-collapse mb-8'>";
+                    echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
+                    echo "<tr><th class='p-4 text-left'>Blog ID</th><th class='p-4 text-left'>Title</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Blog Picture</th></tr>";
+                    echo "</thead>";
+                    echo "<tbody class='text-gray-700'>";
+                    while($row = $result->fetch_assoc()) {
+                      $totalperitem = $row["barbieprice"] * $row["sales"];
+                      $totaltotal += $totalperitem;
+                          echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
+                          echo "<td class='p-4'>" . $row["barbiename"]. "</td>";
+                          echo "<td class='p-4'>" . $row["barbieprice"]. "</td>";
+                          echo "<td class='p-4'>" . $row["sales"]. "</td>";
+                          echo "<td class='p-4'>" . $totalperitem. "</td>";
+                          echo "</tr>";
+                    }
+                    echo "<td class='p-4'>" . "</td>";
+                    echo "<td class='p-4'>" . "</td>";
+                    echo "<td class='p-4'>" . "Total Price: ". "</td>";
+                    echo "<td class='p-4'>" . $totaltotal. "</td>";
+                    echo "</tbody>";
+                    echo "</table>";
+                  } else {
+                    echo "<p class='text-red-600'>0 results</p>";
+                  }
+                  ?>
+        </div>
+
+
 
     <script>
       window.onload = function() {
