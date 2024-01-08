@@ -199,15 +199,10 @@ include '../admin/webcontent.php';
             var reguserChart = new CanvasJS.Chart("reguser", {
                 animationEnabled: true,
                 title: {
-                    text: "Fortune 500 Companies by Month"
+                    text: "Numbers of Users"
                 },
                 axisX: {
                     interval: 1
-                },
-                axisY2: {
-                    interlacedColor: "rgba(1,77,101,.2)",
-                    gridColor: "rgba(1,77,101,.1)",
-                    title: "Number of Companies"
                 },
                 data: [{
                     type: "bar",
@@ -253,13 +248,13 @@ include '../admin/webcontent.php';
                 exportEnabled: true,
                 theme: "light1",
                 title: {
-                    text: "Simple Column Chart with Index Labels"
+                    text: "Top products"
                 },
                 axisY: {
                     includeZero: true
                 },
                 data: [{
-                    type: "column",
+                  type: "column",
                     indexLabelFontColor: "#5A5757",
                     indexLabelFontSize: 16,
                     indexLabelPlacement: "outside",
