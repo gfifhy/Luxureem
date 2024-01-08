@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script>
-    function displayMonthNameAndYear() {
-        var monthAndYear = document.getElementById('blogdate').value;
-        var monthName = monthAndYear.substr(5,7);
-        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        var year = monthAndYear.substr(0,4);
+<?php
 
-        document.getElementById('monthname').value = monthNames[monthName-1] + ' ' + year;
-    }
-</script>
-</head>
-<body>
+$html = 'http://localhost/play.pixels.xyz';
 
-<div class="mb-4">
-<label for="blogdate">Month and Year:</label><br>
-<input type="month" id="blogdate" name="blogdate" onchange="displayMonthNameAndYear()"><br>
-</div>
+$doc = new DOMDocument();
+@$doc->loadHTML($html);
 
-<label for="monthname">Month Name:</label><br>
-<input type="text" id="monthname" name="monthname" readonly><br>
+$tags = $doc->getElementsByTagName('a');
 
-</body>
-</html>
+foreach ($tags as $tag) {
+    $href = $tag->getAttribute('href');
+    $new_href = str_replace('http://localhost/', '', $href);
+    $tag->setAttribute('href', $new_href);
+}
+
+echo $doc->saveHTML();
+
+?>

@@ -177,7 +177,7 @@ include 'webcontent.php';
                     // Output data of each row
                     echo "<table class='w-full border-collapse mb-8'>";
                     echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>Blog ID</th><th class='p-4 text-left'>Title</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Blog Picture</th><th class='p-4 text-left'>Author</th><th class='p-4 text-left'>Author Picture</th><th class='p-4 text-left'>Blog date</th><th class='p-4 text-left'>Blog Category</th></tr>";
+                    echo "<tr><th class='p-4 text-left'>Blog ID</th><th class='p-4 text-left'>Title</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Blog Picture</th><th class='p-4 text-left'>Author</th><th class='p-4 text-left'>Author Picture</th><th class='p-4 text-left'>Blog date</th><th class='p-4 text-left'>Blog Category</th><th class='p-4 text-left'>Link</th></tr>";
                     echo "</thead>";
                     echo "<tbody class='text-gray-700'>";
                     while($row = $result->fetch_assoc()) {
@@ -190,6 +190,7 @@ include 'webcontent.php';
                           echo "<td class='p-4'>" . $row["blogauthorpic"]. "</td>";
                           echo "<td class='p-4'>" . $row["blogdate"]. "</td>";
                           echo "<td class='p-4'>" . $row["blogcat"]. "</td>";
+                          echo "<td class='p-4'>" . $row["bloglink"]. "</td>";
                           echo "</tr>";
                     }
                     echo "</tbody>";
@@ -242,6 +243,11 @@ include 'webcontent.php';
               <option value="main">Main</option>
               <option value="other">Other</option>
           </select><br>
+        </div>
+
+        <div class="mb-4">
+        <label for="bloglink" class="block text-gray-700">Link:</label>
+        <input type="text" id="bloglink" name="bloglink" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
         </div>
 
         <div class="mb-4 flex items-center justify-between">

@@ -1,11 +1,13 @@
-<?php include '../backend/loginForm.php'?>
+<?php include '../backend/loginForm.php';
+include '../admin/webcontent.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Luxureem</title>
+    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
     <link rel="stylesheet" href="../frontend/output.css" />
   </head>
   <body>
@@ -15,13 +17,13 @@
       >
         <a href="https://flowbite.com" class="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="img/<?=$_SESSION['weblogo']?>"
             class="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
           <span
             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Luxureem</span
+            ><?php echo $_SESSION['webname'] ?></span
           >
         </a>
         <div class="flex items-center lg:order-2">
@@ -328,13 +330,13 @@
           <div class="mb-6 md:mb-0">
             <a href="https://flowbite.com" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="img/<?=$_SESSION['weblogo']?>"
                 class="mr-3 h-8"
                 alt="FlowBite Logo"
               />
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-                >Luxureem</span
+                ><?php echo $_SESSION['webname'] ?></span
               >
             </a>
           </div>

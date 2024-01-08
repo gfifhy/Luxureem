@@ -44,7 +44,8 @@ if ($uploadOk == 0) {
             '" . mysqli_real_escape_string($conn, $_POST['blogauthor']) . "',
             '" . basename($_FILES["blogauthorpic"]["name"]) . "',
             '" . mysqli_real_escape_string($conn, $_POST['monthname']) . "',
-            '" . mysqli_real_escape_string($conn, $_POST['blogcat']) . "'
+            '" . mysqli_real_escape_string($conn, $_POST['blogcat']) . "',
+            '" . mysqli_real_escape_string($conn, $_POST['bloglink']) . "'
         )";       
     } 
         $result = mysqli_query($conn, $query);

@@ -16,6 +16,7 @@
     }
 ?>
 <?php include '../backend/loginForm.php';
+include '../admin/webcontent.php';
 // check if user is logged in by checking the session variable 'id'
 if (!isset($_SESSION['id'])) {
   // if not logged in, redirect to login page
@@ -30,7 +31,7 @@ if (!isset($_SESSION['id'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Luxureem</title>
+    <title>Dashboard | <?php echo $_SESSION['webname'] ?></title>
     <link rel="stylesheet" href="output.css" />
   </head>
   <body>
@@ -40,13 +41,13 @@ if (!isset($_SESSION['id'])) {
       >
         <a href="https://flowbite.com" class="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="img/<?=$_SESSION['weblogo']?>"
             class="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
           <span
             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Luxureem</span
+            ><?php echo $_SESSION['webname'] ?></span
           >
         </a>
         <div class="flex items-center lg:order-2">
@@ -346,13 +347,13 @@ if (!isset($_SESSION['id'])) {
           <div class="mb-6 md:mb-0">
             <a href="https://flowbite.com" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src="img/<?=$_SESSION['weblogo']?>"
                 class="mr-3 h-8"
                 alt="FlowBite Logo"
               />
               <span
                 class="self-center text-2xl font-semibold whitespace-nowrap text-white"
-                >Luxureem</span
+                ><?php echo $_SESSION['webname'] ?></span
               >
             </a>
           </div>
