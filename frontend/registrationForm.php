@@ -275,7 +275,7 @@ include '../admin/webcontent.php';
             <p class="mb-4"><?php echo $_SESSION['webname'] ?> reserves the right to update or modify these terms and conditions at any time without prior notice. Users are encouraged to review the terms regularly. Continued use of the service after changes constitutes acceptance of the updated terms.</p>
 
             
-            <h3>9. Changes to Terms and Conditions</h3>
+            <h3>10. Changes to Terms and Conditions</h3>
             <p class="mb-4">These terms and conditions are governed by and construed in accordance with the laws of our Jurisdiction. Any disputes arising from or in connection with these terms shall be subject to the exclusive jurisdiction of the courts in our Jurisdiction.</p>
             <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="hideModal();">Close</button>
         </div>
