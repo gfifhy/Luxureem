@@ -402,9 +402,7 @@ include '../admin/webcontentAboutus.php';
                 Legal
               </h2>
               <ul class="text-white">
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">Privacy Policy</a>
-                </li>
+             
                 <li>
                   <a href="#" class="hover:underline">Terms &amp; Conditions</a>
                 </li>
