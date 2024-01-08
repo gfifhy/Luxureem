@@ -199,7 +199,6 @@ include '../admin/webcontent.php';
             var reguserChart = new CanvasJS.Chart("reguser", {
                 animationEnabled: true,
                 title: {
-                    text: "Fortune 500 Companies by Month"
                 },
                 axisX: {
                     interval: 1
@@ -207,7 +206,6 @@ include '../admin/webcontent.php';
                 axisY2: {
                     interlacedColor: "rgba(1,77,101,.2)",
                     gridColor: "rgba(1,77,101,.1)",
-                    title: "Number of Companies"
                 },
                 data: [{
                     type: "bar",
