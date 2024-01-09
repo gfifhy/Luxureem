@@ -138,7 +138,7 @@
                     // Output data of each row
                     echo "<table class='w-full border-collapse mb-8'>";
                     echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Sex</th><th class='p-4 text-left'>Phone Number</th><th class='p-4 text-left'>Address</th><th class='p-4 text-left'>Email</th><th class='p-4 text-left'>Appointment Date</th><th class='p-4 text-left'>Service</th><th class='p-4 text-left'>Status</th><th class='p-4 text-left'>Receipt</th></tr>";
+                    echo "<tr><th class='p-4 text-left'>ID</th><th class='p-4 text-left'>Name</th><th class='p-4 text-left'>Sex</th><th class='p-4 text-left'>Phone Number</th><th class='p-4 text-left'>Address</th><th class='p-4 text-left'>Email</th><th class='p-4 text-left'>Appointment Date</th><th class='p-4 text-left'>Service</th><th class='p-4 text-left'>Receipt</th><th class='p-4 text-left'>Status</th><th class='p-4 text-left'>ID Front</th><th class='p-4 text-left'>ID Back</th></tr>";
                     echo "</thead>";
                     echo "<tbody class='text-gray-700'>";
                     while($row = $result->fetch_assoc()) {
@@ -151,8 +151,10 @@
                           echo "<td class='p-4'>" . $row["email"]. "</td>";
                           echo "<td class='p-4'>" . $row["date"]. "</td>";
                           echo "<td class='p-4'>" . $row["service"]. "</td>";
-                          echo "<td class='p-4'>" . $row["status"]. "</td>";
                           echo "<td class='p-4'><img src='../userreceipts/" . $row["receipt"] . "' alt='No Receipt Yet'></td>";
+                          echo "<td class='p-4'>" . $row["status"]. "</td>";
+                          echo "<td class='p-4'><img src='../userupload/" . $row["idfront"] . "' alt='No Uploaded ID'></td>";
+                          echo "<td class='p-4'><img src='../userupload/" . $row["idback"] . "' alt='No Uploaded ID'></td>";
                           echo "</tr>";
                     }
                     echo "</tbody>";
@@ -176,6 +178,11 @@
         style="color: white; background-color: black; border: none; padding: 0.5rem; border-radius: 3px; transition: background-color 0.3s, border 0.3s; border: 1px solid black;"
         onmouseover="this.style.backgroundColor='black'; this.style.color='white'"
         onmouseout="this.style.backgroundColor='white'; this.style.color='black';">
+
+      <input name="notverifybutton" type="submit" value="Not Verified" class="col-start-3"
+        style="color: white; background-color: black; border: none; padding: 0.5rem; border-radius: 3px; transition: background-color 0.3s, border 0.3s; border: 1px solid black;"
+        onmouseover="this.style.backgroundColor='black'; this.style.color='white'"
+        onmouseout="this.style.backgroundColor='white'; this.style.color='black';">
     </div>
  </form>
 </div>
@@ -190,7 +197,18 @@
        } else {
            
        }
-    }       
+    }  
+    
+  if (isset($_POST['notverifybutton'])) {
+    $id = $_POST['IDverify'];
+    $query = "UPDATE `patients` SET `status`='" . mysqli_real_escape_string($connection, $_POST['notverifybutton']) . "' WHERE id=$id";       
+    $result = mysqli_query($connection, $query);
+       if ($result) {
+        
+       } else {
+           
+       }
+    }    
 ?>
 
       </div>

@@ -49,20 +49,22 @@ include '../admin/webcontent.php';
                 <div class="font-medium truncate">
                   <?php echo $_SESSION['email']; ?>
                 </div>
-              </div>
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
-
-              <?php if ($_SESSION['status'] == 'Not Verified'): ?>
-              <li>
-                  <a href="../frontend/productUserDashboard.php"
+              
+              <?php if ($_SESSION['status'] == 'Verified'): ?>
+                <div class="font-medium truncate">
+                      <?php echo $_SESSION['status']; ?>
+                </div>
+                </div>
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+              <?php else: ?>
+                </div>
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+                <li>
+                  <a href="pendingFunction.php"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                       <?php echo $_SESSION['status']; ?>
                   </a>
-              </li>
-              <?php else: ?>
-                  <div class="font-medium truncate">
-                      <?php echo $_SESSION['status']; ?>
-                  </div>
+                </li>
               <?php endif; ?>
 
                 <li>
@@ -153,7 +155,7 @@ include '../admin/webcontent.php';
             <?php echo $_SESSION['herop'] ?>
           </p>
 
-          <a href="#"
+          <a href="services.php"
             class="inline-flex px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
             <?php echo $_SESSION['herob'] ?>
           </a>
