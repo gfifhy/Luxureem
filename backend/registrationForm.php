@@ -12,6 +12,7 @@ if (isset($_POST['subSignup'])) {
     $cellphone = $connection->real_escape_string($_POST['cellphone']);
     $address = $connection->real_escape_string($_POST['address']);
     $email = $connection->real_escape_string($_POST['email']);
+    $status = $connection->real_escape_string($_POST['status']);
     $password = $_POST['password'];
 
     // Check if the email is already in the database
@@ -62,7 +63,7 @@ if (isset($_POST['subSignup'])) {
                  move_uploaded_file($tmp_name, $img_upload_path);
    
                 // Insert the record into the database
-                $insertQuery = "INSERT INTO `patients` (`name`,`picture`,`age`,`sex`,`phonenumber`,`address`, `email`, `password`, `regdate`) VALUES ('$name','$new_img_name','$age','$sex','$cellphone','$address','$email','$hashedPassword', '$currentDateTime')";
+                $insertQuery = "INSERT INTO `patients` (`name`,`picture`,`age`,`sex`,`phonenumber`,`address`, `email`, `password`, `regdate`,`status`) VALUES ('$name','$new_img_name','$age','$sex','$cellphone','$address','$email','$hashedPassword', '$currentDateTime','$status')";
                 $resultInsert = $connection->query($insertQuery);
                 if ($resultInsert) {
                     // Redirect to index.html after successful registration

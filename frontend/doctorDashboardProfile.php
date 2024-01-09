@@ -123,7 +123,7 @@ include '../admin/webcontent.php';
           // Output data of each row
           echo "<table class='w-full border-collapse mb-8'>";
           echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-          echo "<tr><th class='p-4 text-left'>Blog ID</th><th class='p-4 text-left'>Title</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Blog Picture</th></tr>";
+          echo "<tr><th class='p-4 text-left'>Service Name</th><th class='p-4 text-left'>Price</th><th class='p-4 text-left'>Sales</th><th class='p-4 text-left'>Total</th></tr>";
           echo "</thead>";
           echo "<tbody class='text-gray-700'>";
           while ($row = $result->fetch_assoc()) {
@@ -154,6 +154,7 @@ include '../admin/webcontent.php';
         window.onload = function () {
           var reguserChart = new CanvasJS.Chart("reguser", {
             animationEnabled: true,
+            exportEnabled: true,
             title: {
             },
             axisX: {
@@ -187,6 +188,7 @@ include '../admin/webcontent.php';
 
           var genderChart = new CanvasJS.Chart("genderchart", {
             theme: "light2",
+            exportEnabled: true,
             animationEnabled: true,
             title: {
               text: "Gender Distribution"
@@ -194,7 +196,7 @@ include '../admin/webcontent.php';
             data: [{
               type: "doughnut",
               indexLabel: "{symbol} - {y}",
-              yValueFormatString: "#,##0.0\"%\"",
+              yValueFormatString: "#,##0",
               showInLegend: true,
               legendText: "{label} : {y}",
               dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
@@ -209,8 +211,11 @@ include '../admin/webcontent.php';
             title: {
               text: "Top products"
             },
-            axisY: {
-              includeZero: true
+            axisX: {
+              labelFontSize: 12,
+              labelFontColor: "grey",
+              labelAngle: -45,
+              interval: 1
             },
             data: [{
               type: "column",
@@ -226,7 +231,7 @@ include '../admin/webcontent.php';
                 if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
                     ?>
-                                        { y: <?php echo $row["sales"] ?>, label: "<?php echo $row["barbiename"] ?>" },
+                      { y: <?php echo $row["sales"] ?>, label: "<?php echo $row["barbiename"] ?>" },
                     <?php
                   }
                 }

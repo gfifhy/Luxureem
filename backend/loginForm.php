@@ -27,7 +27,9 @@ if (isset($_POST['subLogin'])) {
             $_SESSION['name'] = $row['name'];
             $_SESSION['phonenumber'] = $row['phonenumber'];
             $_SESSION['address'] = $row['address'];
-            header("Location: ../frontEnd/productUserDashboard.php?id=");
+            $_SESSION['status'] = $row['status'];
+
+            header("Location: ../frontEnd/index.php?id=");
         } else {
             // Password is incorrect
             array_push($errors,"The Email/Password is incorrect");

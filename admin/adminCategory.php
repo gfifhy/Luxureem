@@ -1,4 +1,4 @@
-<?php include 'adminSystemBlogs.php';
+<?php include 'adminSystemCategory.php';
 include 'webcontent.php';
 ?>
 
@@ -77,7 +77,7 @@ include 'webcontent.php';
         </li>
 
         <li>
-          <a href="adminBlogs.php"
+          <a href="adminCategory.php"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg
               class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -85,7 +85,7 @@ include 'webcontent.php';
               <path
                 d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
             </svg>
-            <span class="flex-1 ms-3 whitespace-nowrap">Blogs</span>
+            <span class="flex-1 ms-3 whitespace-nowrap">Category</span>
           </a>
         </li>
 
@@ -106,40 +106,28 @@ include 'webcontent.php';
     </div>
   </aside>
 
-  <!-- 1st Div Set -->
   <div class="p-4 sm:ml-64">
-    <div class="p-4 ">
-
+    <div class="p-4 border-2 border-black-1000 border-dashed rounded-lg dark:border-gray-700">
+    <!--Main Div-->
 
       <div class=" p-6">
         <?php
-        $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
-        if ($connection->connect_error) {
-          echo "Connection error: " . $connection->connect_error;
-        }
         // SQL query to select data
-        $sql = "SELECT * FROM blogs";
-        $result = $connection->query($sql);
+        $sql = "SELECT * FROM cattable";
+        $result = $conn->query($sql);
 
         // Check if the query returns any rows
         if ($result->num_rows > 0) {
           // Output data of each row
           echo "<table class='w-full border-collapse mb-8'>";
           echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
-          echo "<tr><th class='p-4 text-left'>Blog ID</th><th class='p-4 text-left'>Title</th><th class='p-4 text-left'>Description</th><th class='p-4 text-left'>Blog Picture</th><th class='p-4 text-left'>Author</th><th class='p-4 text-left'>Author Picture</th><th class='p-4 text-left'>Blog date</th><th class='p-4 text-left'>Blog Category</th><th class='p-4 text-left'>Link</th></tr>";
+          echo "<tr><th class='p-4 text-left'>Category ID</th><th class='p-4 text-left'>Category Name</th></tr>";
           echo "</thead>";
           echo "<tbody class='text-gray-700'>";
           while ($row = $result->fetch_assoc()) {
             echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
-            echo "<td class='p-4'>" . $row["blogid"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogtitle"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogdesc"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogpic"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogauthor"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogauthorpic"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogdate"] . "</td>";
-            echo "<td class='p-4'>" . $row["blogcat"] . "</td>";
-            echo "<td class='p-4'>" . $row["bloglink"] . "</td>";
+            echo "<td class='p-4'>" . $row["catid"] . "</td>";
+            echo "<td class='p-4'>" . $row["catname"] . "</td>";
             echo "</tr>";
           }
           echo "</tbody>";
@@ -150,97 +138,38 @@ include 'webcontent.php';
         ?>
       </div>
 
-      <!-- 2nd Div Set -->
-      <form action="adminBlogs.php" method="post" enctype="multipart/form-data">
-        <div class="mt-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-          <h2 class="text-2xl font-semibold mb-4">Blogs</h2>
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="grid grid-cols-1 gap-4 mb-4">
+            <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
+              <h2 class="text-2xl font-semibold mb-4">Adding Categories</h2>
+              <label for="addcat" class="col-start-1">Category Name:</label>
+              <input type="text" id="addcat" name="addcat" class="col-start-2">
 
-          <div class="mb-4">
-            <label for="blogtitle" class="block text-gray-700">Blog Title:</label>
-            <input type="text" id="blogtitle" name="blogtitle"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4">
-            <label for="blogdesc" class="block text-gray-700">Blog Description:</label>
-            <input type="text" id="blogdesc" name="blogdesc"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4">
-            <label for="blogpic" class="block text-gray-700">Blog Picture:</label>
-            <input type="file" id="blogpic" name="blogpic"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4">
-            <label for="blogauthor" class="block text-gray-700">Blog Author:</label>
-            <input type="text" id="blogauthor" name="blogauthor"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4">
-            <label for="blogauthorpic" class="block text-gray-700">Author Picture:</label>
-            <input type="file" id="blogauthorpic" name="blogauthorpic"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4">
-            <label for="blogdate">Month and Year:</label><br>
-            <input type="month" id="blogdate" name="blogdate" onchange="displayMonthNameAndYear()"><br>
-          </div>
-          <input type="hidden" id="monthname" name="monthname" readonly><br>
-
-          <div class="mb-4">
-            <label for="blogcat">Select an Option:</label><br>
-            <select id="blogcat" name="blogcat">
-              <option value="main">Main</option>
-              <option value="other">Other</option>
-            </select><br>
-          </div>
-
-          <div class="mb-4">
-            <label for="bloglink" class="block text-gray-700">Link:</label>
-            <input type="text" id="bloglink" name="bloglink"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4 flex items-center justify-between">
-            <input type="submit" name="update1" value="Submit"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          </div>
+              <input name="insert" type="submit" value="Submit" class="col-start-3"
+                style="color: white; background-color: black; border: none; padding: 0.5rem; border-radius: 3px; transition: background-color 0.3s, border 0.3s; border: 1px solid black;"
+                onmouseover="this.style.backgroundColor='black'; this.style.color='white'"
+                onmouseout="this.style.backgroundColor='white'; this.style.color='black';">
         </div>
       </form>
 
-      <!-- 2nd Div Set -->
-      <form action="adminBlogs.php" method="post" enctype="multipart/form-data">
-        <div class="mt-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-          <h2 class="text-2xl font-semibold mb-4">Delete</h2>
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="grid grid-cols-1 gap-4 mb-4">
+            <div class="grid grid-cols-5 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded">
+              <h2 class="text-2xl font-semibold mb-4">Delete Categories</h2>
+              <label for="delcat" class="col-start-1">Category ID:</label>
+              <input type="text" id="delcat" name="delcat" class="col-start-2">
 
-          <div class="mb-4">
-            <label for="blogid" class="block text-gray-700">ID:</label>
-            <input type="text" id="blogid" name="blogid"
-              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-          </div>
-
-          <div class="mb-4 flex items-center justify-between">
-            <input type="submit" name="delete" value="Submit"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          </div>
+              <input name="delete" type="submit" value="Submit" class="col-start-3"
+                style="color: white; background-color: black; border: none; padding: 0.5rem; border-radius: 3px; transition: background-color 0.3s, border 0.3s; border: 1px solid black;"
+                onmouseover="this.style.backgroundColor='black'; this.style.color='white'"
+                onmouseout="this.style.backgroundColor='white'; this.style.color='black';">
+        </div>
       </form>
 
+    <!--Main Div-->
     </div>
   </div>
-  <script>
-    function displayMonthNameAndYear() {
-      var monthAndYear = document.getElementById('blogdate').value;
-      var monthName = monthAndYear.substr(5, 7);
-      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var year = monthAndYear.substr(0, 4);
 
-      document.getElementById('monthname').value = monthNames[monthName - 1] + ' ' + year;
-    }
-  </script>
 </body>
 
 </html>

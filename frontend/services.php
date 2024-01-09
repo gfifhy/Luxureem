@@ -75,7 +75,6 @@ include '../admin/webcontent.php';
           <?php
         }
         ?>
-
         <button data-collapse-toggle="mobile-menu-2" type="button"
           class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="mobile-menu-2" aria-expanded="false">
@@ -100,38 +99,10 @@ include '../admin/webcontent.php';
               aria-current="page">Home</a>
           </li>
           <li>
-            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-              class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-              Services
-              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="m1 1 4 4 4-4" />
-              </svg>
-            </button>
-            <!-- Dropdown menu -->
-            <div id="dropdownNavbar"
-              class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                <li>
-                  <a href="../frontend/productGluta.php"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Glutathione
-                    Services</a>
-                </li>
-                <li>
-                  <a href="../frontend/productVItamin.php"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Vitamin
-                    Services</a>
-                </li>
-                <li>
-                  <a href="../frontend/productBarbie.php"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Aesthetic
-                    Services</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
+            <a href="services.php"
+                class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
+                aria-current="page">Services</a>
+            </li>
             <a href="../frontend/aboutUs.php"
               class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>
           </li>
@@ -160,23 +131,90 @@ include '../admin/webcontent.php';
     <div class="px-4 mx-auto my-6 max-w-screen-xl lg:px-6">
       <div class="max-w-screen-md mb-8 lg:mb-16 py-8">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-          Aesthetic Haven for Timeless Beauty
+          Glutathione Infusions for Timeless Beauty
         </h2>
         <p class="text-gray-500 sm:text-xl dark:text-gray-400">
-          Discover timeless beauty in every detail
+          Enhance your glow with our high-quality Glutathione offerings.
         </p>
       </div>
-      <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
 
+<?php
+    // PHP to get value from dropdown
+    if (isset($_POST['submit'])) {
+        $category = $_POST['barbiecat'];
+    }
+?>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <label for="barbiecat" class="col-start-1">Category:</label>  
+    <select id="barbiecat" class="col-start-2" name="barbiecat">
         <?php
-        $category = "barbie";
-        $sql = "SELECT barbieid, barbiecat, barbiename, barbiedesc, barbiepic, barbieprice FROM barbie WHERE barbiecat = ?";
+            // SQL query to select data
+            $sql = "SELECT `catname` FROM cattable";
+            $result = $connection->query($sql);
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                ?>
+                 <option value="<?php echo $row['catname']; ?>"><?php echo $row['catname']; ?></option>
+                <?php
+              }
+            }
+        ?>
+    </select>
+
+    <input type="submit" name="submit" value="Submit">
+</form>
+<div class="my-4 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+
+<?php
+    if (isset($_POST['submit'])) {
+        $sql = "SELECT * FROM barbie WHERE barbiecat = ?";
         $stmt = $connection->prepare($sql);
         $stmt->bind_param("s", $category);
         $stmt->execute();
         $result = $stmt->get_result();
-
         if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+              ?>
+              <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
+                  <img class="rounded-t-lg" src="../productupload/<?= $row['barbiepic'] ?>" alt="" />
+                </a>
+                <div class="p-5">
+                  <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      <?php echo $row['barbiename']; ?>
+                    </h5>
+                  </a>
+                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <?php echo "₱ " . $row['barbieprice']; ?><br>
+                    <?php echo $row['barbiedesc']; ?>
+                  </p>
+                  <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-black-800 focus:ring-4 focus:outline-none focus:ring-black-300 dark:bg-black-600 dark:hover:bg-black-700 dark:focus:ring-black-800"
+                    style="color:black">
+                    Buy now
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                      fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <?php
+            }
+        } else {
+            echo "0 results";
+        }
+        $connection->close();
+    } else {
+      $sql = "SELECT * FROM barbie";
+      $stmt = $connection->prepare($sql);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      if ($result->num_rows > 0) {
           // output data of each row
           while ($row = $result->fetch_assoc()) {
             ?>
@@ -208,17 +246,16 @@ include '../admin/webcontent.php';
             </div>
             <?php
           }
-        } else {
+      } else {
           echo "0 results";
-        }
-        $connection->close();
-        ?>
+      }
+      $connection->close();
+  } 
+?>
 
       </div>
   </section>
-
-
-
+  
   <!--footer section-->
   <footer class="p-4 bg-gray-800 sm:p-6">
     <div class="mx-auto max-w-screen-xl">

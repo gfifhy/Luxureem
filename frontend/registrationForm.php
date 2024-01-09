@@ -225,6 +225,14 @@ include '../admin/webcontent.php';
             </div>
           </div>
 
+          <input
+                type="hidden"
+                id="status"
+                name="status"
+                class="flex items-start"
+                value="Not Verified";
+              />
+
           <div class="flex items-start">
             <div class="flex items-center h-5">
               <input

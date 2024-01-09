@@ -77,7 +77,7 @@ include 'webcontent.php';
         </li>
 
         <li>
-          <a href="adminBlogs.php"
+          <a href="adminCategory.php"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg
               class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -85,7 +85,7 @@ include 'webcontent.php';
               <path
                 d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
             </svg>
-            <span class="flex-1 ms-3 whitespace-nowrap">Blogs</span>
+            <span class="flex-1 ms-3 whitespace-nowrap">Category</span>
           </a>
         </li>
 
@@ -113,13 +113,13 @@ include 'webcontent.php';
 
       <div class="flex items-center justify-center my-4 rounded bg-gray-50 dark:bg-gray-800">
         <?php
-        $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
-        if ($connection->connect_error) {
-          echo "Connection error: " . $connection->connect_error;
+        $conn = new mysqli('localhost', 'root', '', 'luxureemdb');
+        if ($conn->connect_error) {
+          echo "Connection error: " . $conn->connect_error;
         }
         // SQL query to select data
         $sql = "SELECT * FROM barbie";
-        $result = $connection->query($sql);
+        $result = $conn->query($sql);
 
         // Check if the query returns any rows
         if ($result->num_rows > 0) {
@@ -156,9 +156,18 @@ include 'webcontent.php';
 
             <label for="barbiecat" class="col-start-1">Barbie Category:</label>
             <select id="barbiecat" class="col-start-2" name="barbiecat">
-              <option value="gluta">gluta</option>
-              <option value="vitamin">vitamin</option>
-              <option value="barbie">barbie</option>
+            <?php
+                // SQL query to select data
+                $sql = "SELECT `catname` FROM cattable";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                    ?>
+                      <option value="<?php echo $row['catname']; ?>"><?php echo $row['catname']; ?></option>
+                    <?php
+                  }
+                }
+                ?>
             </select>
 
             <label for="name" class="col-start-1">Name:</label>
