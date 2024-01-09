@@ -17,6 +17,7 @@
 ?>
 <?php include '../backend/loginForm.php';
 include '../admin/webcontent.php';
+include '../backend/payment.php';
 // check if user is logged in by checking the session variable 'id'
 if (!isset($_SESSION['id'])) {
   // if not logged in, redirect to login page
@@ -294,8 +295,10 @@ if (!isset($_SESSION['id'])) {
             <p><?php echo $barbiedesc['barbiedesc']; ?></p>
           </div>
 
-          <form action="../backend/payment.php" method="post" enctype="multipart/form-data">
+          <form action="" method="post" enctype="multipart/form-data">
+          
           <div class="mb-4">
+          <?php include ('../backend/errors.php')?>
             <input type="hidden" name="barbieid" value="<?php echo $sales['barbieid']; ?>">
             <input type="hidden" name="sales" value="<?php echo $sales['sales']; ?>">
             <input type="hidden" name="barbiename" value="<?php echo $barbiename['barbiename']; ?>">

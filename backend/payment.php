@@ -1,5 +1,4 @@
 <?php
-include '../backend/loginForm.php';
 // database configuration
 $servername = "localhost";
 $username = "root";
@@ -13,6 +12,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
  die("Connection failed: " . $conn->connect_error);
 }
+
+// Create an array to hold any errors
+$errors = array();
 
 if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
     $barbiepic = ($_FILES['image']['error'] === 0 && in_array(strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION)), array('jpg', 'jpeg', 'png'))) ? basename($_FILES['image']['name']) : null;
@@ -29,7 +31,7 @@ $barbieid = $_POST['barbieid'];
 
 // create query
 $sql = "UPDATE patients SET `date`='$dob', `service`='$barbiename', receipt='$barbiepic' WHERE id='$pid'";
-$sql2 = "UPDATE barbie SET  `sales` = `sales` + 1  WHERE barbieid='$barbieid'";
+$sql2 = "UPDATE barbie SET `sales` = `sales` + 1 WHERE barbieid='$barbieid'";
 
 // Execute both queries
 if ($conn->multi_query($sql) === TRUE && $conn->multi_query($sql2) === TRUE) {
@@ -39,6 +41,9 @@ if ($conn->multi_query($sql) === TRUE && $conn->multi_query($sql2) === TRUE) {
     echo "Multi query failed: (" . $conn->errno . ") " . $conn->error;
 }
 
+    } else {
+        // File is invalid, push an error to the array
+        array_push($errors, "Invalid file type");
     }
 }
 
