@@ -305,98 +305,17 @@ include '../admin/webcontent.php';
           </div>
           <div>
             <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-              Legal
+              Help Center
             </h2>
             <ul class="text-white">
+              <li class="mb-4">
+                <a href="../frontend/aboutUs.php" class="hover:underline">Facebook</a>
+              </li>
               <li>
-                <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#termsModal"
-                  onclick="showModal();">Terms and Conditions</a>
-                <div id="termsModal" class="fixed inset-0 overflow-y-auto hidden">
-                  <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-white text-black p-6 rounded-lg">
-                      <h2 class="text-lg font-semibold mb-4">Terms and Conditions</h2>
-                      <h3>1. Acceptance of Terms</h3>
-                      <p class="mb-4">By accessing and using the web-based glutathione appointment service provided by
-                        <?php echo $_SESSION['webname'] ?>, you agree to be bound by these terms and conditions. If you
-                        do not agree with any part of these terms, you may not use the service.
-                      </p>
-
-                      <h3>2. Service Description</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> provides an online platform for scheduling and managing
-                        appointments related to glutathione treatments. The service includes but is not limited to
-                        appointment scheduling.</h3>
-
-                      <h3>3. User Eligibility</h3>
-                      <p class="mb-4">You must be at least 18 years old to use our service. By using the service, you
-                        represent and warrant that you are of legal age and have the capacity to enter into a binding
-                        agreement.</p>
-
-                      <h3>4. Appointment Booking</h3>
-                      <p class="mb-4">Users can book appointments through the
-                        <?php echo $_SESSION['webname'] ?> website. It is the user's responsibility to provide accurate
-                        and up-to-date information during the booking process.
-                        <?php echo $_SESSION['webname'] ?> is not responsible for any consequences resulting from
-                        inaccurate information.
-                      </p>
-
-                      <h3>5. Fees and Payments</h3>
-                      <p class="mb-4">Certain glutathione treatments may have associated fees. Users agree to pay the
-                        specified fees for the services they book. Payment details and terms are provided during the
-                        booking process.</p>
-
-                      <h3>6. Privacy and Security</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> takes the privacy and security of user information seriously.
-                        Our Privacy Policy outlines how we collect, use, and protect your personal information. By using
-                        our service, you agree to the terms of our Privacy Policy.
-                      </p>
-
-                      <h3>7. User Responsibilities</h3>
-                      <p class="mb-4">Users are responsible for maintaining the confidentiality of their account
-                        information, including login credentials. Any activity occurring under a user's account is their
-                        responsibility. Users must notify
-                        <?php echo $_SESSION['webname'] ?> immediately of any unauthorized use of their account.
-                      </p>
-
-                      <h3>8. Limitation of Liability</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> is not liable for any direct, indirect, incidental, special,
-                        or consequential damages resulting from the use of our service or the inability to use the
-                        service, including but not limited to damages for loss of profits, data, or other intangible
-                        losses.
-                      </p>
-
-                      <h3>9. Changes to Terms and Conditions</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> reserves the right to update or modify these terms and
-                        conditions at any time without prior notice. Users are encouraged to review the terms regularly.
-                        Continued use of the service after changes constitutes acceptance of the updated terms.
-                      </p>
-
-
-                      <h3>10. Changes to Terms and Conditions</h3>
-                      <p class="mb-4">These terms and conditions are governed by and construed in accordance with the
-                        laws of our Jurisdiction. Any disputes arising from or in connection with these terms shall be
-                        subject to the exclusive jurisdiction of the courts in our Jurisdiction.</p>
-                      <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                        onclick="hideModal();">Close</button>
-                    </div>
-                  </div>
-                </div>
-                <script>
-                  function showModal() {
-                    var modal = document.getElementById('termsModal');
-                    modal.classList.remove('hidden');
-                  }
-
-                  function hideModal() {
-                    var modal = document.getElementById('termsModal');
-                    modal.classList.add('hidden');
-                  }
-                </script>
+                <a href="../frontend/blogs.php" class="hover:underline">Gmail</a>
               </li>
             </ul>
+
           </div>
         </div>
       </div>

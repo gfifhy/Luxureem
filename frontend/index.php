@@ -1,575 +1,369 @@
-<?php 
+<?php
 include '../backend/loginForm.php';
 include '../admin/webcontent.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo $_SESSION['webname'] ?> | home</title>
-    <link rel="stylesheet" href="output.css" />
-  </head>
-  <body>
-    <!--navbar and hero section-->
-    <header>
-      <!--navbar-->
-      <nav class="bg-transparent border-gray-200 px-4 lg:px-6 py-2.5">
-        <div
-          class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
-        >
-          <a href="#" class="flex items-center">
-            <img
-              src="img/<?=$_SESSION['weblogo']?>"
-              class="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
-            />
-            <span
-              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-              ><?php echo $_SESSION['webname'] ?></span
-            >
-          </a>
-          
-          <div class="flex items-center lg:order-2">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <?php echo $_SESSION['webname'] ?> | home
+  </title>
+  <link rel="stylesheet" href="output.css" />
+</head>
+
+<body>
+  <!--navbar and hero section-->
+  <header>
+    <!--navbar-->
+    <nav class="bg-transparent border-gray-200 px-4 lg:px-6 py-2.5">
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <a href="#" class="flex items-center">
+          <img src="img/<?= $_SESSION['weblogo'] ?>" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+            <?php echo $_SESSION['webname'] ?>
+          </span>
+        </a>
+
+        <div class="flex items-center lg:order-2">
           <?php
-              if(isset($_SESSION['id'])){
-                 ?>
-                 <button
-                    id="dropdownUserAvatarButton"
-                    data-dropdown-toggle="dropdownAvatar"
-                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    type="button"
-                  >
-                    <span class="sr-only">Open user menu</span>
-                    <img
-                      class="w-8 h-8 rounded-full"
-                      src="../userupload/<?=$_SESSION['picture']?>"
-                    >
-                  </button>
-
-                  <!-- Dropdown menu -->
-                  <div
-                    id="dropdownAvatar"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-                  >
-                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                      <div><?php echo $_SESSION['name']; ?></div>
-                      <div class="font-medium truncate"><?php echo $_SESSION['email']; ?></div>
-                    </div>
-                    <ul
-                      class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownUserAvatarButton"
-                    >
-                      <li>
-                        <a
-                          href="userDashboard.php"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >Profile</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="../frontend/productUserDashboard.php"
-                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >Book an appointment
-                        </a>
-                      </li>
-                    </ul>
-                    <div class="py-2">
-                      <a
-                        href="../backend/logout.php"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                        >Sign out</a
-                      >
-                      
-                    </div>
-                  </div>
-
-                 <?php
-              } else {
-                 ?>            
-                 <a
-                 href="../frontend/loginForm.php"
-                 class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-                 >Get started</a>
-                 <?php
-              }
+          if (isset($_SESSION['id'])) {
             ?>
-            
-            <button
-              data-collapse-toggle="mobile-menu-2"
-              type="button"
-              class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="mobile-menu-2"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Open main menu</span>
-              <svg
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <svg
-                class="hidden w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
+            <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
+              class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              type="button">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="../userupload/<?= $_SESSION['picture'] ?>">
             </button>
-          </div>
-          <div
-            class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
-          >
-            <ul
-              class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
-            >
-              <li>
-                <a
-                  href="../frontend/index.php"
-                  class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
-                  aria-current="page"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <button
-                  id="dropdownNavbarLink"
-                  data-dropdown-toggle="dropdownNavbar"
-                  class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-                >
-                  Services
-                  <svg
-                    class="w-2.5 h-2.5 ms-2.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 4 4 4-4"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown menu -->
-                <div
-                  id="dropdownNavbar"
-                  class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-                >
-                  <ul
-                    class="py-2 text-sm text-gray-700 dark:text-gray-400"
-                    aria-labelledby="dropdownLargeButton"
-                  >
-                    <li>
-                      <a
-                        href="../frontend/productGluta.php"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >Glutathione Services</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="../frontend/productVItamin.php"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >Vitamin Services</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="../frontend/productBarbie.php"
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >Aesthetic Services</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a
-                  href="../frontend/aboutUs.php"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="../frontend/blogs.php"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                  >Blogs</a
-                >
-              </li>
-              <div class="md:hidden w-full md:w-auto" id="navbar-default">
-                <!-- ... existing links ... -->
-                <a
-                  href="../frontend/loginForm.php"
-                  class="block py-2 px-3 text-black rounded md:p-0"
-                  >Get Started</a
-                >
-              </div>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!--Hero Section-->
-      <section>
-        <div class="grid max-w-screen-xl lg:gap-8 xl:gap-0 lg:grid-cols-12">
-          <div class="lg:mt-0 lg:col-span-5 lg:flex">
-            <img
-              class="h-auto max-w-full"
-              src="img/<?=$_SESSION['webheaderpic']?>"
-              alt="image description"
-            />
-          </div>
-          <div class="place-self-center mx-4 my-4 lg:col-span-7">
-            <h1
-              class="font-serif max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl"
-            >
-              <?php echo $_SESSION['heroh'] ?>
-            </h1>
-            <p
-              class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
-            >
-              <?php echo $_SESSION['herop'] ?>
-            </p>
 
-            <a
-              href="#"
-              class="inline-flex px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-            >
-              <?php echo $_SESSION['herob'] ?>
-            </a>
-          </div>
+            <!-- Dropdown menu -->
+            <div id="dropdownAvatar"
+              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+              <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                <div>
+                  <?php echo $_SESSION['name']; ?>
+                </div>
+                <div class="font-medium truncate">
+                  <?php echo $_SESSION['email']; ?>
+                </div>
+              </div>
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+                <li>
+                  <a href="userDashboard.php"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                </li>
+                <li>
+                  <a href="../frontend/productUserDashboard.php"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Book an
+                    appointment
+                  </a>
+                </li>
+              </ul>
+              <div class="py-2">
+                <a href="../backend/logout.php"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                  out</a>
+
+              </div>
+            </div>
+
+            <?php
+          } else {
+            ?>
+            <a href="../frontend/loginForm.php"
+              class=" md:block text-black bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Get
+              started</a>
+            <?php
+          }
+          ?>
+
+          <button data-collapse-toggle="mobile-menu-2" type="button"
+            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="mobile-menu-2" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
         </div>
-      </section>
-    </header>
-    
-    <!--pricing section-->
-    <section class="bg-white dark:bg-gray-900">
-      <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="max-w-screen-md mb-8 lg:mb-16">
-          <h2
-            class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            <?php echo $_SESSION['toph'] ?>
-          </h2>
-          <p class="text-gray-500 sm:text-xl dark:text-gray-400">
-            <?php echo $_SESSION['topp'] ?>
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+          <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <li>
+              <a href="../frontend/index.php"
+                class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
+                aria-current="page">Home</a>
+            </li>
+            <li>
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                Services
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 4 4 4-4" />
+                </svg>
+              </button>
+              <!-- Dropdown menu -->
+              <div id="dropdownNavbar"
+                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="../frontend/productGluta.php"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Glutathione
+                      Services</a>
+                  </li>
+                  <li>
+                    <a href="../frontend/productVItamin.php"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Vitamin
+                      Services</a>
+                  </li>
+                  <li>
+                    <a href="../frontend/productBarbie.php"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Aesthetic
+                      Services</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="../frontend/aboutUs.php"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>
+            </li>
+            <li>
+              <a href="../frontend/blogs.php"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Blogs</a>
+            </li>
+            <div class="md:hidden w-full md:w-auto" id="navbar-default">
+              <!-- ... existing links ... -->
+              <a href="../frontend/loginForm.php" class="block py-2 px-3 text-black rounded md:p-0">Get Started</a>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Hero Section-->
+    <section>
+      <div class="grid max-w-screen-xl lg:gap-8 xl:gap-0 lg:grid-cols-12">
+        <div class="lg:mt-0 lg:col-span-5 lg:flex">
+          <img class="h-auto max-w-full" src="img/<?= $_SESSION['webheaderpic'] ?>" alt="image description" />
+        </div>
+        <div class="place-self-center mx-4 my-4 lg:col-span-7">
+          <h1
+            class="font-serif max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
+            <?php echo $_SESSION['heroh'] ?>
+          </h1>
+          <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+            <?php echo $_SESSION['herop'] ?>
           </p>
+
+          <a href="#"
+            class="inline-flex px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+            <?php echo $_SESSION['herob'] ?>
+          </a>
         </div>
-        <div
-          class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0"
-        >
+      </div>
+    </section>
+  </header>
+
+  <!--pricing section-->
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="max-w-screen-md mb-8 lg:mb-16">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <?php echo $_SESSION['toph'] ?>
+        </h2>
+        <p class="text-gray-500 sm:text-xl dark:text-gray-400">
+          <?php echo $_SESSION['topp'] ?>
+        </p>
+      </div>
+      <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
         <?php
-        $sql = "SELECT * FROM barbie ORDER BY sales DESC LIMIT 3";       
+        $sql = "SELECT * FROM barbie ORDER BY sales DESC LIMIT 3";
         $stmt = $connection->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-        ?>
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
-                        <img
-                            class="rounded-t-lg"
-                            src="../productupload/<?= $row['barbiepic']?>"
-                            alt=""
-                        />
-                    </a>
-                    <div class="p-5">
-                        <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>" >
-                            <h5
-                                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                            >
-                                <?php echo $row['barbiename']; ?>
-                            </h5>
-                        </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            <?php echo $row['barbiedesc']; ?>
-                        </p>
-                        <a
-                            href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-black rounded-lg hover:bg-black focus:ring-4 focus:outline-none focus:ring-black dark:bg-black dark:hover:bg-black dark:focus:ring-black"
-                        >
-                        Buy now
-                            <svg
-                                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 14 10"
-                            >
-                                <path
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                                />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-        <?php
-            }
+          // output data of each row
+          while ($row = $result->fetch_assoc()) {
+            ?>
+            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
+                <img class="rounded-t-lg" src="../productupload/<?= $row['barbiepic'] ?>" alt="" />
+              </a>
+              <div class="p-5">
+                <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    <?php echo $row['barbiename']; ?>
+                  </h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  <?php echo $row['barbiedesc']; ?>
+                </p>
+                <a href="../frontend/payment.php?barbieid=<?php echo $row['barbieid']; ?>"
+                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-black rounded-lg hover:bg-black focus:ring-4 focus:outline-none focus:ring-black dark:bg-black dark:hover:bg-black dark:focus:ring-black">
+                  Buy now
+                  <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M1 5h12m0 0L9 1m4 4L9 9" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <?php
+          }
         } else {
-            echo "0 results";
+          echo "0 results";
         }
         $connection->close();
         ?>
       </div>
-    </section>
+  </section>
 
-    <!-- gallery section -->
-    <section class="bg-white dark:bg-gray-800">
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8"
-        >
-          <!-- pic1 -->
-          <div
-            class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white"
-          >
-            <img
-              class="w-full h-100 object-cover mb-4"
-              src="img/<?=$_SESSION['gallerypic1']?>"
-              alt="Gallery Image 1"
-            />
-          </div>
+  <!-- gallery section -->
+  <section class="bg-white dark:bg-gray-800">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+        <!-- pic1 -->
+        <div class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white">
+          <img class="w-full h-100 object-cover mb-4" src="img/<?= $_SESSION['gallerypic1'] ?>" alt="Gallery Image 1" />
+        </div>
 
-          <!-- pic2 -->
-          <div
-            class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white"
-          >
-            <img
-              class="w-full h-64 object-cover mb-4"
-              src="img/<?=$_SESSION['gallerypic2']?>"
-              alt="Gallery Image 2"
-            />
-            <div class="mt-2">
-              <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
-                <?php echo $_SESSION['gallerylabel1'] ?>
-              </p>
-              <p class="text-gray-700 dark:text-gray-300">
-                <?php echo $_SESSION['galleryldesc1'] ?>
-              </p>
-            </div>
-          </div>
-
-          <!-- pic3  -->
-          <div
-            class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white"
-          >
-            <img
-              class="w-full h-64 object-cover mb-4 ml-auto"
-              src="img/<?=$_SESSION['gallerypic3']?>"
-              alt="Gallery Image 3"
-            />
-            <div class="mt-2">
-              <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
-                <?php echo $_SESSION['gallerylabel2'] ?>
-              </p>
-              <p class="text-lg text-gray-700 dark:text-gray-300">
-                <?php echo $_SESSION['galleryldesc2'] ?>
-              </p>
-            </div>
-          </div>
-
-          <!-- pic4  -->
-          <div
-            class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white"
-          >
-            <img
-              class="w-full h-100 object-cover mb-4"
-              src="img/<?=$_SESSION['gallerypic4']?>"
-              alt="Gallery Image 4"
-            />
+        <!-- pic2 -->
+        <div class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white">
+          <img class="w-full h-64 object-cover mb-4" src="img/<?= $_SESSION['gallerypic2'] ?>" alt="Gallery Image 2" />
+          <div class="mt-2">
+            <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
+              <?php echo $_SESSION['gallerylabel1'] ?>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <?php echo $_SESSION['galleryldesc1'] ?>
+            </p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!--faq section-->
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow my-6">
-      <div class="sm:hidden">
-        <label for="tabs" class="sr-only">Select tab</label>
-        <select
-          id="tabs"
-          class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        >
-          <option>FAQ</option>
-        </select>
+        <!-- pic3  -->
+        <div class="flex flex-col p-6 text-left bg-white rounded-lg dark:text-white">
+          <img class="w-full h-64 object-cover mb-4 ml-auto" src="img/<?= $_SESSION['gallerypic3'] ?>"
+            alt="Gallery Image 3" />
+          <div class="mt-2">
+            <p class="font-bold text-4xl text-gray-700 dark:text-gray-300">
+              <?php echo $_SESSION['gallerylabel2'] ?>
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300">
+              <?php echo $_SESSION['galleryldesc2'] ?>
+            </p>
+          </div>
+        </div>
+
+        <!-- pic4  -->
+        <div class="flex flex-col p-6 text-center bg-white rounded-lg dark:text-white">
+          <img class="w-full h-100 object-cover mb-4" src="img/<?= $_SESSION['gallerypic4'] ?>" alt="Gallery Image 4" />
+        </div>
       </div>
-      <ul
-        class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse"
-        id="fullWidthTab"
-        data-tabs-toggle="#fullWidthTabContent"
-        role="tablist"
-      >
-        <li class="w-full">
-          <button
-            id="faq-tab"
-            data-tabs-target="#faq"
-            type="button"
-            role="tab"
-            aria-controls="faq"
-            aria-selected="false"
-            class="inline-block w-full p-4 rounded-se-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600"
-          >
-            Frequently asked questions
-          </button>
-        </li>
-      </ul>
-      <div
-        id="fullWidthTabContent"
-        class="border-t border-gray-200 dark:border-gray-600"
-      >
-        <div
-          class="hidden p-4 bg-white rounded-lg dark:bg-gray-800"
-          id="faq"
-          role="tabpanel"
-          aria-labelledby="faq-tab"
-        >
-          <div
-            id="accordion-flush"
-            data-accordion="collapse"
-            data-active-classes="bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-            data-inactive-classes="text-gray-500 dark:text-gray-400"
-          >
-            <h2 id="accordion-flush-heading-1">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full py-5 font-medium text-left rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                data-accordion-target="#accordion-flush-body-1"
-                aria-expanded="true"
-                aria-controls="accordion-flush-body-1"
-              >
-                <span><?php echo $_SESSION['faq1'] ?></span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-flush-body-1"
-              class="hidden"
-              aria-labelledby="accordion-flush-heading-1"
-            >
-              <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  <?php echo $_SESSION['faqa1'] ?>
-                </p>
-              </div>
+    </div>
+  </section>
+
+  <!--faq section-->
+  <div class="w-full bg-white border border-gray-200 rounded-lg shadow my-6">
+    <div class="sm:hidden">
+      <label for="tabs" class="sr-only">Select tab</label>
+      <select id="tabs"
+        class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option>FAQ</option>
+      </select>
+    </div>
+    <ul
+      class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse"
+      id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
+      <li class="w-full">
+        <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="false"
+          class="inline-block w-full p-4 rounded-se-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">
+          Frequently asked questions
+        </button>
+      </li>
+    </ul>
+    <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
+      <div class="hidden p-4 bg-white rounded-lg dark:bg-gray-800" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+        <div id="accordion-flush" data-accordion="collapse"
+          data-active-classes="bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          data-inactive-classes="text-gray-500 dark:text-gray-400">
+          <h2 id="accordion-flush-heading-1">
+            <button type="button"
+              class="flex items-center justify-between w-full py-5 font-medium text-left rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+              data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
+              aria-controls="accordion-flush-body-1">
+              <span>
+                <?php echo $_SESSION['faq1'] ?>
+              </span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5 5 1 1 5" />
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+              <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <?php echo $_SESSION['faqa1'] ?>
+              </p>
             </div>
-            <h2 id="accordion-flush-heading-2">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full py-5 font-medium text-left rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                data-accordion-target="#accordion-flush-body-2"
-                aria-expanded="false"
-                aria-controls="accordion-flush-body-2"
-              >
-                <span
-                  ><?php echo $_SESSION['faq2'] ?></span
-                >
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-flush-body-2"
-              class="hidden"
-              aria-labelledby="accordion-flush-heading-2"
-            >
-              <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  <?php echo $_SESSION['faqa2'] ?>
-                </p>
-              </div>
+          </div>
+          <h2 id="accordion-flush-heading-2">
+            <button type="button"
+              class="flex items-center justify-between w-full py-5 font-medium text-left rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+              data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+              aria-controls="accordion-flush-body-2">
+              <span>
+                <?php echo $_SESSION['faq2'] ?>
+              </span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5 5 1 1 5" />
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+              <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <?php echo $_SESSION['faqa2'] ?>
+              </p>
             </div>
-            <h2 id="accordion-flush-heading-3">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full py-5 font-medium text-left rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-                data-accordion-target="#accordion-flush-body-3"
-                aria-expanded="false"
-                aria-controls="accordion-flush-body-3"
-              >
-                <span><?php echo $_SESSION['faq3'] ?></span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-flush-body-3"
-              class="hidden"
-              aria-labelledby="accordion-flush-heading-3"
-            >
-              <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
+          </div>
+          <h2 id="accordion-flush-heading-3">
+            <button type="button"
+              class="flex items-center justify-between w-full py-5 font-medium text-left rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+              data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
+              aria-controls="accordion-flush-body-3">
+              <span>
+                <?php echo $_SESSION['faq3'] ?>
+              </span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5 5 1 1 5" />
+              </svg>
+            </button>
+          </h2>
+          <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+              <p class="mb-2 text-gray-500 dark:text-gray-400">
                 <?php echo $_SESSION['faqa3'] ?>
-                </p>
-                <!--  <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
+              </p>
+              <!--  <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
                   <li>
                     <a
                       href="https://flowbite.com/pro/"
@@ -586,15 +380,15 @@ include '../admin/webcontent.php';
                     >
                   </li>
                 </ul> -->
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!--footer section-->
-    <footer class="p-4 bg-gray-800 sm:p-6">
+  <!--footer section-->
+  <footer class="p-4 bg-gray-800 sm:p-6">
     <div class="mx-auto max-w-screen-xl">
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
@@ -636,98 +430,17 @@ include '../admin/webcontent.php';
           </div>
           <div>
             <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-              Legal
+              Help Center
             </h2>
             <ul class="text-white">
+              <li class="mb-4">
+                <a href="../frontend/aboutUs.php" class="hover:underline">Facebook</a>
+              </li>
               <li>
-                <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#termsModal"
-                  onclick="showModal();">Terms and Conditions</a>
-                <div id="termsModal" class="fixed inset-0 overflow-y-auto hidden">
-                  <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-white text-black p-6 rounded-lg">
-                      <h2 class="text-lg font-semibold mb-4">Terms and Conditions</h2>
-                      <h3>1. Acceptance of Terms</h3>
-                      <p class="mb-4">By accessing and using the web-based glutathione appointment service provided by
-                        <?php echo $_SESSION['webname'] ?>, you agree to be bound by these terms and conditions. If you
-                        do not agree with any part of these terms, you may not use the service.
-                      </p>
-
-                      <h3>2. Service Description</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> provides an online platform for scheduling and managing
-                        appointments related to glutathione treatments. The service includes but is not limited to
-                        appointment scheduling.</h3>
-
-                      <h3>3. User Eligibility</h3>
-                      <p class="mb-4">You must be at least 18 years old to use our service. By using the service, you
-                        represent and warrant that you are of legal age and have the capacity to enter into a binding
-                        agreement.</p>
-
-                      <h3>4. Appointment Booking</h3>
-                      <p class="mb-4">Users can book appointments through the
-                        <?php echo $_SESSION['webname'] ?> website. It is the user's responsibility to provide accurate
-                        and up-to-date information during the booking process.
-                        <?php echo $_SESSION['webname'] ?> is not responsible for any consequences resulting from
-                        inaccurate information.
-                      </p>
-
-                      <h3>5. Fees and Payments</h3>
-                      <p class="mb-4">Certain glutathione treatments may have associated fees. Users agree to pay the
-                        specified fees for the services they book. Payment details and terms are provided during the
-                        booking process.</p>
-
-                      <h3>6. Privacy and Security</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> takes the privacy and security of user information seriously.
-                        Our Privacy Policy outlines how we collect, use, and protect your personal information. By using
-                        our service, you agree to the terms of our Privacy Policy.
-                      </p>
-
-                      <h3>7. User Responsibilities</h3>
-                      <p class="mb-4">Users are responsible for maintaining the confidentiality of their account
-                        information, including login credentials. Any activity occurring under a user's account is their
-                        responsibility. Users must notify
-                        <?php echo $_SESSION['webname'] ?> immediately of any unauthorized use of their account.
-                      </p>
-
-                      <h3>8. Limitation of Liability</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> is not liable for any direct, indirect, incidental, special,
-                        or consequential damages resulting from the use of our service or the inability to use the
-                        service, including but not limited to damages for loss of profits, data, or other intangible
-                        losses.
-                      </p>
-
-                      <h3>9. Changes to Terms and Conditions</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> reserves the right to update or modify these terms and
-                        conditions at any time without prior notice. Users are encouraged to review the terms regularly.
-                        Continued use of the service after changes constitutes acceptance of the updated terms.
-                      </p>
-
-
-                      <h3>10. Changes to Terms and Conditions</h3>
-                      <p class="mb-4">These terms and conditions are governed by and construed in accordance with the
-                        laws of our Jurisdiction. Any disputes arising from or in connection with these terms shall be
-                        subject to the exclusive jurisdiction of the courts in our Jurisdiction.</p>
-                      <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                        onclick="hideModal();">Close</button>
-                    </div>
-                  </div>
-                </div>
-                <script>
-                  function showModal() {
-                    var modal = document.getElementById('termsModal');
-                    modal.classList.remove('hidden');
-                  }
-
-                  function hideModal() {
-                    var modal = document.getElementById('termsModal');
-                    modal.classList.add('hidden');
-                  }
-                </script>
+                <a href="../frontend/blogs.php" class="hover:underline">Gmail</a>
               </li>
             </ul>
+
           </div>
         </div>
       </div>
@@ -777,38 +490,39 @@ include '../admin/webcontent.php';
       </div>
     </div>
   </footer>
-  
 
-    <div id="myModal" class="fixed inset-0 overflow-y-auto hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white p-6 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Modal Content</h2>
-                <p>Successful Booking!</p>
-                <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Okay!</button>
-            </div>
-        </div>
+
+  <div id="myModal" class="fixed inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white p-6 rounded-lg">
+        <h2 class="text-lg font-semibold mb-4">Modal Content</h2>
+        <p>Successful Booking!</p>
+        <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Okay!</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var urlParams = new URLSearchParams(window.location.search);
-    var showModal = urlParams.get('showModal') === 'true';
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var urlParams = new URLSearchParams(window.location.search);
+      var showModal = urlParams.get('showModal') === 'true';
 
-    var modal = document.getElementById('myModal');
+      var modal = document.getElementById('myModal');
 
-    if (showModal) {
+      if (showModal) {
         modal.classList.remove('hidden');
-    }
+      }
 
-    var closeModalBtn = document.getElementById('closeModal');
-    closeModalBtn.addEventListener('click', function () {
+      var closeModalBtn = document.getElementById('closeModal');
+      closeModalBtn.addEventListener('click', function () {
         modal.classList.add('hidden');
+      });
     });
-});
-</script>
+  </script>
 
 
 
-    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-  </body>
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+</body>
+
 </html>
