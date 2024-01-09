@@ -1,7 +1,6 @@
 <?php 
 include ('../admin/webcontent.php');
-include ('../backend/loginForm.php');
-include ('../backend/userDashboard.php');
+include ('../backend/loginForm.php'); 
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +96,7 @@ include ('../backend/userDashboard.php');
 
           <li>
             <a
-              href="../frontend/userDashboardAppointment.php"
+              href="../frontend/productUserDashboardAppointment.php"
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -145,63 +144,48 @@ include ('../backend/userDashboard.php');
     <div class="p-4 sm:ml-64">
       <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
 
-      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
-        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        <h2 class="text-2xl font-semibold mb-4">User Profile</h2>
-        
-        <div class="mb-4">
-        <label for="fullname" class="mb-4 block text-gray-700">Change Name:</label>
-        <input type="text" placeholder="<?php echo $_SESSION['name']; ?>" id="fullname" name="fullname" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-        </div>
+      <?php
+ $connection = new mysqli('localhost', 'root', '', 'luxureemdb');
+ if ($connection->connect_error) {
+    echo "Connection error: " . $connection->connect_error;
+ }
+ // SQL query to select data
+ $sql = "SELECT * FROM patients";
+ $result = $connection->query($sql);
 
-        <div class="mb-4 flex items-center justify-between">
-        <input type="submit" name="updatename" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        </div>
-        </div>
-      </form>  
+ // Check if the query returns any rows
+ if ($result->num_rows > 0) {
+    // Output data of each row
+    echo "<table class='w-full border-collapse mb-8'>";
+    echo "<thead class='bg-gray-200 text-gray-700 border-b-2 border-gray-300'>";
+    echo "<tr><th class='p-4 text-left'>Service</th><th class='p-4 text-left'>Date Of Appointment</th><th class='p-4 text-left'>Price</th></tr>";
+    echo "</thead>";
+    echo "<tbody class='text-gray-700'>";
+    while($row = $result->fetch_assoc()) {
+      // Get the price for the service
+      $service_name = $row["service"];
+      $sql_price = "SELECT `barbieprice` FROM barbie WHERE barbiename = '$service_name'";
+      $result_price = $connection->query($sql_price);
 
-      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
-        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        
-        <div class="mb-4">
-        <label for="profilepic" class="mb-4 block text-gray-700">Change Profile Picture:</label>
-        <input type="file" id="profilepic" name="profilepic" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-        </div>
+      if ($result_price->num_rows > 0) {
+        $price_row = $result_price->fetch_assoc();
+        $price = $price_row["barbieprice"];
+      } else {
+        $price = 'N/A';
+      }
 
-        <div class="mb-4 flex items-center justify-between">
-        <input type="submit" name="updateprofile" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        </div>
-        </div>
-      </form>  
-
-      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
-        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        
-        <div class="mb-4">
-        <label for="phone" class="mb-4 block text-gray-700">Change Mobile Number:</label>
-        <input type="text" placeholder="<?php echo $_SESSION['phonenumber']; ?>" id="phone" name="phone" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-        </div>
-
-        <div class="mb-4 flex items-center justify-between">
-        <input type="submit"  name="updatephone" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        </div>
-        </div>
-      </form>  
-
-      <form action="userDashboard.php" method="post" enctype="multipart/form-data">
-        <div class="bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        
-        <div class="mb-4">
-        <label for="address" class="mb-4 block text-gray-700">Change Mobile Number:</label>
-        <input type="text" placeholder="<?php echo $_SESSION['address']; ?>" id="address" name="address" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
-        </div>
-
-        <div class="mb-4 flex items-center justify-between">
-        <input type="submit"  name="updateadd" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        </div>
-        </div>
-      </form>  
-
+      echo "<tr class='border-b-2 border-gray-200 hover:bg-gray-100'>";
+      echo "<td class='p-4'>" . $row["service"]. "</td>";
+      echo "<td class='p-4'>" . $row["date"]. "</td>";
+      echo "<td class='p-4'>" . $price. "</td>";
+      echo "</tr>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+ } else {
+    echo "<p class='text-red-600'>0 results</p>";
+ }
+ ?>
 
       </div>
     </div>
