@@ -159,10 +159,11 @@ include '../admin/webcontent.php';
     <div class="py-8 px-4 mx-auto max-w-fit lg:py-16 lg:px-6">
       <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-        Harmony of Radiance: Glutathione, Vitamins, and Aesthetics
+          Harmony of Radiance: Glutathione, Vitamins, and Aesthetics
         </h2>
         <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-        Discover the symphony of well-being with our trio - Glutathione for skin luminosity, Vitamins for vitality, and Aesthetics for personalized beauty.
+          Discover the symphony of well-being with our trio - Glutathione for skin luminosity, Vitamins for vitality,
+          and Aesthetics for personalized beauty.
         </p>
       </div>
       <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
@@ -171,18 +172,18 @@ include '../admin/webcontent.php';
           class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
           <h3 class="mb-4 text-2xl font-semibold">Glutathione drip</h3>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-          Unveil radiant well-being with our Glutathione services, meticulously crafted to 
-          brighten and rejuvenate your skin. Beyond aesthetics, 
-          these services detoxify and enhance cellular health, fortifying 
-          your immune system and promoting overall vitality.
+            Unveil radiant well-being with our Glutathione services, meticulously crafted to
+            brighten and rejuvenate your skin. Beyond aesthetics,
+            these services detoxify and enhance cellular health, fortifying
+            your immune system and promoting overall vitality.
           </p>
           <div class="flex justify-center items-baseline my-8">
             <span class="mr-2 text-5xl font-extrabold">
-              
+
 
 
             </span>
-        
+
           </div>
           <!-- List -->
           <ul role="list" class="mb-8 space-y-4 text-left">
@@ -239,19 +240,19 @@ include '../admin/webcontent.php';
           class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
           <h3 class="mb-4 text-2xl font-semibold">Vitamin Drip</h3>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-          Revitalize your energy and elevate your vitality through our 
-          Vitamin infusions. Designed to support your immune system and provide 
-          essential nutrients directly into your bloodstream, 
-          these infusions promote overall health and wellness, 
-          leaving you feeling invigorated.
+            Revitalize your energy and elevate your vitality through our
+            Vitamin infusions. Designed to support your immune system and provide
+            essential nutrients directly into your bloodstream,
+            these infusions promote overall health and wellness,
+            leaving you feeling invigorated.
           </p>
           <div class="flex justify-center items-baseline my-8">
             <span class="mr-2 text-5xl font-extrabold">
-              
+
 
 
             </span>
-        
+
           </div>
           <!-- List -->
           <ul role="list" class="mb-8 space-y-4 text-left">
@@ -307,19 +308,19 @@ include '../admin/webcontent.php';
           class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
           <h3 class="mb-4 text-2xl font-semibold">Aesthetic Services</h3>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-          Step into a world of personalized care with our Aesthetic treatments. 
-          Tailored solutions for facial and body aesthetics, these advanced treatments 
-          sculpt and tone, rejuvenating your natural features. 
-          Our goal is to provide you with confidence and a refreshed look that 
-          aligns with your unique beauty.
+            Step into a world of personalized care with our Aesthetic treatments.
+            Tailored solutions for facial and body aesthetics, these advanced treatments
+            sculpt and tone, rejuvenating your natural features.
+            Our goal is to provide you with confidence and a refreshed look that
+            aligns with your unique beauty.
           </p>
           <div class="flex justify-center items-baseline my-8">
             <span class="mr-2 text-5xl font-extrabold">
-              
+
 
 
             </span>
-        
+
           </div>
           <!-- List -->
           <ul role="list" class="mb-8 space-y-4 text-left">
@@ -417,98 +418,17 @@ include '../admin/webcontent.php';
           </div>
           <div>
             <h2 class="mb-6 text-sm font-semibold uppercase text-white">
-              Legal
+              Help Center
             </h2>
             <ul class="text-white">
+              <li class="mb-4">
+                <a href="../frontend/aboutUs.php" class="hover:underline">Facebook</a>
+              </li>
               <li>
-                <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#termsModal"
-                  onclick="showModal();">Terms and Conditions</a>
-                <div id="termsModal" class="fixed inset-0 overflow-y-auto hidden">
-                  <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-white text-black p-6 rounded-lg">
-                      <h2 class="text-lg font-semibold mb-4">Terms and Conditions</h2>
-                      <h3>1. Acceptance of Terms</h3>
-                      <p class="mb-4">By accessing and using the web-based glutathione appointment service provided by
-                        <?php echo $_SESSION['webname'] ?>, you agree to be bound by these terms and conditions. If you
-                        do not agree with any part of these terms, you may not use the service.
-                      </p>
-
-                      <h3>2. Service Description</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> provides an online platform for scheduling and managing
-                        appointments related to glutathione treatments. The service includes but is not limited to
-                        appointment scheduling.</h3>
-
-                      <h3>3. User Eligibility</h3>
-                      <p class="mb-4">You must be at least 18 years old to use our service. By using the service, you
-                        represent and warrant that you are of legal age and have the capacity to enter into a binding
-                        agreement.</p>
-
-                      <h3>4. Appointment Booking</h3>
-                      <p class="mb-4">Users can book appointments through the
-                        <?php echo $_SESSION['webname'] ?> website. It is the user's responsibility to provide accurate
-                        and up-to-date information during the booking process.
-                        <?php echo $_SESSION['webname'] ?> is not responsible for any consequences resulting from
-                        inaccurate information.
-                      </p>
-
-                      <h3>5. Fees and Payments</h3>
-                      <p class="mb-4">Certain glutathione treatments may have associated fees. Users agree to pay the
-                        specified fees for the services they book. Payment details and terms are provided during the
-                        booking process.</p>
-
-                      <h3>6. Privacy and Security</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> takes the privacy and security of user information seriously.
-                        Our Privacy Policy outlines how we collect, use, and protect your personal information. By using
-                        our service, you agree to the terms of our Privacy Policy.
-                      </p>
-
-                      <h3>7. User Responsibilities</h3>
-                      <p class="mb-4">Users are responsible for maintaining the confidentiality of their account
-                        information, including login credentials. Any activity occurring under a user's account is their
-                        responsibility. Users must notify
-                        <?php echo $_SESSION['webname'] ?> immediately of any unauthorized use of their account.
-                      </p>
-
-                      <h3>8. Limitation of Liability</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> is not liable for any direct, indirect, incidental, special,
-                        or consequential damages resulting from the use of our service or the inability to use the
-                        service, including but not limited to damages for loss of profits, data, or other intangible
-                        losses.
-                      </p>
-
-                      <h3>9. Changes to Terms and Conditions</h3>
-                      <p class="mb-4">
-                        <?php echo $_SESSION['webname'] ?> reserves the right to update or modify these terms and
-                        conditions at any time without prior notice. Users are encouraged to review the terms regularly.
-                        Continued use of the service after changes constitutes acceptance of the updated terms.
-                      </p>
-
-
-                      <h3>10. Changes to Terms and Conditions</h3>
-                      <p class="mb-4">These terms and conditions are governed by and construed in accordance with the
-                        laws of our Jurisdiction. Any disputes arising from or in connection with these terms shall be
-                        subject to the exclusive jurisdiction of the courts in our Jurisdiction.</p>
-                      <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                        onclick="hideModal();">Close</button>
-                    </div>
-                  </div>
-                </div>
-                <script>
-                  function showModal() {
-                    var modal = document.getElementById('termsModal');
-                    modal.classList.remove('hidden');
-                  }
-
-                  function hideModal() {
-                    var modal = document.getElementById('termsModal');
-                    modal.classList.add('hidden');
-                  }
-                </script>
+                <a href="../frontend/blogs.php" class="hover:underline">Gmail</a>
               </li>
             </ul>
+
           </div>
         </div>
       </div>
