@@ -96,17 +96,23 @@ include '../admin/webcontent.php';
       </div>
 
 
+      <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+    <label for="chart-select" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a chart:</label>
+    <select id="chart-select" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <option value="reguser">Registration by User</option>
+      <option value="genderchart">Gender Distribution</option>
+      <option value="productsale">Product Sales</option>
+    </select>
+  </div>
+
+  <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
+  <div id="reguser" style="height: 370px; width: 100%;"></div>
+  <div id="genderchart" style="height: 370px; width: 100%; display: none;"></div>
+  <div id="productsale" style="height: 370px; width: 100%; display: none;"></div>
+  </div>
 
 
-      <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        <div id="reguser" style="height: 370px; width: 100%;"></div>
-      </div>
-      <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        <div id="genderchart" style="height: 370px; width: 100%;"></div>
-      </div>
-      <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
-        <div id="productsale" style="height: 370px; width: 100%;"></div>
-      </div>
+
 
       <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
         <?php
@@ -244,6 +250,17 @@ include '../admin/webcontent.php';
           genderChart.render();
           productsale.render();
         }
+
+        document.getElementById('chart-select').addEventListener('change', function() {
+      var selectedChart = this.value;
+      var reguserChart = document.getElementById('reguser');
+      var genderChart = document.getElementById('genderchart');
+      var productsale = document.getElementById('productsale');
+
+      reguserChart.style.display = (selectedChart === 'reguser') ? 'block' : 'none';
+      genderChart.style.display = (selectedChart === 'genderchart') ? 'block' : 'none';
+      productsale.style.display = (selectedChart === 'productsale') ? 'block' : 'none';
+    });
       </script>
       <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 
