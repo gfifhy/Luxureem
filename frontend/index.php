@@ -497,6 +497,7 @@ include '../admin/webcontent.php';
       <div class="bg-white p-6 rounded-lg">
         <h2 class="text-lg font-semibold mb-4">Modal Content</h2>
         <p>Successful Booking!</p>
+        <p>The confirmation will be sent via email or text by the doctor. Thank you </p>
         <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Okay!</button>
       </div>
     </div>
