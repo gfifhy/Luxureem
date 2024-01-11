@@ -107,7 +107,7 @@ include '../admin/webcontent.php';
 
   <div class="mb-4 bg-gray-50 dark:bg-gray-800 rounded shadow-md p-6">
   <div id="reguser" style="height: 370px; width: 100%;"></div>
-  <div id="genderchart" style="height: 370px; width: 100%; display: none;"></div>
+  <div id="genderchart" style="height: 370px; width: 33%; display: none;"></div>
   <div id="productsale" style="height: 370px; width: 100%; display: none;"></div>
   </div>
 
@@ -152,9 +152,19 @@ include '../admin/webcontent.php';
           echo "<p class='text-red-600'>0 results</p>";
         }
         ?>
+<form action="index.php" method="post">
+ <input name="printing" type="submit" value="Print Data" class="col-start-3"
+ style="color: white; background-color: black; border: none; padding: 0.5rem; border-radius: 3px; transition: background-color 0.3s, border 0.3s; border: 1px solid black;"
+ onmouseover="this.style.backgroundColor='black'; this.style.color='white'"
+ onmouseout="this.style.backgroundColor='white'; this.style.color='black';">
+</form>
       </div>
-
-
+      <script>
+document.querySelector('input[name="printing"]').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = '../backend/printing.php';
+});
+</script>
 
       <script>
         window.onload = function () {
